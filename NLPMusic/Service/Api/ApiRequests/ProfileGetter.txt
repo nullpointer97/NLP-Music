@@ -1,0 +1,10 @@
+var userId = insert_user_id;
+var fields = insert_fields;
+
+var profile = API.users.get({"user_ids": userId, "fields": fields});
+
+if (!profile.can_access_closed) {
+    return {"profile" : profile, "photos" : API.photos.getAll({"owner_id": userId, "extended": 1, "count": 4}), "friends": API.friends.get({"user_id": userId, "fields": fields, "count": 20})};
+} else {
+    return {"profile" : profile};
+}

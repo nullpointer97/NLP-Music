@@ -1,0 +1,56 @@
+var user_id = insert_user_id;
+var fields = insert_fields;
+var is_owner = insert_is_owner;
+
+var user = API.users.get({"user_ids":user_id, "fields":fields})[0];
+
+if (user.relation_partner + "\\" != "\\") {
+    var relation_partner_fields = "sex,first_name_acc,last_name_acc,first_name_ins,last_name_ins,first_name_abl,last_name_abl,first_name_gen,last_name_gen,first_name_dat,last_name_dat";
+    user = user + {relation_partner:API.users.get({
+                                                  "user_ids":user.relation_partner.id,
+                                                  "fields": relation_partner_fields
+                                                  })[0]};
+}
+
+if (!is_owner) {
+    var mutuals = API.friends.getMutual({"target_uid":user_id,"count":3});
+    user = user + {"mutuals": API.users.get({"user_ids":mutuals, "fields":"photo_100"})};
+}
+
+var gifts = {};
+if (user.counters.gifts > 0) {
+    gifts = API.gifts.get({"user_id": user_id, "count": 20});
+}
+
+var has_stream = 0;
+if (user.counters.photos > 0) {
+    has_stream = API.photos.getAll({"owner_id":user_id, "offset":0, "count": 1, "skip_hidden": 1}).items.length > 0;
+}
+
+if (is_owner) {
+    user = user + {"count_docs": API.docs.get({"owner_id": user_id, "offset": 0, "count": 1}).count, "profile_photo": API.photos.get({"owner_id": user_id, "album_id": "profile", "limit": 1,"rev": 1}).items[0]};
+}
+
+var career_groups = [];
+var career_groups_ids = user.career@.group_id;
+if (user.occupation.id) {
+    career_groups_ids = career_groups_ids + [user.occupation.id];
+}
+
+if (career_groups_ids.length > 0) {
+    career_groups = API.groups.getById({"group_ids": career_groups_ids});
+}
+
+var cities = [];
+var cities_ids = user.career@.city_id + user.schools@.city;
+
+if (cities_ids.length > 0) {
+    cities = API.database.getCitiesById({"city_ids": cities_ids});
+}
+
+var statisics_available = 0;
+if (is_owner) {
+    statisics_available = user.counters.followers > 100;
+}
+
+return user + {"friend_status_read": API.friends.areFriends({"user_ids": user_id})[0].read_state, "relatives_users": API.users.get({"user_ids": user.relatives@.id,fields:fields}), "gifts": gifts, "has_photo_stream": has_stream, "career_groups": career_groups, "cities": cities, "statisics_available": statisics_available};
