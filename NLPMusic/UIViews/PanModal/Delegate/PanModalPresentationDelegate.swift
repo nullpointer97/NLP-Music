@@ -42,7 +42,7 @@ extension PanModalPresentationDelegate: UIViewControllerTransitioningDelegate {
      Returns a modal presentation animator configured for the dismissing state
      */
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil//PanModalPresentationAnimator(transitionStyle: .dismissal)
+        return PanModalPresentationAnimator(transitionStyle: .dismissal)
     }
 
     /**

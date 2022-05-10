@@ -17,47 +17,50 @@ extension MPNowPlayingInfoCenter {
     ///   - progression: The current progression.
     ///   - playbackRate: The current playback rate.
     func ap_update(with item: AudioPlayerItem, duration: TimeInterval?, progression: TimeInterval?, playbackRate: Float) {
-        if let title = item.title {
-            nowPlayingInfo?[MPMediaItemPropertyTitle] = title
-        }
-        if let albumName = item.albumName {
-            nowPlayingInfo?[MPMediaItemPropertyAlbumTitle] = albumName
-        }
-        
-        if let artist = item.artist {
-            nowPlayingInfo?[MPMediaItemPropertyArtist] = artist
-        }
-        if let duration = duration {
-            nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = duration
-        }
-        if let progression = progression {
-            nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = progression
-        }
-        nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
-        
-        if let url = URL(string: item.albumThumb600) {
-            getData(from: url) { data, response, error in
-                guard let data = data, error == nil else { return }
-                
-                DispatchQueue.main.async() { [weak self] in
-                    self?.nowPlayingInfo?[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: .custom(600, 600)) { size in
+        getData(from: URL(string: item.albumThumb600)) { [weak self] data, response, error in
+            guard let self = self else { return }
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.nowPlayingInfo?[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: .custom(600, 600)) { size in
                         if let image = UIImage(data: data) {
                             return image
                         } else {
-                            return UIImage(named: "missing_song_artwork_generic_proxy") ?? UIImage()
+                            return UIImage(named: "playlist_outline_56") ?? UIImage()
                         }
                     }
                 }
+            } else {
+                let image = UIImage(named: "playlist_outline_56") ?? UIImage()
+                self.nowPlayingInfo?[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: .custom(600, 600)) { size in
+                    return image
+                }
             }
-        } else {
-            let image = UIImage(named: "missing_song_artwork_generic_proxy") ?? UIImage()
-            nowPlayingInfo?[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: .custom(600, 600)) { size in
-                return image
+            if let title = item.title {
+                self.nowPlayingInfo?[MPMediaItemPropertyTitle] = title
             }
+            if let albumName = item.albumName {
+                self.nowPlayingInfo?[MPMediaItemPropertyAlbumTitle] = albumName
+            }
+            
+            if let artist = item.artist {
+                self.nowPlayingInfo?[MPMediaItemPropertyArtist] = artist
+            }
+            if let duration = duration {
+                self.nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = duration
+            }
+            if let progression = progression {
+                self.nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = progression
+            }
+            self.nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
         }
     }
     
-    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    private func getData(from url: URL?, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        guard let url = url else {
+            completion(nil, nil, "No URL")
+            return
+        }
+
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }

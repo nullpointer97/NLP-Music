@@ -18,6 +18,7 @@ struct Localization {
     
     static let wallsCount: [String?] = ["запись", "записи", "записей", nil]
     static let audioCount: [String?] = ["аудио", "аудио", "аудио", nil]
+    static let playlistCount: [String?] = ["плейлист", "плейлиста", "плейлистов", nil]
     static let commentsCount: [String?] = ["комментарий", "комментария", "комментариев", nil]
     static let friendsCount: [String?] = ["друг", "друга", "друзей", nil]
     static let possibleCount: [String?] = ["возможный", "возможных", "возможных", nil]
@@ -32,4 +33,6 @@ struct Localization {
     static let timeSeconds: [String?] = ["секунду", "секунды", "секунд", nil]
     static let timeMinutes: [String?] = ["минуту", "минуты", "минут", nil]
     static let timeHours: [String?] = ["час", "часа", "часов", nil]
+
+    static let plays: [String?] = ["прослушивание", "прослушивания", "прослушиваний", nil]
 }

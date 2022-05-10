@@ -14,11 +14,24 @@ import Foundation
 /// - foundationError: The `AVPlayer` failed to play.
 /// - itemNotConsideredPlayable: The current item that should be played is considered unplayable.
 /// - noItemsConsideredPlayable: The queue doesn't contain any item that is considered playable.
-public enum AudioPlayerError: Error {
+public enum AudioPlayerError: Error, CustomStringConvertible {
     case maximumRetryCountHit
     case foundationError(Error)
     case itemNotConsideredPlayable
     case noItemsConsideredPlayable
+    
+    public var description: String {
+        switch self {
+        case .maximumRetryCountHit:
+            return "Плеер достиг максимального количества повторных попыток."
+        case .foundationError(let error):
+            return error.localizedDescription
+        case .itemNotConsideredPlayable:
+            return "Текущий элемент, который должен быть воспроизведен, считается невоспроизводимым."
+        case .noItemsConsideredPlayable:
+            return "Очередь не содержит ни одного предмета, который считается воспроизводимым."
+        }
+    }
 }
 
 /// `AudioPlayerState` defines 4 state an `AudioPlayer` instance can be in.

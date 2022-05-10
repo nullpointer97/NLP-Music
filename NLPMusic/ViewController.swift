@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: VKBaseViewController {
+class ViewController: NLPBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

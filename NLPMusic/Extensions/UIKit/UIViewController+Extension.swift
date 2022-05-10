@@ -11,6 +11,7 @@ import Lottie
 import Kingfisher
 import PureLayout
 import AsyncDisplayKit
+import MaterialComponents
 
 public extension UIViewController {
     func extraRemoveNavationBarDivider() {
@@ -45,8 +46,12 @@ public extension UIViewController {
         return .main
     }
     
-    func withNavigationController() -> VKMNavigationController {
-        return VKMNavigationController(rootViewController: self)
+    func withAsdkNavigationController() -> NLPMNavigationController {
+        return NLPMNavigationController(rootViewController: self)
+    }
+    
+    func withNavigationController() -> NLPMNavigationController {
+        return NLPMNavigationController(rootViewController: self)
     }
 }
 

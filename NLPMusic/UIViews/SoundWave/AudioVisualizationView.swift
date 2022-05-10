@@ -172,7 +172,7 @@ public class AudioVisualizationView: BaseNibView {
 			guard let audioContext = audioContext else {
 				fatalError("Couldn't create the audioContext")
 			}
-			self.meteringLevels = audioContext.render(targetSamples: 100)
+			self.meteringLevels = audioContext.render(targetSamples: 200)
 			self.play(for: 2)
 		}
 	}

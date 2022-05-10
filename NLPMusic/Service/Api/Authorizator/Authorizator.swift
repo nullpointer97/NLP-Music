@@ -15,6 +15,7 @@ protocol Authorizator: AnyObject {
     func authorize(login: String, password: String, sessionId: String, revoke: Bool) -> Promise<(Int, InvalidatableToken)>
     func authorize(login: String, password: String, sessionId: String, revoke: Bool, captchaSid: String?, captchaKey: String?) -> Promise<(Int, InvalidatableToken)>
     func authorize(login: String, password: String, sessionId: String, revoke: Bool, code: String?, forceSms: Int?) -> Promise<(Int, InvalidatableToken)>
+    func authorize(userId: Int, token: String, sessionId: String) throws -> Promise<(Int, InvalidatableToken)>
     func reset(sessionId: String) -> InvalidatableToken?
 }
 
@@ -58,6 +59,16 @@ final class AuthorizatorImpl: Authorizator {
         
         return queue.sync {
             self.auth(login: login, password: password, sessionId: sessionId, code: code, forceSms: forceSms)
+        }
+    }
+    
+    func authorize(userId: Int, token: String, sessionId: String) throws -> Promise<(Int, InvalidatableToken)> {
+        defer { vkAppToken = nil }
+        
+        return queue.sync {
+            Promise { box in
+                box.fulfill(try self.getToken(sessionId: sessionId, authData: AuthData.sessionInfo(accessToken: token, userId: userId)))
+            }
         }
     }
     
@@ -119,6 +130,9 @@ final class AuthorizatorImpl: Authorizator {
         if let captchaKey = captchaKey, let captchaSid = captchaSid {
             alamofireParameters["captcha_key"] = captchaKey
             alamofireParameters["captcha_sid"] = captchaSid
+            
+            print("auth:", alamofireParameters["captcha_key"])
+            print("auth:", alamofireParameters["captcha_sid"])
         }
 
         if let code = code {

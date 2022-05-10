@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreStore
+import MaterialComponents
 
 protocol ApiErrorExecutor {
     func captcha(rawUrlToImage: String, dismissOnFinish: Bool) throws
@@ -58,6 +59,7 @@ public protocol Session: AnyObject {
     func logIn(login: String, password: String, onSuccess: @escaping () -> (), onError: @escaping RequestCallbacks.Error)
     func logIn(login: String, password: String, captchaSid: String?, captchaKey: String?, onSuccess: @escaping () -> (), onError: @escaping RequestCallbacks.Error)
     func logIn(login: String, password: String, code: String?, forceSms: Int?, onSuccess: @escaping () -> (), onError: @escaping RequestCallbacks.Error)
+    func login(userId: Int, token: String, onSuccess: @escaping () -> (), onError: @escaping RequestCallbacks.Error)
     /// Log out user, remove all data and destroy current session
     func logOut(_ block: @escaping () -> (Void))
     func logOut()
@@ -143,6 +145,25 @@ public final class SessionImpl: Session, DestroyableSession, ApiErrorExecutor {
             }
         }
     }
+    
+    public func login(userId: Int, token: String, onSuccess: @escaping () -> (), onError: @escaping RequestCallbacks.Error) {
+        gateQueue.async {
+            do {
+                try self.authorizator.authorize(userId: userId, token: token, sessionId: self.id).done {  (userId, token) in
+                    self.token = token
+                    self.updateUserId(userId: userId)
+                    DispatchQueue.global().async {
+                        onSuccess()
+                        self.delegate?.vkTokenCreated(for: self.id, info: ["userId": "\(userId)"])
+                    }
+                }.catch { error in
+                    onError(error.toVK())
+                }
+            } catch {
+                onError(error.toVK())
+            }
+        }
+    }
 
     public func logIn(login: String, password: String, code: String?, forceSms: Int? = 0, onSuccess: @escaping () -> (), onError: @escaping RequestCallbacks.Error) {
         gateQueue.async {
@@ -180,7 +201,7 @@ public final class SessionImpl: Session, DestroyableSession, ApiErrorExecutor {
                 return
             }
             
-            let rootViewController = VKMNavigationController(rootViewController: LoginViewController())
+            let rootViewController = NLPMNavigationController(rootViewController: LoginViewController())
             
             let transition = CATransition()
             transition.type = .push
@@ -210,7 +231,7 @@ public final class SessionImpl: Session, DestroyableSession, ApiErrorExecutor {
                 clearCache()
                 guard let window = UIApplication.shared.windows.first else { return }
                 
-                let rootViewController = VKMNavigationController(rootViewController: LoginViewController())
+                let rootViewController = NLPMNavigationController(rootViewController: LoginViewController())
                 
                 let transition = CATransition()
                 transition.type = .push

@@ -82,6 +82,7 @@ public struct AudioItemURL {
 import CoreStore
 import SwiftyJSON
 import CoreData
+import RNCryptor
 
 open class AudioItem: CoreStoreObject, ImportableUniqueObject {
     public typealias UniqueIDType = Int
@@ -206,9 +207,11 @@ open class AudioItem: CoreStoreObject, ImportableUniqueObject {
         }
     }
     
-    public var isPlaying: Bool? = AudioService.instance.player?.state == .playing
+    @Field.Stored("isPlaying")
+    public var isPlaying: Bool?
     
-    public var isPaused: Bool? = AudioService.instance.player?.state == .paused
+    @Field.Stored("isPaused")
+    public var isPaused: Bool?
     
     @Field.Virtual("isDownloaded", customGetter: { (object, field) in
         guard let stringUrl = object.$url.value, let url = URL(string: stringUrl) else { return false }
@@ -254,7 +257,7 @@ open class AudioItem: CoreStoreObject, ImportableUniqueObject {
                 print("404: File not found")
             } else {
                 try FileManager.default.removeItem(at: destinationUrl)
-                NotificationCenter.default.post(name: NSNotification.Name("AudioRemoved"), object: nil, userInfo: ["audioItem": self])
+                NotificationCenter.default.post(name: NSNotification.Name("didRemoveAudio"), object: nil, userInfo: ["item": self])
             }
         } else {
             throw "Audio not contain URL"
@@ -363,22 +366,38 @@ public class AudioPlayerItem: NSObject {
     var albumThumb300: String?
     var albumThumb600: String?
     
+    weak var delegate: DownloadItemProtocol?
+    
+    var downloadStatus: DownloadStatus = .none
+    
+    var downloadProgress: Double = 0 {
+        didSet {
+            delegate?.download(self, progress: downloadProgress)
+        }
+    }
+    
     var songName: String? {
         get {
-            return "\(artist ?? "unknown")__\(title ?? "unknown")".lowercased().replacingOccurrences(of: " ", with: "_")
+            return "\(artist ?? "unknown")__\(title ?? "unknown")__\(id)".lowercased().replacingOccurrences(of: " ", with: "_")
         }
     }
 
     private var documentsDirectoryURL: URL { FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("music_cache") }
     
-    public var isPlaying: Bool? = false
-    public var isPaused: Bool? = false
+    public var isPlaying: Bool {
+        let service = AudioService.instance
+        return service.player?.currentItem?.id == id && service.player?.state == .playing
+    }
+
+    public var isPaused: Bool {
+        let service = AudioService.instance
+        return service.player?.currentItem?.id == id && service.player?.state == .paused
+    }
+
     public var isDownloaded: Bool {
         guard let stringUrl = url, let url = URL(string: stringUrl) else { return false }
 
-        let destinationUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            .appendingPathComponent("music_cache")
-            .appendingPathComponent("\(songName ?? "").\(url.pathExtension)")
+        let destinationUrl = documentsDirectoryURL.appendingPathComponent("\(songName ?? "").\(url.pathExtension)")
         
         return FileManager.default.fileExists(atPath: destinationUrl.path)
     }
@@ -386,7 +405,7 @@ public class AudioPlayerItem: NSObject {
     var soundUrl: URL? {
         guard let stringUrl = url, let url = URL(string: stringUrl) else { return nil }
         let destinationUrl = documentsDirectoryURL.appendingPathComponent("\(songName ?? "unknown").\(url.pathExtension)")
-
+        
         if FileManager.default.fileExists(atPath: destinationUrl.path) {
             return destinationUrl
         } else {
@@ -422,7 +441,7 @@ public class AudioPlayerItem: NSObject {
                                 try AudioDataStackService.dataStack.perform { transaction in
                                     do {
                                         _ = try transaction.importUniqueObject(Into<AudioItem>(),source: self)
-                                        NotificationCenter.default.post(name: NSNotification.Name("AudioDownloaded"), object: nil, userInfo: ["audioItem": self])
+                                        NotificationCenter.default.post(name: NSNotification.Name("didDownloadAudio"), object: nil, userInfo: ["item": self])
                                     } catch {
                                         print(error.localizedDescription)
                                     }
@@ -512,6 +531,14 @@ public class AudioPlayerItem: NSObject {
             }
         }
     }
+    
+    func didStartDownload() {
+        delegate?.didStarDownload(self)
+    }
+    
+    func didFinishDownload() {
+        delegate?.didFinishDownload(self)
+    }
 }
 
 fileprivate extension URL {
@@ -560,3 +587,73 @@ func sizeOfFolder(_ folderPath: String) -> String? {
         return nil
     }
 }
+
+func sizeOfFolder(_ folderPath: String) -> Int64 {
+    do {
+        let contents = try FileManager.default.contentsOfDirectory(atPath: folderPath)
+        var folderSize: Int64 = 0
+        for content in contents {
+            do {
+                let fullContentPath = folderPath + "/" + content
+                let fileAttributes = try FileManager.default.attributesOfItem(atPath: fullContentPath)
+                folderSize += fileAttributes[FileAttributeKey.size] as? Int64 ?? 0
+            } catch _ {
+                continue
+            }
+        }
+
+        return folderSize
+    } catch let error {
+        print(error.localizedDescription)
+        return 0
+    }
+}
+
+protocol DownloadItemProtocol: AnyObject {
+    func download(_ item: AudioPlayerItem, progress: Double)
+    func didStarDownload(_ item: AudioPlayerItem)
+    func didFinishDownload(_ item: AudioPlayerItem)
+}
+
+class AudioDownloadManager: NSObject {
+    var activeDownloads: [URL: Download] = [ : ]
+    private var documentsDirectoryURL: URL { FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("music_cache") }
+    
+    var session: URLSession!
+    
+    func download(item: AudioPlayerItem) throws {
+        guard let url = URL(string: item.url) else { return }
+
+        let download = Download(track: item)
+        
+        download.task = session.downloadTask(with: url)
+        download.task?.resume()
+        download.isDownloading = true
+
+        activeDownloads[url] = download
+    }
+}
+
+class Download {
+    var isDownloading = false
+    var progress: Float = 0
+    var resumeData: Data?
+    var task: URLSessionDownloadTask?
+    var track: AudioPlayerItem
+
+    init(track: AudioPlayerItem) {
+        self.track = track
+    }
+}
+
+
+/*
+ 
+ Int -> 1561
+ Float -> 1465123.123456
+ Double -> 786445.123456789876543
+ Stirng -> "XUI"
+ Charachter -> "X"
+ Bool -> true
+ 
+ */

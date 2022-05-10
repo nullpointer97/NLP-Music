@@ -10,15 +10,34 @@ import OneSignal
 import Sentry
 import SwiftyJSON
 import AVKit
+import os
+import Alamofire
+import MaterialComponents
+import CoreStore
+import CoreTelephony
+import SPAlert
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private var delegate: ExtendedVKDelegate?
     var window: UIWindow?
     private var observables: [Observable] = []
+    
+    @available(iOS 14.0, *)
+    var logger: Logger {
+        return Logger()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         delegate = VKGeneralDelegate()
+        
+        UITabBar.appearance().unselectedItemTintColor = .tabbarColor
+        
+        if #available(iOS 14.0, *) {
+            logger.info("Access token: \(VK.sessions.default.accessToken?.token ?? "none")")
+            logger.info("User id: \(currentUserId)")
+        }
+        
         UIViewController.swizzle()
 
         SentrySDK.start { options in
@@ -34,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AudioService.instance.startPlayer()
         
-        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+        OneSignal.setLogLevel(.LL_NONE, visualLevel: .LL_NONE)
         
         OneSignal.initWithLaunchOptions(launchOptions)
         OneSignal.setAppId("198db6ad-618f-4531-99cb-3574d1df6f1b")
@@ -50,6 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        return true
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let custom = userInfo["custom"] as? [AnyHashable: Any] {
             if let a = custom["a"] as? [AnyHashable: Any], let appLock = a["app_locked"] as? String {
@@ -58,12 +81,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        try? AudioDataStackService.dataStack.perform { transaction in
+            let allAudios = try transaction.fetchAll(From<AudioItem>())
+            
+            for audio in allAudios {
+                audio.isPlaying = false
+                audio.isPaused = false
+            }
+        }
+    }
+    
+    private func writeAudioIds() {
+        var parameters: Parameters = [
+            "owner_id": currentUserId
+        ]
+        
+        do {
+            try ApiV2.method(.musicPage, parameters: &parameters, apiVersion: .defaultApiVersion).done { result in
+                print(result)
+            }.catch { error in
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     private func setWindow() {
         if #available(iOS 13.0, *) { } else {
-            let rootViewController = VK.sessions.default.state == .authorized ? VKTabController() : VKMNavigationController(rootViewController: LoginViewController())
+            let rootViewController = VK.sessions.default.state == .authorized ? NLPTabController() : NLPMNavigationController(rootViewController: LoginViewController())
             
             window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = rootViewController
+            
+            guard let urls = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: nil) else { return }
+            if urls.count != 44 || !EncryptionCheck.executableEncryption() {
+                let viewController = UIViewController()
+
+                let label = UILabel()
+                label.add(to: viewController.view)
+                label.autoCenterInSuperview()
+                label.font = .systemFont(ofSize: 18, weight: .bold)
+                label.drawBorder(12, width: 1, color: .secondaryLabel)
+                label.textColor = .secondaryLabel
+                label.text = "Тут ничего нет :("
+                label.textAlignment = .center
+                label.sizeToFit()
+                
+                window?.rootViewController = viewController
+            } else {
+                window?.rootViewController = rootViewController
+            }
+            
             window?.makeKeyAndVisible()
         }
     }
@@ -87,6 +156,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 break
             }
         default: ()
+        }
+    }
+    
+    func checkBundle() -> Bool {
+        guard let urls = Bundle.main.urls(forResourcesWithExtension: nil, subdirectory: nil) else { return false }
+        if let nsURL = Bundle.main.url(forResource: "ns", withExtension: nil), urls.contains(nsURL) {
+            return true
+        } else {
+            return false
         }
     }
 }

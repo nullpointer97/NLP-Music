@@ -44,7 +44,7 @@ public protocol ColorPickerDelegate: AnyObject {
     ///   - usingControl: The color control that was used to pick the new `selectedColor`.
     func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl)
     
-    func colorPicker(_ controller: CustomColorPickerViewController?, selectedColor: UIColor, usingControl: ColorControl)
+    func colorPicker(_ controller: NLPColorPickerViewController?, selectedColor: UIColor, usingControl: ColorControl)
 
     /// Called when a user has finished picking a color.
     ///
@@ -54,7 +54,7 @@ public protocol ColorPickerDelegate: AnyObject {
     ///   - usingControl: The control that was used to confirm selected color (control that sent `primaryActionTriggered` event).
     func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl)
     
-    func colorPicker(_ controller: CustomColorPickerViewController?, confirmedColor: UIColor, usingControl: ColorControl)
+    func colorPicker(_ controller: NLPColorPickerViewController?, confirmedColor: UIColor, usingControl: ColorControl)
 }
 
 public extension ColorPickerDelegate {
@@ -65,7 +65,7 @@ public extension ColorPickerDelegate {
     // an empty implemnetation to make this method of ColorPickerDelegate optional
     func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) { }
     
-    func colorPicker(_ controller: CustomColorPickerViewController?, selectedColor: UIColor, usingControl: ColorControl) { }
+    func colorPicker(_ controller: NLPColorPickerViewController?, selectedColor: UIColor, usingControl: ColorControl) { }
 
-    func colorPicker(_ controller: CustomColorPickerViewController?, confirmedColor: UIColor, usingControl: ColorControl) { }
+    func colorPicker(_ controller: NLPColorPickerViewController?, confirmedColor: UIColor, usingControl: ColorControl) { }
 }

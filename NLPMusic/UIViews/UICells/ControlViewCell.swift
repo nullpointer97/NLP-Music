@@ -18,7 +18,7 @@ enum ControlType {
     case colorPicker
 }
 
-class ControlViewCell: VKBaseSettingViewCell {
+class ControlViewCell: NLPBaseSettingViewCell {
     @IBOutlet weak var upperLimitLabel: UILabel!
     @IBOutlet weak var lowerLimitLabel: UILabel!
     @IBOutlet weak var frequencyNameLabel: UILabel!

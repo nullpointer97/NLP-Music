@@ -18,6 +18,7 @@ extension UITableViewCell {
 }
 func getStringByDeclension(number: Int, arrayWords: [String?]) -> String {
     var resultString: String = ""
+    let numberString = "\(number.k)"
     let number = number % 100
     if number >= 11 && number <= 19 {
         resultString = arrayWords[2]!
@@ -34,7 +35,7 @@ func getStringByDeclension(number: Int, arrayWords: [String?]) -> String {
             break
         }
     }
-    return resultString
+    return "\(numberString) \(resultString)"
 }
 extension UICollectionViewCell {
 

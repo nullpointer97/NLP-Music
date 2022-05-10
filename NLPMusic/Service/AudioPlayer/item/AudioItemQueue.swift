@@ -10,14 +10,36 @@ import Foundation
 
 // MARK: - Array+Shuffe
 
+extension MutableCollection {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+
+        for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            // Change `Int` in the next line to `IndexDistance` in < Swift 4.1
+            let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            let i = index(firstUnshuffled, offsetBy: d)
+            swapAt(firstUnshuffled, i)
+        }
+    }
+}
+
+extension Sequence {
+    /// Returns an array with the contents of this sequence, shuffled.
+    func shuffled() -> [Element] {
+        var result = Array(self)
+        result.shuffle()
+        return result
+    }
+}
+
 private extension Array {
     /// Shuffles the element in the array and returns the new array.
     ///
     /// - Returns: A shuffled array.
     func ap_shuffled() -> [Element] {
-        return sorted { element1, element2 in
-            arc4random() % 2 == 0
-        }
+        return shuffled()
     }
 }
 
@@ -25,7 +47,7 @@ private extension Array {
 
 /// `AudioItemQueueDelegate` defines the behavior of `AudioItem` in certain circumstances and is notified upon notable 
 /// events.
-protocol AudioItemQueueDelegate: class {
+protocol AudioItemQueueDelegate: AnyObject {
     /// Returns a boolean value indicating whether an item should be consider playable in the queue.
     ///
     /// - Parameters:
@@ -46,7 +68,7 @@ class AudioItemQueue {
     private(set) var queue: [AudioPlayerItem]
 
     /// The historic of items played in the queue.
-    private(set) var historic: [AudioPlayerItem]
+    var historic: [AudioPlayerItem]
 
     /// The current position in the queue.
     var nextPosition = 0
@@ -69,7 +91,7 @@ class AudioItemQueue {
     init(items: [AudioPlayerItem], mode: AudioPlayerMode) {
         self.items = items
         self.mode = mode
-        queue = mode.contains(.shuffle) ? items.ap_shuffled() : items
+        queue = mode.contains(.shuffle) ? items.shuffled() : items
         historic = []
     }
 
@@ -110,7 +132,7 @@ class AudioItemQueue {
         } else if mode.contains(.shuffle) && !oldMode.contains(.shuffle) {
             let alreadyPlayed = queue.prefix(upTo: nextPosition)
             let leftovers = queue.suffix(from: nextPosition)
-            queue = Array(alreadyPlayed).ap_shuffled() + Array(leftovers).ap_shuffled()
+            queue = Array(alreadyPlayed).shuffled() + Array(leftovers).shuffled()
         }
     }
 
@@ -233,7 +255,7 @@ class AudioItemQueue {
     /// Returns a boolean value indicating whether an item should be consider playable in the queue.
     ///
     /// - Returns: A boolean value indicating whether an item should be consider playable in the queue.
-    private func shouldConsiderItem(item: AudioPlayerItem) -> Bool {
+    func shouldConsiderItem(item: AudioPlayerItem) -> Bool {
         return delegate?.audioItemQueue(self, shouldConsiderItem: item) ?? true
     }
 }

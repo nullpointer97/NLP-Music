@@ -69,7 +69,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         backgroundImageView.addAutolayoutFillingSubview(foregroundImageView)
         updateContentMode()
         contentView.addSubview(thumbView)
-        updatePaletteImagesAndThumb(isInteractive: false)
+        updatePaletteImagesAndThumb(isInteractive: true)
     }
 
     open override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive interactive: Bool) {

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="NLPAudioViewCell" customModule="NLPMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="470" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="470" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="missing_song_artwork_generic_proxy" translatesAutoresizingMaskIntoConstraints="NO" id="2x8-hc-CDD">
+                        <rect key="frame" x="16" y="6" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="Fho-Gm-vXr"/>
+                            <constraint firstAttribute="height" constant="48" id="JjO-wM-VcX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="download_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Q-er-Gm5">
+                        <rect key="frame" x="40" y="30" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="5at-Y9-Eh8"/>
+                            <constraint firstAttribute="width" constant="36" id="DW0-v7-aus"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="50" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Title - " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAv-US-L72">
+                        <rect key="frame" x="76" y="7" width="295" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="kUh-Zf-Vjq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nnQ-wU-lGA">
+                        <rect key="frame" x="418" y="6" width="48" height="48"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="8J3-1X-dOX"/>
+                            <constraint firstAttribute="height" constant="48" id="xkD-bF-Wk7"/>
+                        </constraints>
+                        <menu key="menu" id="Jur-pw-Wzu">
+                            <children>
+                                <command title="Item 1" id="P2Z-gi-0ZQ"/>
+                                <command title="Item 2" id="HWv-oV-YF3"/>
+                            </children>
+                        </menu>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="more-horizontal"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="didOpenMenu:" destination="KGk-i7-Jjw" eventType="touchDown" id="VEc-6u-LXo"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9g-fR-RM7">
+                        <rect key="frame" x="381" y="16" width="33" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uk-pq-Iya" customClass="UICircularProgressRingView" customModule="NLPMusic" customModuleProvider="target">
+                        <rect key="frame" x="428" y="16" width="28" height="28"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="9Ot-gp-MfG"/>
+                            <constraint firstAttribute="width" constant="28" id="Bwd-Sc-uwu"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oP-6z-Rn8">
+                        <rect key="frame" x="76" y="33" width="295" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="2Oh-CN-mco"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CAv-US-L72" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="D8H-9e-D72"/>
+                    <constraint firstItem="2x8-hc-CDD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FlP-mj-oOn"/>
+                    <constraint firstAttribute="trailing" secondItem="nnQ-wU-lGA" secondAttribute="trailing" constant="4" id="Fnh-6U-mhO"/>
+                    <constraint firstItem="2x8-hc-CDD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HMQ-y6-bNb"/>
+                    <constraint firstItem="CAv-US-L72" firstAttribute="leading" secondItem="2x8-hc-CDD" secondAttribute="trailing" constant="12" id="JqB-QX-OKV"/>
+                    <constraint firstItem="Z7Q-er-Gm5" firstAttribute="trailing" secondItem="2x8-hc-CDD" secondAttribute="trailing" constant="12" id="NU9-4M-im1"/>
+                    <constraint firstItem="nnQ-wU-lGA" firstAttribute="leading" secondItem="l9g-fR-RM7" secondAttribute="trailing" constant="4" id="WPJ-7c-VPm"/>
+                    <constraint firstItem="nnQ-wU-lGA" firstAttribute="centerY" secondItem="2x8-hc-CDD" secondAttribute="centerY" id="Yc1-Vj-ZVt"/>
+                    <constraint firstItem="l9g-fR-RM7" firstAttribute="leading" secondItem="4oP-6z-Rn8" secondAttribute="trailing" constant="10" id="btb-6W-VTr"/>
+                    <constraint firstAttribute="bottom" secondItem="4oP-6z-Rn8" secondAttribute="bottom" constant="11" id="cLK-Qi-tSi"/>
+                    <constraint firstItem="l9g-fR-RM7" firstAttribute="leading" secondItem="CAv-US-L72" secondAttribute="trailing" constant="10" id="dwI-Ta-sRB"/>
+                    <constraint firstItem="4oP-6z-Rn8" firstAttribute="top" secondItem="CAv-US-L72" secondAttribute="bottom" id="i5y-ri-DJj"/>
+                    <constraint firstItem="l9g-fR-RM7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="jsz-1n-WEA"/>
+                    <constraint firstItem="nnQ-wU-lGA" firstAttribute="centerX" secondItem="7Uk-pq-Iya" secondAttribute="centerX" id="k50-pf-47O"/>
+                    <constraint firstItem="Z7Q-er-Gm5" firstAttribute="bottom" secondItem="2x8-hc-CDD" secondAttribute="bottom" constant="12" id="nGn-zB-Nec"/>
+                    <constraint firstItem="2x8-hc-CDD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="okR-zR-jaK"/>
+                    <constraint firstItem="4oP-6z-Rn8" firstAttribute="leading" secondItem="2x8-hc-CDD" secondAttribute="trailing" constant="12" id="qqW-tC-PyQ"/>
+                    <constraint firstItem="nnQ-wU-lGA" firstAttribute="centerY" secondItem="7Uk-pq-Iya" secondAttribute="centerY" id="snz-MY-KJ2"/>
+                    <constraint firstItem="l9g-fR-RM7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yMv-fo-rfQ"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="artistImageView" destination="2x8-hc-CDD" id="Pzg-hR-uI7"/>
+                <outlet property="artistNameLabel" destination="4oP-6z-Rn8" id="PAa-TG-k4p"/>
+                <outlet property="downloadProgressRingView" destination="7Uk-pq-Iya" id="6FA-Ru-MMx"/>
+                <outlet property="downloadedImage" destination="Z7Q-er-Gm5" id="eE2-22-KWG"/>
+                <outlet property="durationLabel" destination="l9g-fR-RM7" id="bNf-Xj-EcI"/>
+                <outlet property="moreButton" destination="nnQ-wU-lGA" id="TJY-bK-zAN"/>
+                <outlet property="nameLabel" destination="CAv-US-L72" id="uld-d9-N4u"/>
+                <outlet property="trailingSecondConstraint" destination="WPJ-7c-VPm" id="cS1-Kq-54Q"/>
+            </connections>
+            <point key="canvasLocation" x="240.57971014492756" y="154.6875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="download_shadow" width="44" height="44"/>
+        <image name="missing_song_artwork_generic_proxy" width="400" height="400"/>
+        <image name="more-horizontal" width="16" height="16"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

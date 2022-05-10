@@ -185,3 +185,67 @@ final class UserNames: CoreStoreObject {
     @Field.Relationship("user")
     var user: User?
 }
+
+final class NLPUser: NSObject {
+    init(_ source: JSON) {
+        id = source["id"].intValue
+        isImportant = index < 5
+        
+        firstNameNom = source["first_name_nom"].stringValue
+        firstNameGen = source["first_name_gen"].stringValue
+        firstNameDat = source["first_name_dat"].stringValue
+        firstNameAcc = source["first_name_acc"].stringValue
+        firstNameIns = source["first_name_ins"].stringValue
+        firstNameAbl = source["first_name_abl"].stringValue
+
+        lastNameNom = source["last_name_nom"].stringValue
+        lastNameGen = source["last_name_gen"].stringValue
+        lastNameDat = source["last_name_dat"].stringValue
+        lastNameAcc = source["last_name_acc"].stringValue
+        lastNameIns = source["last_name_ins"].stringValue
+        lastNameAbl = source["last_name_abl"].stringValue
+        
+        canAccessClosed = source["can_access_closed"].boolValue
+        isClosed = source["is_closed"].boolValue
+        canWritePrivateMessage = source["can_write_private_message"].intValue.boolValue
+        screenName = source["screen_name"].stringValue
+        lastSeen = source["online_info"]["last_seen"].intValue
+        isOnline = source["online_info"]["is_online"].boolValue
+        appId = source["online_info"]["app_id"].intValue
+        isMobile = source["online_info"]["is_mobile"].boolValue
+        sex = source["sex"].intValue
+        verified = source["verified"].intValue
+        photo100 = source["photo_100"].stringValue
+        photo200 = source["photo_200"].stringValue
+        imageStatusUrl = source["image_status"]["images"].arrayValue.first?["url"].string
+    }
+
+    var id: Int = 0
+    var firstNameNom: String = ""
+    var firstNameGen: String = ""
+    var firstNameDat: String = ""
+    var firstNameAcc: String = ""
+    var firstNameIns: String = ""
+    var firstNameAbl: String = ""
+    var lastNameNom: String = ""
+    var lastNameGen: String = ""
+    var lastNameDat: String = ""
+    var lastNameAcc: String = ""
+    var lastNameIns: String = ""
+    var lastNameAbl: String = ""
+    var canAccessClosed: Bool = false
+    var isClosed: Bool = false
+    var canWritePrivateMessage: Bool = true
+    var screenName: String?
+    var lastSeen: Int = 0
+    var isOnline: Bool = false
+    var appId: Int = 0
+    var isMobile: Bool = false
+    var sex: Int = 0
+    var verified: Int = 0
+    var photo100: String = ""
+    var photo200: String = ""
+    var imageStatusUrl: String?
+    var index: Int = 0
+    var isImportant: Bool = false
+}

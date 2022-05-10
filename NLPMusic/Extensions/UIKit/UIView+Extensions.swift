@@ -13,11 +13,12 @@ extension UIView {
         backgroundColor = .getThemeableColor(fromNormalColor: .white)
     }
     // Добавление блюра к View
-    func setBlurBackground(style: UIBlurEffect.Style, frame: CGRect = .zero) {
+    func setBlurBackground(style: UIBlurEffect.Style, frame: CGRect = .zero, cornerRadius: CGFloat = 0) {
         let blurEffect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = frame == .zero ? bounds : frame
         blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurView.drawBorder(cornerRadius, width: 0)
         insertSubview(blurView, at: 0)
     }
 
@@ -73,7 +74,7 @@ extension UIView {
         layer.borderColor = color.cgColor
     }
     
-    func drawBorder(_ radius: CGFloat, width: CGFloat, color: UIColor = UIColor.clear, isOnlyTopCorners: Bool = false) {
+    func drawBorder(_ radius: CGFloat, width: CGFloat, color: UIColor = UIColor.clear, isOnlyTopCorners: Bool = false, isAnimated: Bool = false) {
         layer.masksToBounds = true
         layer.cornerRadius = CGFloat(radius)
         layer.maskedCorners = isOnlyTopCorners ?
@@ -83,6 +84,13 @@ extension UIView {
         layer.shouldRasterize = false
         layer.borderColor = color.cgColor
         clipsToBounds = true
+        
+        if isAnimated {
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction]) { [weak self] in
+                self?.layoutIfNeeded()
+                self?.superview?.layoutIfNeeded()
+            }
+        }
     }
     
     func addWrapper(from width: CGFloat = 2, colors: Set<UIColor> = [.getThemeableColor(fromNormalColor: .black), .getThemeableColor(fromNormalColor: .black)]) {
@@ -356,5 +364,80 @@ extension UIImageView {
         view.autoPinEdge(.bottom, to: .bottom, of: self)
         view.autoPinEdge(.trailing, to: .trailing, of: self)
         view.autoSetDimensions(to: size)
+    }
+}
+
+import Foundation
+
+private var kRainbowAssociatedKey = "kRainbowAssociatedKey"
+
+public class Rainbow: NSObject {
+    var navigationBar: UINavigationBar
+    
+    init(navigationBar: UINavigationBar) {
+        self.navigationBar = navigationBar
+        
+        super.init()
+    }
+    
+    var navigationView: UIView?
+    fileprivate var statusBarView: UIView?
+    
+    public var backgroundColor: UIColor? {
+        get {
+            return navigationView?.backgroundColor
+        }
+        set {
+            if navigationView == nil {
+                navigationBar.setBackgroundImage(UIImage(), for: .default)
+                navigationBar.shadowImage = UIImage()
+                navigationView = UIView(frame: CGRect(x: 0, y: -UIApplication.shared.statusBarFrame.height, width: navigationBar.bounds.width, height: navigationBar.bounds.height + UIApplication.shared.statusBarFrame.height))
+                navigationView?.isUserInteractionEnabled = false
+                navigationView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                navigationBar.insertSubview(navigationView!, at: 0)
+            }
+            navigationView!.backgroundColor = newValue
+        }
+    }
+    public var statusBarColor: UIColor? {
+        get {
+            return statusBarView?.backgroundColor
+        }
+        set {
+            if statusBarView == nil {
+                statusBarView = UIView(frame: CGRect(x: 0, y: -UIApplication.shared.statusBarFrame.height, width: navigationBar.bounds.width, height: UIApplication.shared.statusBarFrame.height))
+                statusBarView?.isUserInteractionEnabled = false
+                statusBarView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                if let navigationView = navigationView {
+                    navigationBar.insertSubview(statusBarView!, aboveSubview: navigationView)
+                } else {
+                    navigationBar.insertSubview(statusBarView!, at: 0)
+                }
+            }
+            statusBarView?.backgroundColor = newValue
+        }
+    }
+    public func clear() {
+        navigationBar.setBackgroundImage(nil, for: .default)
+        navigationBar.shadowImage = nil
+        
+        navigationView?.removeFromSuperview()
+        navigationView = nil
+        
+        statusBarView?.removeFromSuperview()
+        statusBarView = nil
+    }
+}
+
+extension UINavigationBar {
+    public var rb: Rainbow {
+        get {
+            if let rainbow = objc_getAssociatedObject(self, &kRainbowAssociatedKey) as? Rainbow {
+                return rainbow
+            }
+            let rainbow = Rainbow(navigationBar: self)
+            objc_setAssociatedObject(self, &kRainbowAssociatedKey, rainbow, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return rainbow
+        }
     }
 }

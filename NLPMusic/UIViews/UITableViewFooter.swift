@@ -23,6 +23,7 @@ open class UITableViewFooter: UIView {
         $0.textAlignment = .center
         $0.textColor = .secondaryLabel
         $0.font = .systemFont(ofSize: 13, weight: .regular)
+        $0.numberOfLines = 0
         return $0
     }(UILabel())
     
@@ -42,7 +43,9 @@ open class UITableViewFooter: UIView {
         get {
             return footerText.text
         } set {
-            footerText.text = newValue
+            DispatchQueue.main.async { [weak self] in
+                self?.footerText.text = newValue
+            }
         }
     }
     

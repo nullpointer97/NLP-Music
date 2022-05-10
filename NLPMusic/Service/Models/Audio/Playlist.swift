@@ -22,7 +22,7 @@ class PlaylistResponse: Mappable {
 }
 
 // MARK: - Item
-class Playlist: Mappable {
+class Playlist: NSObject, Mappable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {

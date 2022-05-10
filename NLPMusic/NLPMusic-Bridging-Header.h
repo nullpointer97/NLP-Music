@@ -9,3 +9,4 @@
 #import "LNPopupController.h"
 #import "MarqueeLabel.h"
 #import "TOInsetGroupedTableView.h"
+#import "EncryptCheck.h"

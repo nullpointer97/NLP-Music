@@ -12,6 +12,17 @@ import CoreMedia
 #endif
 
 extension AudioPlayer {
+    func togglePlay() {
+        switch state {
+        case .playing:
+            pause()
+        case .paused:
+            resume()
+        default:
+            break
+        }
+    }
+    
     /// Resumes the player.
     public func resume() {
         //Ensure pause flag is no longer set
@@ -84,26 +95,119 @@ extension AudioPlayer {
 
     /// Plays previous item in the queue or rewind current item.
     public func previous() {
-        if let previousItem = queue?.previousItem() {
-            currentItem = previousItem
-        } else {
-            seek(to: 0)
+        guard let queue = queue else { return }
+        print("previous ->", queue.nextPosition)
+        
+        if mode.contains(.repeat) {
+            let item = queue.queue[max(0, queue.nextPosition - 1)]
+            queue.historic.append(item)
+            print("previous (repeat) ->", queue.nextPosition)
         }
-    }
+        
+        if mode.contains(.repeatAll) {
+            if queue.nextPosition <= 0 {
+                queue.nextPosition = queue.queue.count
+                print("previous (repeatAll) ->", queue.nextPosition)
+            }
+        }
+        
+        if currentItemProgression ?? 0 > 5 {
+            seek(to: 0)
+        } else {
+            if let current = currentItem {
+                let currentIndex = queue.queue.firstIndex(of: current) ?? 0
+                let previousIndex = currentIndex - 1
+                guard previousIndex >= 0 else {
+                    return
+                }
+                
+                queue.nextPosition = previousIndex
+                let item = queue.queue[previousIndex]
 
-    /// Plays next item in the queue.
-    public func next() {
-        if let nextItem = queue?.nextItem() {
-            currentItem = nextItem
+                if queue.shouldConsiderItem(item: item) {
+                    queue.historic.append(item)
+                }
+                
+                currentItem = item
+                print("previous ->", queue.nextPosition)
+            }
         }
     }
 
     /// Plays the next item in the queue and if there isn't, the player will stop.
     public func nextOrStop() {
-        if let nextItem = queue?.nextItem() {
-            currentItem = nextItem
-        } else {
-            stop()
+        guard let queue = queue else { return }
+        
+        if mode.contains(.repeat) {
+            let item = queue.queue[queue.nextPosition]
+            queue.historic.append(item)
+            print("next (repeat) ->", queue.nextPosition)
+        }
+        
+        if mode.contains(.repeatAll) {
+            if queue.nextPosition >= queue.queue.count - 1 {
+                queue.nextPosition = 0
+                print("next (repeatAll) ->", queue.nextPosition)
+            }
+        }
+        
+        if let current = currentItem {
+            let currentIndex = queue.queue.firstIndex(of: current) ?? 0
+            let nextIndex = currentIndex + 1
+            guard nextIndex < queue.queue.count else {
+                return
+            }
+            
+            let item = queue.queue[nextIndex]
+            queue.nextPosition = nextIndex
+
+            if queue.shouldConsiderItem(item: item) {
+                queue.historic.append(item)
+            }
+            
+            currentItem = item
+            print("next ->", queue.nextPosition)
+        }
+    }
+    
+    public func autoNextOrStop() {
+        guard let queue = queue else { return }
+        print("next ->", queue.nextPosition)
+        
+        if mode.contains(.repeat) {
+            let item = queue.queue[queue.nextPosition]
+            queue.historic.append(item)
+            currentItem = queue.queue[queue.nextPosition]
+            print("next (repeat) ->", queue.nextPosition)
+            return
+        }
+        
+        if mode.contains(.repeatAll) {
+            if queue.nextPosition >= queue.queue.count - 1 {
+                queue.nextPosition = 0
+                currentItem = queue.queue[queue.nextPosition]
+                print("next (repeatAll) ->", queue.nextPosition)
+                return
+            }
+        }
+        
+        if let current = currentItem {
+            let currentIndex = queue.queue.firstIndex(of: current) ?? 0
+            let nextIndex = currentIndex + 1
+            guard nextIndex < queue.queue.count else {
+                currentItem = nil
+                return
+            }
+            
+            let item = queue.queue[nextIndex]
+            queue.nextPosition = nextIndex
+
+            if queue.shouldConsiderItem(item: item) {
+                queue.historic.append(item)
+            }
+            
+            currentItem = item
+            print("next ->", queue.nextPosition)
         }
     }
 
@@ -127,6 +231,20 @@ extension AudioPlayer {
 
         setAudioSession(active: false)
         state = .stopped
+    }
+    
+    func seek(to seconds: TimeInterval, completionHandler: ((Bool) -> Void)? = nil) {
+        guard let completionHandler = completionHandler else {
+            player?.seek(to: CMTimeMakeWithSeconds(seconds, preferredTimescale: 1000))
+            return
+        }
+        guard player?.currentItem?.status == .readyToPlay else {
+            completionHandler(false)
+            return
+        }
+        player?.seek(to: CMTimeMakeWithSeconds(seconds, preferredTimescale: 1000)) { (finished) in
+            completionHandler(finished)
+        }
     }
 
     /// Seeks to a specific time.
@@ -215,7 +333,7 @@ extension AudioPlayer {
         case .remoteControlEndSeekingForward:
             seekingBehavior.handleSeekingEnd(player: self, forward: true)
         case .remoteControlNextTrack:
-            next()
+            nextOrStop()
         case .remoteControlPause,
              .remoteControlTogglePlayPause where state.isPlaying:
             pause()

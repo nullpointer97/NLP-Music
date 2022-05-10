@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorPickerViewCell: VKBaseSettingViewCell {
+class ColorPickerViewCell: NLPBaseSettingViewCell {
     @IBOutlet weak var colorPicker: HSBColorPicker!
     
     override func awakeFromNib() {

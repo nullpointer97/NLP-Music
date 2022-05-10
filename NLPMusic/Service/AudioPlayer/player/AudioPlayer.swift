@@ -10,6 +10,7 @@ import AVFoundation
 #if os(iOS) || os(tvOS)
     import MediaPlayer
 #endif
+import RNCryptor
 
 /// An `AudioPlayer` instance is used to play `AudioPlayerItem`. It's an easy to use AVPlayer with simple methods to
 /// handle the whole playing audio process.
@@ -89,9 +90,21 @@ public class AudioPlayer: NSObject {
 
                 //Ensures the audio session got started
                 setAudioSession(active: true)
-
-                //Sets new state
-                guard let info = currentItem.soundUrl else { return }
+                
+                guard var info = currentItem.soundUrl else { return }
+                
+//                if let decryptAudioData = try? Data(contentsOf: info, options: [.mappedIfSafe]) {
+//                    do {
+//                        let decryptAudioFile = try RNCryptor.decrypt(data: decryptAudioData, withPassword: "nlp_music_crypt")
+//                        try decryptAudioFile.write(to: info, options: [.completeFileProtection])
+//                    } catch {
+//                        print("TempURL = nil (\(error))")
+//                    }
+//                } else {
+//                    print("TempURL = \(info)")
+//                }
+//                decryptFile(info)
+                
                 if reachability?.isReachable ?? false || info.ap_isOfflineURL {
                     state = .buffering
                     backgroundHandler.beginBackgroundTask()
@@ -114,10 +127,21 @@ public class AudioPlayer: NSObject {
 
                 //Creates new player
                 player = AVPlayer(playerItem: playerItem)
+                
+//                do {
+//                    let data = try Data(contentsOf: info, options: [])
+//                    let encryptFile = RNCryptor.encrypt(data: data, withPassword: "nlp_music_crypt")
+//                    try encryptFile.write(to: info, options: [.fileProtectionMask])
+//                } catch {
+//                    print("TempURL = nil (\(error))")
+//                }
 
                 //Updates information on the lock screen
                 updateNowPlayingInfoCenter()
-
+                
+                player?.rate = rate
+                state = .playing
+                
                 //Calls delegate
                 if oldValue == nil || oldValue != currentItem {
                     firstDelegate?.audioPlayer(self, willStartPlaying: currentItem)
@@ -130,8 +154,6 @@ public class AudioPlayer: NSObject {
                     secondDelegate?.audioPlayer(self, willStopPlaying: oldValue)
                     thirdDelegate?.audioPlayer(self, willStopPlaying: oldValue)
                 }
-                
-                player?.rate = rate
             } else {
                 stop()
             }
@@ -208,6 +230,9 @@ public class AudioPlayer: NSObject {
     public var mode = AudioPlayerMode.normal {
         didSet {
             queue?.mode = mode
+            firstDelegate?.audioPlayer(self, didChangeModeFrom: oldValue, to: mode)
+            secondDelegate?.audioPlayer(self, didChangeModeFrom: oldValue, to: mode)
+            thirdDelegate?.audioPlayer(self, didChangeModeFrom: oldValue, to: mode)
         }
     }
 
@@ -346,7 +371,7 @@ public class AudioPlayer: NSObject {
     deinit {
         stop()
     }
-
+    
     // MARK: Utility methods
     
     /// Updates the MPNowPlayingInfoCenter with current item's info.
@@ -363,14 +388,8 @@ public class AudioPlayer: NSObject {
         let commandCenter = MPRemoteCommandCenter.shared()
 
         // Add handler for Play Command
-        commandCenter.playCommand.addTarget { [unowned self] event in
-            self.resume()
-            return .success
-        }
-
-        // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
-            self.pause()
+        commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
+            self.togglePlay()
             return .success
         }
         
@@ -409,7 +428,7 @@ public class AudioPlayer: NSObject {
     /// - Parameter active: A boolean value indicating whether the audio session should be set to active or not.
     func setAudioSession(active: Bool) {
         #if os(iOS) || os(tvOS)
-            _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            _ = try? AVAudioSession.sharedInstance().setCategory(.playback)
             _ = try? AVAudioSession.sharedInstance().setActive(active)
         #endif
     }

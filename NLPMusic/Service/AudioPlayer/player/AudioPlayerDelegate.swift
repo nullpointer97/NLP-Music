@@ -14,6 +14,7 @@ public typealias Metadata = [AVMetadataItem]
 /// This protocol contains helpful methods to alert you of specific events. If you want to be notified about those
 /// events, you will have to set a delegate to your `audioPlayer` instance.
 public protocol AudioPlayerDelegate: AnyObject {
+    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeModeFrom from: AudioPlayerMode, to mode: AudioPlayerMode)
     /// This method is called when the audio player changes its state. A fresh created audioPlayer starts in `.stopped`
     /// mode.
     ///
@@ -96,8 +97,10 @@ public protocol AudioPlayerDelegate: AnyObject {
 }
 
 public extension AudioPlayerDelegate {
-    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeStateFrom from: AudioPlayerState,
-                     to state: AudioPlayerState) {
+    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeModeFrom from: AudioPlayerMode, to mode: AudioPlayerMode) {
+    }
+
+    func audioPlayer(_ audioPlayer: AudioPlayer, didChangeStateFrom from: AudioPlayerState, to state: AudioPlayerState) {
     }
 
     func audioPlayer(_ audioPlayer: AudioPlayer, shouldStartPlaying item: AudioPlayerItem) -> Bool {

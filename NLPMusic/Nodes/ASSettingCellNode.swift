@@ -52,6 +52,8 @@ class ASSettingCellNode: ASBaseNode, ASSwitchTarget {
     
     init(_ setting: SettingViewModel) {
         super.init()
+        alpha = setting.isEnabled ? 1 : 0.5
+        isUserInteractionEnabled = setting.isEnabled
         
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 15.5),
@@ -74,7 +76,7 @@ class ASSettingCellNode: ASBaseNode, ASSwitchTarget {
             colorNode.backgroundColor = .getAccentColor(fromType: .common)
         case .switch:
             DispatchQueue.main.async { [weak self] in
-                self?.settingSwitch.isOn = setting.setting as? Bool ?? false
+                self?.settingSwitch.isOn = setting.setting as? Bool ?? setting.defaultValue
             }
         case .additionalText:
             additionalLabel.attributedText = NSAttributedString(string: "\(setting.subtitle)", attributes: secondAttributes)
@@ -86,7 +88,6 @@ class ASSettingCellNode: ASBaseNode, ASSwitchTarget {
     
     override func didLoad() {
         super.didLoad()
-        backgroundColor = .cellBackground
         settingSwitch.target = self
     }
     
@@ -203,7 +204,9 @@ open class ASSwitchNode: ASDisplayNode {
     
     var isOn: Bool = false {
         didSet {
-            controlSwitch?.isOn = isOn
+            DispatchQueue.main.async {
+                self.controlSwitch?.isOn = self.isOn
+            }
         }
     }
     

@@ -135,9 +135,7 @@ extension UITableView {
         beginUpdates()
         deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .fade)
         insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .fade)
-        UIView.setAnimationsEnabled(false)
         reloadRows(at: updates.map { IndexPath(row: $0, section: section) }, with: .none)
-        UIView.setAnimationsEnabled(true)
         endUpdates()
     }
     

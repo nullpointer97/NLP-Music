@@ -174,13 +174,13 @@ extension UIColor {
         if #available(iOS 13, *) {
             return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
                 if UITraitCollection.userInterfaceStyle == .dark {
-                    return UIColor.white.withAlphaComponent(0.12)
+                    return UIColor.white.withAlphaComponent(0.08)
                 } else {
-                    return UIColor.black.withAlphaComponent(0.12)
+                    return UIColor.black.withAlphaComponent(0.08)
                 }
             }
         } else {
-            return UIColor.black.withAlphaComponent(0.12)
+            return UIColor.black.withAlphaComponent(0.08)
         }
     }
     
@@ -386,6 +386,16 @@ extension UIColor {
         }
     }
     
+    open class var secondarySystemBackground: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { traitCollection in
+                return .color(from: traitCollection.userInterfaceStyle == .dark ? 0x151515 : 0xFFFFFF)
+            }
+        } else {
+            return .color(from: 0xFFFFFF)
+        }
+    }
+    
     open class var systemPlaceholder: UIColor {
         if #available(iOS 13, *) {
             return UIColor { traitCollection in
@@ -399,20 +409,20 @@ extension UIColor {
     open class var label: UIColor {
         if #available(iOS 13, *) {
             return UIColor { traitCollection in
-                return .color(from: traitCollection.userInterfaceStyle != .dark ? 0x161616 : 0xFAFAFA)
+                return .color(from: traitCollection.userInterfaceStyle != .dark ? 0x000000 : 0xFAFAFA)
             }
         } else {
-            return .color(from: 0x161616)
+            return .color(from: 0xFAFAFA)
         }
     }
     
     open class var secondaryLabel: UIColor {
         if #available(iOS 13, *) {
             return UIColor { traitCollection in
-                return .color(from: traitCollection.userInterfaceStyle == .dark ? 0xEBEBF5 : 0x3C3C43).withAlphaComponent(0.6)
+                return .color(from: traitCollection.userInterfaceStyle == .dark ? 0x76787A : 0x818C99)
             }
         } else {
-            return .color(from: 0x3C3C43).withAlphaComponent(0.6)
+            return .color(from: 0x818C99)
         }
     }
     
@@ -492,6 +502,20 @@ extension UIColor {
     
     class var extendedBlue: UIColor {
         return ExtendedColors.blue
+    }
+    
+    class var tabbarColor: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return .color(from: 0x76787A)
+                } else {
+                    return .color(from: 0x99A2AD)
+                }
+            }
+        } else {
+            return .color(from: 0x99A2AD)
+        }
     }
     
     class var adaptableBlue: UIColor {
