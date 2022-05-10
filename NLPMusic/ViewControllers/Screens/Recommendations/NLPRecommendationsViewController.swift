@@ -44,6 +44,8 @@ class NLPRecommendationsViewController: NLPBaseTableViewController {
     override func setupTable(style: UITableView.Style = .plain) {
         super.setupTable()
         
+        addRefreshControl()
+        
         tableView.showAnimatedGradientSkeleton()
         tableView.startSkeletonAnimation()
     }

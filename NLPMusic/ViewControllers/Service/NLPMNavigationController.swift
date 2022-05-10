@@ -88,7 +88,6 @@ open class NLPMNavigationController: UINavigationController, UINavigationControl
         
         navigationItem.largeTitleDisplayMode = .never
         navigationBar.prefersLargeTitles = false
-        hidesBarsOnSwipe = true
         navigationBar.sizeToFit()
 
         navigationBar.tintColor = .getAccentColor(fromType: .common)

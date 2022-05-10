@@ -107,6 +107,8 @@ final class NLPAudioViewController: NLPBaseTableViewController {
     override func setupTable(style: UITableView.Style = .plain) {
         super.setupTable()
         
+        addRefreshControl()
+        
         tableView.showAnimatedSkeleton()
         tableView.startSkeletonAnimation()
     }

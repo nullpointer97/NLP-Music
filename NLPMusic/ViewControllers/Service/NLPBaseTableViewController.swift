@@ -16,6 +16,7 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
     var tableView: UITableView!
     var footer: UITableViewFooter = UITableViewFooter(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80))
     lazy var refreshControl = UIRefreshControl()
+    var pullToRefresh: DRPRefreshControl!
     
     var tableId = 100
     
@@ -154,9 +155,6 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         tableView.tableFooterView = footer
         footer.isLoading = false
         
-        tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(reloadAudioData), for: .valueChanged)
-        
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = true
         
@@ -165,6 +163,13 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         
         tableView.delegate = dataSource
         tableView.dataSource = dataSource
+        
+        pullToRefresh = DRPRefreshControl()
+        pullToRefresh.loadingSpinner.colorSequence = [.color(from: 0x99A2AD)]
+        pullToRefresh.loadingSpinner.lineWidth = 2.5
+        pullToRefresh.loadingSpinner.maximumArcLength = (2 * .pi) - .pi / 4
+        pullToRefresh.loadingSpinner.minimumArcLength = 0
+        
         
         for operation in vkTabBarController?.downloadManager.operations ?? [:] {
             if let item = operation.value.item, audioItems.indices.contains(audioItems.firstIndex(of: item) ?? 0) {
@@ -179,17 +184,23 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         }
     }
     
+    func addRefreshControl() {
+        pullToRefresh.add(to: tableView) { [weak self] in
+            self?.reloadAudioData()
+        }
+    }
+    
     func startRefreshing() {
         footer.isLoading = true
     }
     
     func endRefreshing() {
-        refreshControl.endRefreshing()
+        pullToRefresh.endRefreshing()
     }
 
     func didFinishLoad() {
         footer.isLoading = false
-        refreshControl.endRefreshing()
+        pullToRefresh.endRefreshing()
         tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.2))
         
         tableView.reloadData()
@@ -231,7 +242,9 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         reload()
     }
     
-    @objc func reloadAudioData() { }
+    @objc func reloadAudioData() {
+        pullToRefresh.endRefreshing()
+    }
 }
 
 extension NLPBaseTableViewController: URLSessionDownloadDelegate {

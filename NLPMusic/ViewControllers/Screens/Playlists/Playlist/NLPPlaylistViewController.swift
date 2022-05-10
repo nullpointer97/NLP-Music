@@ -98,6 +98,8 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
         
         dataSource?.footerLineText = playlist.plays > 0 ? getStringByDeclension(number: playlist.plays, arrayWords: Localization.plays) : getStringByDeclension(number: playlist.count, arrayWords: Localization.audioCount)
         
+        addRefreshControl()
+        
         tableView.showAnimatedGradientSkeleton()
         tableView.startSkeletonAnimation()
     }

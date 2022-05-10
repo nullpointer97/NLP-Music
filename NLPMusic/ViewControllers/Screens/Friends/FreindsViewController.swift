@@ -27,7 +27,9 @@ class NLPFriendsViewController: NLPBaseTableViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
-        
+
+        addRefreshControl()
+
         tableView.showAnimatedGradientSkeleton()
         tableView.startSkeletonAnimation()
     }

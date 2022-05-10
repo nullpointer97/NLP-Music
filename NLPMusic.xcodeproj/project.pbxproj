@@ -122,6 +122,13 @@
 		F55A59A127E243A40043CA20 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55A597F27E243A40043CA20 /* GradientView.swift */; };
 		F55A59A227E243A40043CA20 /* CircleShapedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55A598027E243A40043CA20 /* CircleShapedView.swift */; };
 		F55B973C282A960100E17937 /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = F55B973B282A960100E17937 /* OneSignal */; };
+		F55B975C282A9DE800E17937 /* DRPRefreshControl.h in Headers */ = {isa = PBXBuildFile; fileRef = F55B9755282A9DE800E17937 /* DRPRefreshControl.h */; };
+		F55B975D282A9DE800E17937 /* DRPRefreshControl_Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = F55B9756282A9DE800E17937 /* DRPRefreshControl_Protected.h */; };
+		F55B975E282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = F55B9757282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.h */; };
+		F55B975F282A9DE800E17937 /* DRPLoadingSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = F55B9758282A9DE800E17937 /* DRPLoadingSpinner.m */; };
+		F55B9760282A9DE800E17937 /* DRPRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F55B9759282A9DE800E17937 /* DRPRefreshControl.m */; };
+		F55B9761282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = F55B975A282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m */; };
+		F55B9762282A9DE800E17937 /* DRPLoadingSpinner.h in Headers */ = {isa = PBXBuildFile; fileRef = F55B975B282A9DE800E17937 /* DRPLoadingSpinner.h */; };
 		F55E764627ABDCC000A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763327ABDCBF00A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */; };
 		F55E764727ABDCC000A3DE4D /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763427ABDCBF00A3DE4D /* ContextMenu.swift */; };
 		F55E764827ABDCC000A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763527ABDCBF00A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift */; };
@@ -623,6 +630,13 @@
 		F55A597E27E243A40043CA20 /* ColorPickerThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerThumbView.swift; sourceTree = "<group>"; };
 		F55A597F27E243A40043CA20 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F55A598027E243A40043CA20 /* CircleShapedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShapedView.swift; sourceTree = "<group>"; };
+		F55B9755282A9DE800E17937 /* DRPRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRPRefreshControl.h; sourceTree = "<group>"; };
+		F55B9756282A9DE800E17937 /* DRPRefreshControl_Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRPRefreshControl_Protected.h; sourceTree = "<group>"; };
+		F55B9757282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRPLoadingSpinnerTimingFunction.h; sourceTree = "<group>"; };
+		F55B9758282A9DE800E17937 /* DRPLoadingSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRPLoadingSpinner.m; sourceTree = "<group>"; };
+		F55B9759282A9DE800E17937 /* DRPRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRPRefreshControl.m; sourceTree = "<group>"; };
+		F55B975A282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRPLoadingSpinnerTimingFunction.m; sourceTree = "<group>"; };
+		F55B975B282A9DE800E17937 /* DRPLoadingSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRPLoadingSpinner.h; sourceTree = "<group>"; };
 		F55E75D027ABC27600A3DE4D /* NLPMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NLPMusic-Bridging-Header.h"; sourceTree = "<group>"; };
 		F55E763327ABDCBF00A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+ContextMenuPresentationControllerDelegate.swift"; sourceTree = "<group>"; };
 		F55E763427ABDCBF00A3DE4D /* ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
@@ -1100,6 +1114,7 @@
 		F5217AD727AAA71400A90265 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				F55B9754282A9DE800E17937 /* DRPLoadingSpinner */,
 				F5A30E79282503F40088179F /* PlaybackButton */,
 				F53DEF70281020BA003EB8EF /* UICircularProgress */,
 				F55A595A27E243960043CA20 /* FlexColorPicker */,
@@ -1410,6 +1425,20 @@
 				F55A598027E243A40043CA20 /* CircleShapedView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F55B9754282A9DE800E17937 /* DRPLoadingSpinner */ = {
+			isa = PBXGroup;
+			children = (
+				F55B9755282A9DE800E17937 /* DRPRefreshControl.h */,
+				F55B9756282A9DE800E17937 /* DRPRefreshControl_Protected.h */,
+				F55B9757282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.h */,
+				F55B9758282A9DE800E17937 /* DRPLoadingSpinner.m */,
+				F55B9759282A9DE800E17937 /* DRPRefreshControl.m */,
+				F55B975A282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m */,
+				F55B975B282A9DE800E17937 /* DRPLoadingSpinner.h */,
+			);
+			path = DRPLoadingSpinner;
 			sourceTree = "<group>";
 		};
 		F55E75D127ABC3A300A3DE4D /* Popup */ = {
@@ -1886,7 +1915,6 @@
 				F5BE754127A1BC6500AC49FA /* Common */,
 				F5BE754727A1BC6500AC49FA /* NoticeService */,
 				F5BE754B27A1BC6500AC49FA /* Api */,
-				F5BE759427A1BC6500AC49FA /* Frameworks */,
 				F5BE759727A1BC6500AC49FA /* Localization */,
 			);
 			path = Service;
@@ -2094,13 +2122,6 @@
 			path = Session;
 			sourceTree = "<group>";
 		};
-		F5BE759427A1BC6500AC49FA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		F5BE759727A1BC6500AC49FA /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -2288,6 +2309,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F55B9762282A9DE800E17937 /* DRPLoadingSpinner.h in Headers */,
 				F5F681DB27C6AE9A00173DD5 /* _LNWeakRef.h in Headers */,
 				F5F681EA27C6AE9A00173DD5 /* _LNPopupSwizzlingUtils.h in Headers */,
 				F5F681E627C6AE9A00173DD5 /* LNForwardingDelegate.h in Headers */,
@@ -2310,6 +2332,8 @@
 				F5F681CA27C6AE9A00173DD5 /* LNPopupBar.h in Headers */,
 				F5F681D527C6AE9A00173DD5 /* LNPopupItem+Private.h in Headers */,
 				F5F681CD27C6AE9A00173DD5 /* NSAttributedString+LNPopupSupport.h in Headers */,
+				F55B975E282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.h in Headers */,
+				F55B975D282A9DE800E17937 /* DRPRefreshControl_Protected.h in Headers */,
 				F5F681E227C6AE9A00173DD5 /* UIView+LNPopupSupportPrivate.h in Headers */,
 				F5F681F527C6AE9A00173DD5 /* NSObject+AltKVC.h in Headers */,
 				F5F681F027C6AE9A00173DD5 /* LNPopupBar+Private.h in Headers */,
@@ -2320,6 +2344,7 @@
 				F5F681F627C6AE9A00173DD5 /* LNMath.h in Headers */,
 				F5F681EF27C6AE9A00173DD5 /* LNPopupLongPressGestureRecognizer.h in Headers */,
 				F5F681F827C6AE9A00173DD5 /* LNPopupCustomBarViewController+Private.h in Headers */,
+				F55B975C282A9DE800E17937 /* DRPRefreshControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2613,6 +2638,7 @@
 				F5217AB927AA904E00A90265 /* Playlist.swift in Sources */,
 				F5A30E89282503F50088179F /* AnimationGroup.swift in Sources */,
 				F57005D527D64DF2002A9F66 /* HeroTransition+Interactive.swift in Sources */,
+				F55B9760282A9DE800E17937 /* DRPRefreshControl.m in Sources */,
 				F57005D627D64DF2002A9F66 /* HeroProgressRunner.swift in Sources */,
 				F5F681D827C6AE9A00173DD5 /* NSObject+AltKVC.m in Sources */,
 				F59A403927E39A30004278B4 /* NLPRecommendationsViewController.swift in Sources */,
@@ -2712,6 +2738,7 @@
 				F57005F527D64DF2002A9F66 /* Locale+Hero.swift in Sources */,
 				F5BE75B827A1BC6500AC49FA /* ExtendedDelegate.swift in Sources */,
 				F5EFD4202816F98E00F6CF2C /* DiffableDataSourceSnapshot.swift in Sources */,
+				F55B975F282A9DE800E17937 /* DRPLoadingSpinner.m in Sources */,
 				F5BE75AD27A1BC6500AC49FA /* AudioPlayer+PlayerEvent.swift in Sources */,
 				F55A598F27E243A40043CA20 /* ColorPaletteDelegate.swift in Sources */,
 				F55E764F27ABDCC000A3DE4D /* ContextMenu+Options.swift in Sources */,
@@ -2806,6 +2833,7 @@
 				F5348EB627CE7DB9000E85F7 /* PanModalPresenter.swift in Sources */,
 				F57005E927D64DF2002A9F66 /* Parser.swift in Sources */,
 				F57005E127D64DF2002A9F66 /* HeroViewControllerDelegate.swift in Sources */,
+				F55B9761282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m in Sources */,
 				F55A599327E243A40043CA20 /* UIColorExtension.swift in Sources */,
 				F5348EB327CE7DB9000E85F7 /* PanModalHeight.swift in Sources */,
 				F5BE75F627A1BC6500AC49FA /* Api.swift in Sources */,

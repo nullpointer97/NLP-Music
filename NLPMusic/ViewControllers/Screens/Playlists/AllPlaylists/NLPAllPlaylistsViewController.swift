@@ -49,6 +49,8 @@ final class NLPAllPlaylistsViewController: NLPBaseTableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        addRefreshControl()
+        
         tableView.showAnimatedGradientSkeleton()
         tableView.startSkeletonAnimation()
     }
