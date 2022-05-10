@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import AsyncDisplayKit
 
 class CaptchaViewController: VKBaseAuthViewController {
     @IBOutlet weak var capthcaImageView: UIImageView!

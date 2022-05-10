@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import AsyncDisplayKit
 import SPAlert
 import MaterialComponents
 
@@ -22,85 +21,6 @@ protocol VKMBaseItemDelegate: AnyObject {
     func didTap<T>(_ cell: NLPBaseViewCell<T>)
     func perform<T>(from cell: NLPBaseViewCell<T>)
     func logout<T>(from cell: NLPBaseViewCell<T>)
-}
-
-open class ASBaseViewController<DisplayNodeType: ASDisplayNode>: ASDKViewController<ASDisplayNode>, VKMBaseItemDelegate {    
-    var asdk_navigationViewController: NLPMNavigationController? {
-        return navigationController as? NLPMNavigationController
-    }
-    
-    public override init(node: ASDisplayNode) {
-        super.init(node: node)
-    }
-    
-    override init() {
-        super.init(node: DisplayNodeType())
-    }
-    
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    open override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    open override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-    }
-    
-    func setupNavigationItems(title: String?, leftItems: [UIBarButtonItem] = [], rightItems: [UIBarButtonItem] = []) {
-        navigationItem.title = title
-        navigationItem.leftBarButtonItems?.append(contentsOf: leftItems)
-        navigationItem.rightBarButtonItems = rightItems
-    }
-    
-    func setupUI() {
-    }
-    
-    func showEventMessage(_ type: PrintType, message: String = "") { }
-    
-    func showLoading(by loadIdentifier: String = "load") { }
-    
-    func hideLoading(by loadIdentifier: String = "load") { }
-    
-    func didTap<T>(_ cell: NLPBaseViewCell<T>) { }
-    
-    func perform<T>(from cell: NLPBaseViewCell<T>) { }
-    
-    func logout<T>(from cell: NLPBaseViewCell<T>) { }
-    
-    func openMenu(fromItem item: AudioPlayerItem, actions: [MDCActionSheetAction]) {
-        let actionSheet = MDCActionSheetController(title: "Меню трека")
-        
-        for action in actions {
-            actionSheet.addAction(action)
-        }
-        
-        actionSheet.present(self, animated: true)
-    }
-    
-    func openMenu(actions: [MDCActionSheetAction]) {
-        let actionSheet = MDCActionSheetController(title: "Меню трека")
-        actionSheet.titleFont = .systemFont(ofSize: 21, weight: UIFont.Weight(0.3))
-        actionSheet.titleTextColor = .label
-        actionSheet.actionFont = .systemFont(ofSize: 16, weight: UIFont.Weight(0.25))
-        
-        for action in actions {
-            actionSheet.addAction(action)
-            action.isEnabled = true
-        }
-        
-        present(actionSheet, animated: true)
-    }
 }
 
 open class NLPBaseViewController: UIViewController, BaseControllerProtocol, VKMBaseItemDelegate {

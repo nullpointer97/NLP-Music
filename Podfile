@@ -7,8 +7,6 @@ target 'NLPMusic' do
   pod "PromiseKit/Alamofire", "~> 6.0"
   pod "PromiseKit", "~> 6.8"
   pod 'SwiftyJSON', '~> 4.0'
-  pod 'Texture'
-  pod 'MBProgressHUD'
-  pod 'StreamingKit'
   pod "MaterialComponents"
+  pod "Kingfisher"
 end

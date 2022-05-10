@@ -7,9 +7,8 @@
 
 import Foundation
 import UIKit
-import AsyncDisplayKit
 
-open class NLPMNavigationController: ASDKNavigationController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
+open class NLPMNavigationController: UINavigationController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     public var panScrollable: UIScrollView? {
         return nil
     }

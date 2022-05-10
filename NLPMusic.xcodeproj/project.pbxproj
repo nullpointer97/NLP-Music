@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83B4833CBF78C4D95DEC3005 /* Pods_NLPMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775F652E7628907B8018A544 /* Pods_NLPMusic.framework */; };
+		4A0F692493A1B1928765C8BB /* Pods_NLPMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261B6024C20BF3AA83344B0E /* Pods_NLPMusic.framework */; };
 		F507071E2816FA3000EF9E55 /* DifferenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F507071D2816FA3000EF9E55 /* DifferenceKit */; };
 		F50707222816FFA000EF9E55 /* NLPSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */; };
 		F50707232816FFA000EF9E55 /* NLPSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */; };
@@ -30,7 +30,7 @@
 		F5217AD027AAA66E00A90265 /* CaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5217AC927AAA66E00A90265 /* CaptchaViewController.swift */; };
 		F5217AD127AAA66E00A90265 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5217ACB27AAA66E00A90265 /* LoginViewController.xib */; };
 		F5217AD227AAA66E00A90265 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5217ACC27AAA66E00A90265 /* LoginViewController.swift */; };
-		F5217AD527AAA6A800A90265 /* ASBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5217AD327AAA6A800A90265 /* ASBaseViewController.swift */; };
+		F5217AD527AAA6A800A90265 /* NLPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5217AD327AAA6A800A90265 /* NLPBaseViewController.swift */; };
 		F5217AD627AAA6A800A90265 /* NLPMNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5217AD427AAA6A800A90265 /* NLPMNavigationController.swift */; };
 		F5217AD927AAA72400A90265 /* OneTimeCodeTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5217AD827AAA72400A90265 /* OneTimeCodeTextFields.swift */; };
 		F524C79D27FB0D0300706CE9 /* NLPPlaylistViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F524C79B27FB0D0300706CE9 /* NLPPlaylistViewCell.swift */; };
@@ -121,6 +121,7 @@
 		F55A59A027E243A40043CA20 /* ColorPickerThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55A597E27E243A40043CA20 /* ColorPickerThumbView.swift */; };
 		F55A59A127E243A40043CA20 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55A597F27E243A40043CA20 /* GradientView.swift */; };
 		F55A59A227E243A40043CA20 /* CircleShapedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55A598027E243A40043CA20 /* CircleShapedView.swift */; };
+		F55B973C282A960100E17937 /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = F55B973B282A960100E17937 /* OneSignal */; };
 		F55E764627ABDCC000A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763327ABDCBF00A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */; };
 		F55E764727ABDCC000A3DE4D /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763427ABDCBF00A3DE4D /* ContextMenu.swift */; };
 		F55E764827ABDCC000A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763527ABDCBF00A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift */; };
@@ -212,7 +213,6 @@
 		F59147C627B273290008F6B5 /* UserDefaultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59147C527B273290008F6B5 /* UserDefaultsObserver.swift */; };
 		F59147CC27B280750008F6B5 /* notification.wav in Resources */ = {isa = PBXBuildFile; fileRef = F59147CB27B280750008F6B5 /* notification.wav */; };
 		F59147CD27B280750008F6B5 /* notification.wav in Resources */ = {isa = PBXBuildFile; fileRef = F59147CB27B280750008F6B5 /* notification.wav */; };
-		F59147D027B2D9850008F6B5 /* ASSettingCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59147CF27B2D9850008F6B5 /* ASSettingCellNode.swift */; };
 		F59A403727E397DE004278B4 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = F59A403627E397DE004278B4 /* MBProgressHUD */; };
 		F59A403927E39A30004278B4 /* NLPRecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A403827E39A30004278B4 /* NLPRecommendationsViewController.swift */; };
 		F5A30E762823B39A0088179F /* NLPPulseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A30E752823B39A0088179F /* NLPPulseButton.swift */; };
@@ -367,7 +367,6 @@
 		F5BE760027A1BC6500AC49FA /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE759327A1BC6500AC49FA /* Token.swift */; };
 		F5BE760227A1BC6500AC49FA /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE759827A1BC6500AC49FA /* Localization.swift */; };
 		F5BE760527A1BD8900AC49FA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F5BE760427A1BD8900AC49FA /* Lottie */; };
-		F5BE760827A1BDFA00AC49FA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F5BE760727A1BDFA00AC49FA /* Kingfisher */; };
 		F5BE760B27A1BEDE00AC49FA /* PureLayout in Frameworks */ = {isa = PBXBuildFile; productRef = F5BE760A27A1BEDE00AC49FA /* PureLayout */; };
 		F5BE761127A1BF7D00AC49FA /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F5BE761027A1BF7D00AC49FA /* ObjectMapper */; };
 		F5C0242627F88B5100D70C30 /* NLPRecommendationsInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0242127F88B5100D70C30 /* NLPRecommendationsInterfaces.swift */; };
@@ -511,9 +510,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		775F652E7628907B8018A544 /* Pods_NLPMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NLPMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		77BF7A9FC2CA7F258C7FF550 /* Pods-NLPMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.debug.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.debug.xcconfig"; sourceTree = "<group>"; };
-		D55ED02547E3FCCF78AE3730 /* Pods-NLPMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.release.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.release.xcconfig"; sourceTree = "<group>"; };
+		177B714F31765019E321AFDC /* Pods-NLPMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.debug.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		261B6024C20BF3AA83344B0E /* Pods_NLPMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NLPMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F347A0FEDF79BD8C18D25E89 /* Pods-NLPMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.release.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.release.xcconfig"; sourceTree = "<group>"; };
 		F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSettingViewCell.swift; sourceTree = "<group>"; };
 		F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPSettingViewCell.xib; sourceTree = "<group>"; };
 		F507072428170E4100EF9E55 /* NLPSettingUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSettingUserViewCell.swift; sourceTree = "<group>"; };
@@ -535,7 +534,7 @@
 		F5217AC927AAA66E00A90265 /* CaptchaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptchaViewController.swift; sourceTree = "<group>"; };
 		F5217ACB27AAA66E00A90265 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F5217ACC27AAA66E00A90265 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F5217AD327AAA6A800A90265 /* ASBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASBaseViewController.swift; sourceTree = "<group>"; };
+		F5217AD327AAA6A800A90265 /* NLPBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPBaseViewController.swift; sourceTree = "<group>"; };
 		F5217AD427AAA6A800A90265 /* NLPMNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPMNavigationController.swift; sourceTree = "<group>"; };
 		F5217AD827AAA72400A90265 /* OneTimeCodeTextFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneTimeCodeTextFields.swift; sourceTree = "<group>"; };
 		F524C79B27FB0D0300706CE9 /* NLPPlaylistViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPPlaylistViewCell.swift; sourceTree = "<group>"; };
@@ -715,7 +714,6 @@
 		F58878DC27AD2DEA00277CB7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F59147C527B273290008F6B5 /* UserDefaultsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsObserver.swift; sourceTree = "<group>"; };
 		F59147CB27B280750008F6B5 /* notification.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = notification.wav; sourceTree = "<group>"; };
-		F59147CF27B2D9850008F6B5 /* ASSettingCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASSettingCellNode.swift; sourceTree = "<group>"; };
 		F59A403827E39A30004278B4 /* NLPRecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPRecommendationsViewController.swift; sourceTree = "<group>"; };
 		F5A30E752823B39A0088179F /* NLPPulseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPPulseButton.swift; sourceTree = "<group>"; };
 		F5A30E77282500D80088179F /* AnimatePathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatePathView.swift; sourceTree = "<group>"; };
@@ -986,7 +984,6 @@
 				F54C9EB927AAD514003EF618 /* SPAlert in Frameworks */,
 				F567A89E2817A1FD00E3A2B0 /* SkeletonView in Frameworks */,
 				F5BE760B27A1BEDE00AC49FA /* PureLayout in Frameworks */,
-				F5BE760827A1BDFA00AC49FA /* Kingfisher in Frameworks */,
 				F55E766427ABFB1B00A3DE4D /* MarqueeLabel in Frameworks */,
 				F5CC0BF927B14C5100EAE83B /* Sentry in Frameworks */,
 				F5CC0BDD27B1300400EAE83B /* OneSignal in Frameworks */,
@@ -995,7 +992,7 @@
 				F5CBE80F281AB3A100781C89 /* RNCryptor in Frameworks */,
 				F5BE760527A1BD8900AC49FA /* Lottie in Frameworks */,
 				F5217AC227AAA10B00A90265 /* CoreStore in Frameworks */,
-				83B4833CBF78C4D95DEC3005 /* Pods_NLPMusic.framework in Frameworks */,
+				4A0F692493A1B1928765C8BB /* Pods_NLPMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,6 +1001,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5CC0BFB27B14C8300EAE83B /* Sentry in Frameworks */,
+				F55B973C282A960100E17937 /* OneSignal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,7 +1012,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D5FD4927B1979500DFC20A /* SwiftUI.framework */,
-				775F652E7628907B8018A544 /* Pods_NLPMusic.framework */,
+				261B6024C20BF3AA83344B0E /* Pods_NLPMusic.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1022,8 +1020,8 @@
 		C5A70773EF33069393495040 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				77BF7A9FC2CA7F258C7FF550 /* Pods-NLPMusic.debug.xcconfig */,
-				D55ED02547E3FCCF78AE3730 /* Pods-NLPMusic.release.xcconfig */,
+				177B714F31765019E321AFDC /* Pods-NLPMusic.debug.xcconfig */,
+				F347A0FEDF79BD8C18D25E89 /* Pods-NLPMusic.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1618,14 +1616,6 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		F59147CE27B2D9680008F6B5 /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				F59147CF27B2D9850008F6B5 /* ASSettingCellNode.swift */,
-			);
-			path = Nodes;
-			sourceTree = "<group>";
-		};
 		F59A403127E39512004278B4 /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
@@ -1779,7 +1769,6 @@
 		F5BE747B27A1B78400AC49FA /* NLPMusic */ = {
 			isa = PBXGroup;
 			children = (
-				F59147CE27B2D9680008F6B5 /* Nodes */,
 				F59147C727B27FD00008F6B5 /* Sounds */,
 				F5CC0BF127B1310900EAE83B /* NLPMusic.entitlements */,
 				F54C9EC527AB1FAD003EF618 /* Animations */,
@@ -2229,7 +2218,7 @@
 				F5B8FA1E27F49DAA00AF2DCD /* Donate */,
 				F55E75D127ABC3A300A3DE4D /* Popup */,
 				F54C9EBA27AAE203003EF618 /* Auth */,
-				F5217AD327AAA6A800A90265 /* ASBaseViewController.swift */,
+				F5217AD327AAA6A800A90265 /* NLPBaseViewController.swift */,
 				F5217AD427AAA6A800A90265 /* NLPMNavigationController.swift */,
 				F5F6818C27C6AA3500173DD5 /* NLPTabController.swift */,
 				F5F38F9D27F88664005216DB /* NLPModalViewController.swift */,
@@ -2341,14 +2330,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5BE748D27A1B78500AC49FA /* Build configuration list for PBXNativeTarget "NLPMusic" */;
 			buildPhases = (
-				852E69009EF40DDEC75FC36C /* [CP] Check Pods Manifest.lock */,
+				44630E29F0F3C3CB3E665AEA /* [CP] Check Pods Manifest.lock */,
 				F55E761927ABC3ED00A3DE4D /* Headers */,
 				F5BE747527A1B78400AC49FA /* Sources */,
 				F5BE747627A1B78400AC49FA /* Frameworks */,
 				F5BE747727A1B78400AC49FA /* Resources */,
 				F55E757B27ABBC4800A3DE4D /* Embed Frameworks */,
 				F5CC0BED27B1302900EAE83B /* Embed App Extensions */,
-				559309BFD410E27CD78F6FDF /* [CP] Embed Pods Frameworks */,
+				8E24F39C2959F18FFA358893 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2358,7 +2347,6 @@
 			name = NLPMusic;
 			packageProductDependencies = (
 				F5BE760427A1BD8900AC49FA /* Lottie */,
-				F5BE760727A1BDFA00AC49FA /* Kingfisher */,
 				F5BE760A27A1BEDE00AC49FA /* PureLayout */,
 				F5BE761027A1BF7D00AC49FA /* ObjectMapper */,
 				F5217AC127AAA10B00A90265 /* CoreStore */,
@@ -2391,6 +2379,7 @@
 			name = VKMusicServiceExtension;
 			packageProductDependencies = (
 				F5CC0BFA27B14C8300EAE83B /* Sentry */,
+				F55B973B282A960100E17937 /* OneSignal */,
 			);
 			productName = VKMusicServiceExtension;
 			productReference = F5CC0BE227B1302900EAE83B /* VKMusicServiceExtension.appex */;
@@ -2427,7 +2416,6 @@
 			mainGroup = F5BE747027A1B78400AC49FA;
 			packageReferences = (
 				F5BE760327A1BD8900AC49FA /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				F5BE760627A1BDFA00AC49FA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F5BE760927A1BEDE00AC49FA /* XCRemoteSwiftPackageReference "PureLayout" */,
 				F5BE760F27A1BF7D00AC49FA /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 				F5217AC027AAA10B00A90265 /* XCRemoteSwiftPackageReference "CoreStore" */,
@@ -2501,24 +2489,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		559309BFD410E27CD78F6FDF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NLPMusic/Pods-NLPMusic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NLPMusic/Pods-NLPMusic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NLPMusic/Pods-NLPMusic-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		852E69009EF40DDEC75FC36C /* [CP] Check Pods Manifest.lock */ = {
+		44630E29F0F3C3CB3E665AEA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2538,6 +2509,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E24F39C2959F18FFA358893 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NLPMusic/Pods-NLPMusic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NLPMusic/Pods-NLPMusic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NLPMusic/Pods-NLPMusic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2592,7 +2580,6 @@
 				F5B8FA1227F43F8D00AF2DCD /* RoundCheckBox.swift in Sources */,
 				F5BE75A027A1BC6500AC49FA /* AudioPlayerItem.swift in Sources */,
 				F57005CD27D64DF2002A9F66 /* HeroTypes.swift in Sources */,
-				F59147D027B2D9850008F6B5 /* ASSettingCellNode.swift in Sources */,
 				F5EFD4182816F98E00F6CF2C /* TableViewDiffableDataSource.swift in Sources */,
 				F5F681D927C6AE9A00173DD5 /* _LNPopupBarBackgroundView.m in Sources */,
 				F57005E027D64DF2002A9F66 /* HeroContext.swift in Sources */,
@@ -2825,7 +2812,7 @@
 				F5C0244427F8A94500D70C30 /* NLPPlaylistWireframe.swift in Sources */,
 				F5BE75AC27A1BC6500AC49FA /* AudioPlayer+RetryEvent.swift in Sources */,
 				F5BE75F927A1BC6500AC49FA /* ApiRequest.swift in Sources */,
-				F5217AD527AAA6A800A90265 /* ASBaseViewController.swift in Sources */,
+				F5217AD527AAA6A800A90265 /* NLPBaseViewController.swift in Sources */,
 				F5F681EE27C6AE9A00173DD5 /* LNPopupContentView.m in Sources */,
 				F5BE759C27A1BC6500AC49FA /* CMTime+TimeIntervalValue.swift in Sources */,
 				F5199F3027C405A200946140 /* ColorPickerViewCell.swift in Sources */,
@@ -3096,7 +3083,7 @@
 		};
 		F5BE748E27A1B78500AC49FA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77BF7A9FC2CA7F258C7FF550 /* Pods-NLPMusic.debug.xcconfig */;
+			baseConfigurationReference = 177B714F31765019E321AFDC /* Pods-NLPMusic.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = arm64;
@@ -3138,7 +3125,7 @@
 		};
 		F5BE748F27A1B78500AC49FA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D55ED02547E3FCCF78AE3730 /* Pods-NLPMusic.release.xcconfig */;
+			baseConfigurationReference = F347A0FEDF79BD8C18D25E89 /* Pods-NLPMusic.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = arm64;
@@ -3333,14 +3320,6 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		F5BE760627A1BDFA00AC49FA /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				branch = "version6-xcode13";
-				kind = branch;
-			};
-		};
 		F5BE760927A1BEDE00AC49FA /* XCRemoteSwiftPackageReference "PureLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PureLayout/PureLayout";
@@ -3404,6 +3383,11 @@
 			package = F54C9EB727AAD514003EF618 /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
 		};
+		F55B973B282A960100E17937 /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5CC0BDB27B1300400EAE83B /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
+		};
 		F55E766327ABFB1B00A3DE4D /* MarqueeLabel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F55E766227ABFB1B00A3DE4D /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
@@ -3423,11 +3407,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F5BE760327A1BD8900AC49FA /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		F5BE760727A1BDFA00AC49FA /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F5BE760627A1BDFA00AC49FA /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		F5BE760A27A1BEDE00AC49FA /* PureLayout */ = {
 			isa = XCSwiftPackageProductDependency;
