@@ -66,7 +66,6 @@ open class NLPBaseViewController: UIViewController, BaseControllerProtocol, VKMB
         
         for action in actions {
             actionSheet.addAction(action)
-            action.isEnabled = true
         }
         
         present(actionSheet, animated: true)
@@ -81,7 +80,6 @@ open class NLPBaseViewController: UIViewController, BaseControllerProtocol, VKMB
         
         for action in actions {
             actionSheet.addAction(action)
-            action.isEnabled = true
         }
         
         present(actionSheet, animated: true)

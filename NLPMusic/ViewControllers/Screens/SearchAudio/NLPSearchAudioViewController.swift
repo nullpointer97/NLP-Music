@@ -35,7 +35,7 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.delegate = self
-        searchController.searchBar.placeholder = "Поиск музыки"
+        searchController.searchBar.placeholder = NSLocalizedString("SEARCH_PLACEHOLDER", comment: "placeholder search")
         searchController.searchBar.delegate = self
         searchController.searchBar.setImage(UIImage(named: "search_outline_28")?.resize(toWidth: 18)?.resize(toHeight: 18)?.tint(with: .systemGray), for: .search, state: .normal)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -58,7 +58,7 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         pulseButton.pulseBackgroundColor = .getAccentColor(fromType: .common).withAlphaComponent(0.35)
         pulseButton.circle = true
         
-        if #available(iOS 15.0, *) {
+        if #available(iOS 15.0, *), !AVAudioSession.sharedInstance().isOtherAudioPlaying {
             shazamSession.delegate = self
             pulseButton.addTarget(self, action: #selector(didBeginRecognizing), for: .touchUpInside)
             navigationItem.rightBarButtonItem = UIBarButtonItem(customView: pulseButton)
@@ -244,7 +244,7 @@ extension NLPSearchAudioViewController: NLPSearchAudioViewInterface {
 
 extension NLPSearchAudioViewController: UISearchControllerDelegate {
     func willDismissSearchController(_ searchController: UISearchController) {
-        searchController.searchBar.placeholder = searchKeyword.isEmpty ? "Поиск музыки" : searchKeyword
+        searchController.searchBar.placeholder = searchKeyword.isEmpty ? NSLocalizedString("SEARCH_PLACEHOLDER", comment: "placeholder search") : searchKeyword
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

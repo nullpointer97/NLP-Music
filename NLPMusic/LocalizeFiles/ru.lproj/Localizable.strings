@@ -1,0 +1,8 @@
+/* 
+  Localizable.strings
+  NLPMusic
+
+  Created by Iskander on 11.05.2022.
+  Copyright © 2022 NP-Team. All rights reserved.
+*/
+"NLPSearchAudioViewController.Search.SearchPlaceholder" = "Поиск музыки";
