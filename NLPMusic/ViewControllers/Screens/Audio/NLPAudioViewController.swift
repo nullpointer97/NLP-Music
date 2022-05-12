@@ -67,6 +67,7 @@ final class NLPAudioViewController: NLPBaseTableViewController {
         }
         saveAction.tintColor = .label
         saveAction.titleColor = .label
+        saveAction.isEnabled = true
         
         let addAction = MDCActionSheetAction(title: "Добавить к себе", image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
@@ -78,6 +79,7 @@ final class NLPAudioViewController: NLPBaseTableViewController {
         }
         addAction.tintColor = .label
         addAction.titleColor = .label
+        addAction.isEnabled = true
         
         let removeAction = MDCActionSheetAction(title: "Удалить", image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
             guard let self = self else { return }
@@ -89,13 +91,15 @@ final class NLPAudioViewController: NLPBaseTableViewController {
         }
         removeAction.tintColor = .systemRed
         removeAction.titleColor = .systemRed
-        
+        removeAction.isEnabled = true
+
         let removeInCacheAction = MDCActionSheetAction(title: "Удалить из кэша", image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
             guard let self = self else { return }
             self.didRemoveAudio(item, indexPath: indexPath)
         }
         removeInCacheAction.tintColor = .systemRed
         removeInCacheAction.titleColor = .systemRed
+        removeInCacheAction.isEnabled = true
         
         if userId == currentUserId {
             openMenu(fromItem: item, actions: item.isDownloaded ? [removeAction, removeInCacheAction] : [saveAction, removeAction])

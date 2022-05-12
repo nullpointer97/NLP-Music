@@ -30,7 +30,7 @@ class NLPTabController: UITabBarController {
     }()
     
     var viewControllersNames: [String] = [
-        "Музыка", "Плейлисты", "Поиск", "Сохраненные", "Настройки"
+        "Музыка", "Рекомендации", "Поиск", "Друзья", "Настройки"
     ]
     
     init() {
@@ -216,10 +216,10 @@ class NLPTabController: UITabBarController {
     private func setupViewControllers() {
         let names = Settings.namesInTabbar ? viewControllersNames : ["", "", "", "", ""]
         viewControllers = [
-            createNavigationController(for: NLPAudioWireframe().viewController, title: names[0], navigationControllerTitle: viewControllersNames[0], image: .init(named: "music_outline_28")),
-            createNavigationController(for: NLPAllPlaylistsWireframe().viewController, title: names[1], navigationControllerTitle: viewControllersNames[1], image: .init(named: "playlist_outline_28")),
+            createNavigationController(for: NLPAudioV2Wireframe().viewController, title: names[0], navigationControllerTitle: viewControllersNames[0], image: .init(named: "music_outline_28")),
+            createNavigationController(for: NLPRecommendationsWireframe().viewController, title: names[1], navigationControllerTitle: viewControllersNames[1], image: .init(named: "fire_outline_28")),
             createNavigationController(for: NLPSearchAudioWireframe().viewController, title: names[2], navigationControllerTitle: viewControllersNames[2], image: .init(named: "search_outline_28")),
-            createNavigationController(for: NLPSavedMusicViewController(), title: names[3], navigationControllerTitle: viewControllersNames[3], image: .init(named: "download_outline_28")),
+            createNavigationController(for: NLPFriendsViewController(), title: names[3], navigationControllerTitle: viewControllersNames[3], image: .init(named: "users_outline_28")),
             createNavigationController(for: NLPSettingsController(), title: names[4], navigationControllerTitle: viewControllersNames[4], image: .init(named: "settings_outline_28"))
         ]
     }

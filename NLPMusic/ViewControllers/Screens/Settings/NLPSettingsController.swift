@@ -167,6 +167,7 @@ extension NLPSettingsController: SettingActionDelegate {
                 }
                 snapAction.tintColor = .label
                 snapAction.titleColor = .label
+                snapAction.isEnabled = true
                 
                 let interactiveAction = MDCActionSheetAction(title: "Интерактивный", image: .init(named: "interactive_24")) { [weak self] _ in
                     guard let self = self else { return }
@@ -174,6 +175,7 @@ extension NLPSettingsController: SettingActionDelegate {
                 }
                 interactiveAction.tintColor = .label
                 interactiveAction.titleColor = .label
+                interactiveAction.isEnabled = true
                 
                 openMenu(actions: [snapAction, interactiveAction], title: cell.settingTitleLabel.text)
             case .changePlayerStyle(_):
@@ -183,6 +185,7 @@ extension NLPSettingsController: SettingActionDelegate {
                 }
                 vkAction.tintColor = .label
                 vkAction.titleColor = .label
+                vkAction.isEnabled = true
                 
                 let appleAction = MDCActionSheetAction(title: PlayerStyle.appleMusic.rawValue, image: .init(named: "logo_apple_24")) { [weak self] _ in
                     guard let self = self else { return }
@@ -190,6 +193,7 @@ extension NLPSettingsController: SettingActionDelegate {
                 }
                 appleAction.tintColor = .label
                 appleAction.titleColor = .label
+                appleAction.isEnabled = true
                 
                 let nlpAction = MDCActionSheetAction(title: PlayerStyle.nlp.rawValue, image: .init(named: "logo_nlp_24")) { [weak self] _ in
                     guard let self = self else { return }

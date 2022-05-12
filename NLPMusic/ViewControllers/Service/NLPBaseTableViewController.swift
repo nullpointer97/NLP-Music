@@ -94,6 +94,10 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         reload()
     }
     
+    override func perform<AudioSectionItem>(from cell: NLPBaseViewCell<AudioSectionItem>) {
+        shuffleAll()
+    }
+    
     override func didTap<T>(_ cell: NLPBaseViewCell<T>) {
         super.didTap(cell)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [self] in
@@ -151,6 +155,7 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         tableView.register(.listCell(.listPlaylist), forCellReuseIdentifier: .listCell(.listPlaylist))
         tableView.register(.listCell(.smallUser), forCellReuseIdentifier: .listCell(.smallUser))
         tableView.register(.listCell(.bigUser), forCellReuseIdentifier: .listCell(.bigUser))
+        tableView.register(.listCell(.folder), forCellReuseIdentifier: .listCell(.folder))
 
         tableView.tableFooterView = footer
         footer.isLoading = false
@@ -376,6 +381,17 @@ extension NLPBaseTableViewController: PairButtonDelegate {
     }
     
     func didShuffleAll(_ cell: NLPPairButtonViewCell) {
+        guard let player = AudioService.instance.player, audioItems.count > 0 else { return }
+        
+        if player.currentItem != nil || player.currentItem?.isPaused ?? false || player.currentItem?.isPlaying ?? false {
+            AudioService.instance.player?.stop()
+        }
+        
+        playing(player, true)
+        player.mode = .shuffle
+    }
+    
+    func shuffleAll() {
         guard let player = AudioService.instance.player, audioItems.count > 0 else { return }
         
         if player.currentItem != nil || player.currentItem?.isPaused ?? false || player.currentItem?.isPlaying ?? false {

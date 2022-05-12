@@ -19,6 +19,7 @@ enum ListViewCell: String {
     case smallUser = "NLPUserViewCell"
     case setting = "NLPSettingViewCell"
     case bigUser = "NLPSettingUserViewCell"
+    case folder = "NLPFolderViewCell"
 }
 
 class NLPBaseViewCell<T>: UITableViewCell {

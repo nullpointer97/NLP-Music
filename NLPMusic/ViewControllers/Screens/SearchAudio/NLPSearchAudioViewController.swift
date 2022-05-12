@@ -35,7 +35,7 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.delegate = self
-        searchController.searchBar.placeholder = NSLocalizedString("SEARCH_PLACEHOLDER", comment: "placeholder search")
+        searchController.searchBar.placeholder = .localized(.searchPlaceholder)
         searchController.searchBar.delegate = self
         searchController.searchBar.setImage(UIImage(named: "search_outline_28")?.resize(toWidth: 18)?.resize(toHeight: 18)?.tint(with: .systemGray), for: .search, state: .normal)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -103,6 +103,7 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         }
         saveAction.tintColor = .label
         saveAction.titleColor = .label
+        saveAction.isEnabled = true
         
         let addAction = MDCActionSheetAction(title: "Добавить к себе", image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
@@ -114,6 +115,7 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         }
         addAction.tintColor = .label
         addAction.titleColor = .label
+        addAction.isEnabled = true
         
         let removeInCacheAction = MDCActionSheetAction(title: "Удалить из кэша", image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
             guard let self = self else { return }
@@ -244,7 +246,7 @@ extension NLPSearchAudioViewController: NLPSearchAudioViewInterface {
 
 extension NLPSearchAudioViewController: UISearchControllerDelegate {
     func willDismissSearchController(_ searchController: UISearchController) {
-        searchController.searchBar.placeholder = searchKeyword.isEmpty ? NSLocalizedString("SEARCH_PLACEHOLDER", comment: "placeholder search") : searchKeyword
+        searchController.searchBar.placeholder = searchKeyword.isEmpty ? .localized(.searchPlaceholder) : searchKeyword
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

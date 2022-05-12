@@ -49,8 +49,11 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
         let item = items[indexPath.row]
 
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: .listCell(.pairButton), for: indexPath) as? NLPPairButtonViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: .listCell(.folder), for: indexPath) as? NLPFolderViewCell else { return UITableViewCell() }
+            cell.configureShuffleButton()
+            
             cell.delegate = parent
+            
             return cell
         } else {
             let audio = items[indexPath.row]
@@ -107,12 +110,12 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return indexPath.section == 0 ? .listCell(.pairButton) : .listCell(.audio)
+        return indexPath.section == 0 ? .listCell(.folder) : .listCell(.audio)
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, skeletonCellForRowAt indexPath: IndexPath) -> UITableViewCell? {
         if indexPath.section == 0 {
-            guard let cell = skeletonView.dequeueReusableCell(withIdentifier: .listCell(.pairButton), for: indexPath) as? NLPPairButtonViewCell else { return UITableViewCell() }
+            guard let cell = skeletonView.dequeueReusableCell(withIdentifier: .listCell(.folder), for: indexPath) as? NLPFolderViewCell else { return UITableViewCell() }
             return cell
         } else {
             guard let cell = skeletonView.dequeueReusableCell(withIdentifier: .listCell(.audio), for: indexPath) as? NLPAudioViewCell else { return UITableViewCell() }
@@ -122,7 +125,7 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
     
     func collectionSkeletonView(_ skeletonView: UITableView, prepareCellForSkeleton cell: UITableViewCell, at indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let cell = cell as? NLPPairButtonViewCell
+            let cell = cell as? NLPFolderViewCell
             cell?.isSkeletonable = true
         } else {
             let cell = cell as? NLPAudioViewCell

@@ -58,7 +58,21 @@ struct ApiV2 {
         return firstly {
             Alamofire.request(apiUrl + method.rawValue, method: requestMethod, parameters: configureParameters(method: method.rawValue, &parameters, customToken.isEmpty ? token : customToken, v: apiVersion), encoding: URLEncoding.default, headers: userAgent).responseData(queue: .global(qos: .background))
         }.compactMap { response in
-//            print(JSON(response.data))
+            if let apiError = ApiError(JSON(response.data)) {
+                throw VKError.api(apiError)
+            } else {
+                let response = JSON(response.data)
+                return response
+            }
+        }
+    }
+    
+    static func method(_ method: String, parameters: inout Parameters, requestMethod: HTTPMethod = .get, apiVersion: String = "5.131", customToken: String = "") throws -> Promise<JSON> {
+        guard let token = VK.sessions.default.accessToken?.token else { throw VKError.noAccessToken("Токен отсутствует, повторите авторизацию") }
+        
+        return firstly {
+            Alamofire.request(apiUrl + method, method: requestMethod, parameters: configureParameters(method: method, &parameters, customToken.isEmpty ? token : customToken, v: apiVersion), encoding: URLEncoding.default, headers: userAgent).responseData(queue: .global(qos: .background))
+        }.compactMap { response in
             if let apiError = ApiError(JSON(response.data)) {
                 throw VKError.api(apiError)
             } else {

@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3DB4C45D282C38DA00A2787D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4C45F282C38DA00A2787D /* Localizable.strings */; };
-		4A0F692493A1B1928765C8BB /* Pods_NLPMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261B6024C20BF3AA83344B0E /* Pods_NLPMusic.framework */; };
+		7FD36FFA497C51E882B807B2 /* Pods_NLPMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CE5AFBFE523D73BC165330 /* Pods_NLPMusic.framework */; };
 		F507071E2816FA3000EF9E55 /* DifferenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F507071D2816FA3000EF9E55 /* DifferenceKit */; };
 		F50707222816FFA000EF9E55 /* NLPSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */; };
 		F50707232816FFA000EF9E55 /* NLPSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */; };
 		F507072628170E4100EF9E55 /* NLPSettingUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F507072428170E4100EF9E55 /* NLPSettingUserViewCell.swift */; };
 		F507072728170E4100EF9E55 /* NLPSettingUserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F507072528170E4100EF9E55 /* NLPSettingUserViewCell.xib */; };
+		F515BE76282D0CB700C503CB /* NLPFolderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515BE74282D0CB700C503CB /* NLPFolderViewCell.swift */; };
+		F515BE77282D0CB700C503CB /* NLPFolderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F515BE75282D0CB700C503CB /* NLPFolderViewCell.xib */; };
+		F515BE79282D0F7E00C503CB /* NLPHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515BE78282D0F7E00C503CB /* NLPHeaderView.swift */; };
+		F515BE7C282D19C200C503CB /* NLPSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F515BE7B282D19C200C503CB /* NLPSectionViewController.swift */; };
 		F5199F2427C3F09600946140 /* NLPPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5199F2227C3F09600946140 /* NLPPlayerViewController.swift */; };
 		F5199F2527C3F09600946140 /* NLPPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5199F2327C3F09600946140 /* NLPPlayerViewController.xib */; };
 		F5199F2F27C405A200946140 /* ControlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5199F2B27C405A200946140 /* ControlViewCell.xib */; };
@@ -210,6 +214,12 @@
 		F57005FC27D64DF2002A9F66 /* HeroDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57005CB27D64DF2002A9F66 /* HeroDebugView.swift */; };
 		F57005FD27D64DF2002A9F66 /* HeroModifier+Advanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57005CC27D64DF2002A9F66 /* HeroModifier+Advanced.swift */; };
 		F57005FF27D6517E002A9F66 /* VKBaseAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57005FE27D6517E002A9F66 /* VKBaseAuthViewController.swift */; };
+		F5719AD2282CF046009F4213 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD1282CF046009F4213 /* Localizations.swift */; };
+		F5719AD9282CF1B4009F4213 /* NLPAudioV2Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD4282CF1B3009F4213 /* NLPAudioV2Interfaces.swift */; };
+		F5719ADA282CF1B4009F4213 /* NLPAudioV2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD5282CF1B3009F4213 /* NLPAudioV2ViewController.swift */; };
+		F5719ADB282CF1B4009F4213 /* NLPAudioV2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD6282CF1B3009F4213 /* NLPAudioV2Presenter.swift */; };
+		F5719ADC282CF1B4009F4213 /* NLPAudioV2Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD7282CF1B3009F4213 /* NLPAudioV2Wireframe.swift */; };
+		F5719ADD282CF1B4009F4213 /* NLPAudioV2Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD8282CF1B3009F4213 /* NLPAudioV2Interactor.swift */; };
 		F5813B9A27CCCD1D00F647A5 /* SonogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5813B9927CCCD1D00F647A5 /* SonogramView.swift */; };
 		F5813BA327CCD37D00F647A5 /* AVAudioFileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5813B9C27CCD37C00F647A5 /* AVAudioFileExtensions.swift */; };
 		F5813BA427CCD37D00F647A5 /* Chronometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5813B9D27CCD37C00F647A5 /* Chronometer.swift */; };
@@ -518,19 +528,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		177B714F31765019E321AFDC /* Pods-NLPMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.debug.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.debug.xcconfig"; sourceTree = "<group>"; };
-		261B6024C20BF3AA83344B0E /* Pods_NLPMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NLPMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11CE5AFBFE523D73BC165330 /* Pods_NLPMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NLPMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB4C459282C38B300A2787D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DB4C45A282C38B300A2787D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DB4C45B282C38BB00A2787D /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DB4C45C282C38BB00A2787D /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DB4C45E282C38DA00A2787D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3DB4C460282C38DC00A2787D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F347A0FEDF79BD8C18D25E89 /* Pods-NLPMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.release.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.release.xcconfig"; sourceTree = "<group>"; };
+		667CBE03D4FFFE78E144D0AB /* Pods-NLPMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.release.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.release.xcconfig"; sourceTree = "<group>"; };
+		A468FCC15E23D3AEF27685BC /* Pods-NLPMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.debug.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSettingViewCell.swift; sourceTree = "<group>"; };
 		F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPSettingViewCell.xib; sourceTree = "<group>"; };
 		F507072428170E4100EF9E55 /* NLPSettingUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSettingUserViewCell.swift; sourceTree = "<group>"; };
 		F507072528170E4100EF9E55 /* NLPSettingUserViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPSettingUserViewCell.xib; sourceTree = "<group>"; };
+		F515BE74282D0CB700C503CB /* NLPFolderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPFolderViewCell.swift; sourceTree = "<group>"; };
+		F515BE75282D0CB700C503CB /* NLPFolderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPFolderViewCell.xib; sourceTree = "<group>"; };
+		F515BE78282D0F7E00C503CB /* NLPHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPHeaderView.swift; sourceTree = "<group>"; };
+		F515BE7B282D19C200C503CB /* NLPSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSectionViewController.swift; sourceTree = "<group>"; };
 		F5199F2227C3F09600946140 /* NLPPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPPlayerViewController.swift; sourceTree = "<group>"; };
 		F5199F2327C3F09600946140 /* NLPPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPPlayerViewController.xib; sourceTree = "<group>"; };
 		F5199F2B27C405A200946140 /* ControlViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ControlViewCell.xib; sourceTree = "<group>"; };
@@ -723,6 +737,12 @@
 		F57005CB27D64DF2002A9F66 /* HeroDebugView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDebugView.swift; sourceTree = "<group>"; };
 		F57005CC27D64DF2002A9F66 /* HeroModifier+Advanced.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HeroModifier+Advanced.swift"; sourceTree = "<group>"; };
 		F57005FE27D6517E002A9F66 /* VKBaseAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKBaseAuthViewController.swift; sourceTree = "<group>"; };
+		F5719AD1282CF046009F4213 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
+		F5719AD4282CF1B3009F4213 /* NLPAudioV2Interfaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2Interfaces.swift; sourceTree = "<group>"; };
+		F5719AD5282CF1B3009F4213 /* NLPAudioV2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2ViewController.swift; sourceTree = "<group>"; };
+		F5719AD6282CF1B3009F4213 /* NLPAudioV2Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2Presenter.swift; sourceTree = "<group>"; };
+		F5719AD7282CF1B3009F4213 /* NLPAudioV2Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2Wireframe.swift; sourceTree = "<group>"; };
+		F5719AD8282CF1B3009F4213 /* NLPAudioV2Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2Interactor.swift; sourceTree = "<group>"; };
 		F5813B9927CCCD1D00F647A5 /* SonogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonogramView.swift; sourceTree = "<group>"; };
 		F5813B9C27CCD37C00F647A5 /* AVAudioFileExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioFileExtensions.swift; sourceTree = "<group>"; };
 		F5813B9D27CCD37C00F647A5 /* Chronometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chronometer.swift; sourceTree = "<group>"; };
@@ -1009,7 +1029,7 @@
 				F5CBE80F281AB3A100781C89 /* RNCryptor in Frameworks */,
 				F5BE760527A1BD8900AC49FA /* Lottie in Frameworks */,
 				F5217AC227AAA10B00A90265 /* CoreStore in Frameworks */,
-				4A0F692493A1B1928765C8BB /* Pods_NLPMusic.framework in Frameworks */,
+				7FD36FFA497C51E882B807B2 /* Pods_NLPMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,7 +1049,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D5FD4927B1979500DFC20A /* SwiftUI.framework */,
-				261B6024C20BF3AA83344B0E /* Pods_NLPMusic.framework */,
+				11CE5AFBFE523D73BC165330 /* Pods_NLPMusic.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1038,6 +1058,7 @@
 			isa = PBXGroup;
 			children = (
 				3DB4C45F282C38DA00A2787D /* Localizable.strings */,
+				F5719AD1282CF046009F4213 /* Localizations.swift */,
 			);
 			path = LocalizeFiles;
 			sourceTree = "<group>";
@@ -1045,10 +1066,18 @@
 		C5A70773EF33069393495040 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				177B714F31765019E321AFDC /* Pods-NLPMusic.debug.xcconfig */,
-				F347A0FEDF79BD8C18D25E89 /* Pods-NLPMusic.release.xcconfig */,
+				A468FCC15E23D3AEF27685BC /* Pods-NLPMusic.debug.xcconfig */,
+				667CBE03D4FFFE78E144D0AB /* Pods-NLPMusic.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F515BE7A282D19B200C503CB /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				F515BE7B282D19C200C503CB /* NLPSectionViewController.swift */,
+			);
+			path = Section;
 			sourceTree = "<group>";
 		};
 		F5199F2627C4058400946140 /* ColorPicker */ = {
@@ -1145,6 +1174,7 @@
 				F5EFD4092816EAC500F6CF2C /* NLPSettingsHeaderView.swift */,
 				F5A30E752823B39A0088179F /* NLPPulseButton.swift */,
 				F5A30E77282500D80088179F /* AnimatePathView.swift */,
+				F515BE78282D0F7E00C503CB /* NLPHeaderView.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -1298,6 +1328,7 @@
 		F54C9EBB27AAE20F003EF618 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				F5719AD3282CF13B009F4213 /* AudioV2 */,
 				F5C0244527FB052B00D70C30 /* NLPAudioInterfaces.swift */,
 				F5C0244627FB052B00D70C30 /* NLPAudioPresenter.swift */,
 				F5C0244727FB052B00D70C30 /* NLPAudioViewController.swift */,
@@ -1335,6 +1366,8 @@
 				F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */,
 				F507072428170E4100EF9E55 /* NLPSettingUserViewCell.swift */,
 				F507072528170E4100EF9E55 /* NLPSettingUserViewCell.xib */,
+				F515BE74282D0CB700C503CB /* NLPFolderViewCell.swift */,
+				F515BE75282D0CB700C503CB /* NLPFolderViewCell.xib */,
 			);
 			path = UICells;
 			sourceTree = "<group>";
@@ -1632,6 +1665,18 @@
 				F57005CB27D64DF2002A9F66 /* HeroDebugView.swift */,
 			);
 			path = "Debug Plugin";
+			sourceTree = "<group>";
+		};
+		F5719AD3282CF13B009F4213 /* AudioV2 */ = {
+			isa = PBXGroup;
+			children = (
+				F5719AD8282CF1B3009F4213 /* NLPAudioV2Interactor.swift */,
+				F5719AD4282CF1B3009F4213 /* NLPAudioV2Interfaces.swift */,
+				F5719AD6282CF1B3009F4213 /* NLPAudioV2Presenter.swift */,
+				F5719AD5282CF1B3009F4213 /* NLPAudioV2ViewController.swift */,
+				F5719AD7282CF1B3009F4213 /* NLPAudioV2Wireframe.swift */,
+			);
+			path = AudioV2;
 			sourceTree = "<group>";
 		};
 		F5813B9B27CCD37C00F647A5 /* SoundWave */ = {
@@ -2228,6 +2273,7 @@
 		F5F38F9B27F88615005216DB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F515BE7A282D19B200C503CB /* Section */,
 				F55F2F9728114F1000D5D5FE /* Friends */,
 				F5430B3C27FB00FF00844880 /* Settings */,
 				F59A403127E39512004278B4 /* Recommendations */,
@@ -2367,14 +2413,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5BE748D27A1B78500AC49FA /* Build configuration list for PBXNativeTarget "NLPMusic" */;
 			buildPhases = (
-				44630E29F0F3C3CB3E665AEA /* [CP] Check Pods Manifest.lock */,
+				63688DF7C93A2C3CB60DC9B9 /* [CP] Check Pods Manifest.lock */,
 				F55E761927ABC3ED00A3DE4D /* Headers */,
 				F5BE747527A1B78400AC49FA /* Sources */,
 				F5BE747627A1B78400AC49FA /* Frameworks */,
 				F5BE747727A1B78400AC49FA /* Resources */,
 				F55E757B27ABBC4800A3DE4D /* Embed Frameworks */,
 				F5CC0BED27B1302900EAE83B /* Embed App Extensions */,
-				8E24F39C2959F18FFA358893 /* [CP] Embed Pods Frameworks */,
+				C817FE11CBF93FD867CFBEDA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2495,6 +2541,7 @@
 				F53F3AEC28199D0E00BDCFCE /* NLPPlayerV2ViewController.xib in Resources */,
 				3DB4C45D282C38DA00A2787D /* Localizable.strings in Resources */,
 				F5217ACD27AAA66E00A90265 /* ValidationViewController.xib in Resources */,
+				F515BE77282D0CB700C503CB /* NLPFolderViewCell.xib in Resources */,
 				F524C7A227FB117700706CE9 /* NLPAudioViewCell.xib in Resources */,
 				F5D5FD4C27B1A14200DFC20A /* headphone_messages.json in Resources */,
 				F5BE748627A1B78500AC49FA /* Assets.xcassets in Resources */,
@@ -2526,7 +2573,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		44630E29F0F3C3CB3E665AEA /* [CP] Check Pods Manifest.lock */ = {
+		63688DF7C93A2C3CB60DC9B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2548,7 +2595,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8E24F39C2959F18FFA358893 /* [CP] Embed Pods Frameworks */ = {
+		C817FE11CBF93FD867CFBEDA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2607,6 +2654,7 @@
 				F57005E427D64DF2002A9F66 /* HeroViewPropertyViewContext.swift in Sources */,
 				F5B8FA1A27F43F8D00AF2DCD /* ArrayExtension.swift in Sources */,
 				F5348EB427CE7DB9000E85F7 /* PanModalPresentable+UIViewController.swift in Sources */,
+				F5719AD2282CF046009F4213 /* Localizations.swift in Sources */,
 				F55A598B27E243A40043CA20 /* RadialHSBPaletteDelegate.swift in Sources */,
 				F55A599427E243A40043CA20 /* LimitedGestureViewDelegate.swift in Sources */,
 				F57005D727D64DF2002A9F66 /* HeroTransitionState.swift in Sources */,
@@ -2639,6 +2687,8 @@
 				F53DEF78281020C4003EB8EF /* UICircularProgressRingView.swift in Sources */,
 				F5B8FA0A27F43F8D00AF2DCD /* AdcancedActionSheetActionWithImageCell.swift in Sources */,
 				F5A30E8C282503F50088179F /* AnimationStates.swift in Sources */,
+				F5719ADD282CF1B4009F4213 /* NLPAudioV2Interactor.swift in Sources */,
+				F515BE7C282D19C200C503CB /* NLPSectionViewController.swift in Sources */,
 				F5F681F327C6AE9A00173DD5 /* UIViewController+LNPopupSupportPrivate.m in Sources */,
 				F5BE75BD27A1BC6500AC49FA /* DefaultsService.swift in Sources */,
 				F5C0244127F8A94500D70C30 /* NLPPlaylistPresenter.swift in Sources */,
@@ -2680,6 +2730,7 @@
 				F57005D227D64DF2002A9F66 /* ConditionalPreprocessor.swift in Sources */,
 				F5813BA427CCD37D00F647A5 /* Chronometer.swift in Sources */,
 				F5BE75A727A1BC6500AC49FA /* RetryEventProducer.swift in Sources */,
+				F5719AD9282CF1B4009F4213 /* NLPAudioV2Interfaces.swift in Sources */,
 				F5BE75C227A1BC6500AC49FA /* NoticeObserveKit.swift in Sources */,
 				F5A30E762823B39A0088179F /* NLPPulseButton.swift in Sources */,
 				F5A30E87282503F50088179F /* CGPath+Extensions.swift in Sources */,
@@ -2688,6 +2739,7 @@
 				F55E764B27ABDCC000A3DE4D /* ContextMenuDismissing.swift in Sources */,
 				F5C0244A27FB052B00D70C30 /* NLPAudioInterfaces.swift in Sources */,
 				F57005DE27D64DF2002A9F66 /* HeroTransition+UINavigationControllerDelegate.swift in Sources */,
+				F5719ADB282CF1B4009F4213 /* NLPAudioV2Presenter.swift in Sources */,
 				F5BE74FE27A1BB8400AC49FA /* JSON.swift in Sources */,
 				F5A30E8A282503F50088179F /* CA+Extensions.swift in Sources */,
 				F5C0242A27F88B5100D70C30 /* NLPRecommendationsWireframe.swift in Sources */,
@@ -2704,6 +2756,7 @@
 				F5BE75FD27A1BC6500AC49FA /* Session.swift in Sources */,
 				F55A59A027E243A40043CA20 /* ColorPickerThumbView.swift in Sources */,
 				F5508B7527B65174002F02BC /* Transition.swift in Sources */,
+				F5719ADC282CF1B4009F4213 /* NLPAudioV2Wireframe.swift in Sources */,
 				F5BE759F27A1BC6500AC49FA /* AudioItemQueue.swift in Sources */,
 				F5BE75FA27A1BC6500AC49FA /* ApiError.swift in Sources */,
 				F5BE75F127A1BC6500AC49FA /* Methods.swift in Sources */,
@@ -2737,6 +2790,7 @@
 				F57005E727D64DF2002A9F66 /* Lexer.swift in Sources */,
 				F5BE747D27A1B78400AC49FA /* AppDelegate.swift in Sources */,
 				F5F681D327C6AE9A00173DD5 /* LNPopupBarAppearanceChainProxy.m in Sources */,
+				F515BE76282D0CB700C503CB /* NLPFolderViewCell.swift in Sources */,
 				F5F681D427C6AE9A00173DD5 /* MarqueeLabel.m in Sources */,
 				F55A599E27E243A40043CA20 /* UIViewWithCommonInit.swift in Sources */,
 				F5A30E88282503F50088179F /* PlayButton.swift in Sources */,
@@ -2807,6 +2861,7 @@
 				F5BE74E927A1BB8400AC49FA /* UIScrollView.swift in Sources */,
 				F5F681E727C6AE9A00173DD5 /* NSAttributedString+LNPopupSupport.m in Sources */,
 				F5C0242727F88B5100D70C30 /* NLPRecommendationsPresenter.swift in Sources */,
+				F5719ADA282CF1B4009F4213 /* NLPAudioV2ViewController.swift in Sources */,
 				F5B8FA0B27F43F8D00AF2DCD /* AdcancedActionSheetComplexCell.swift in Sources */,
 				F5B8FA1727F43F8D00AF2DCD /* AdvancedActionSheet.swift in Sources */,
 				F5BE75F327A1BC6500AC49FA /* Request.swift in Sources */,
@@ -2921,6 +2976,7 @@
 				F5BE75C127A1BC6500AC49FA /* NoticeService.swift in Sources */,
 				F5A30E78282500D80088179F /* AnimatePathView.swift in Sources */,
 				F57005EA27D64DF2002A9F66 /* Nodes.swift in Sources */,
+				F515BE79282D0F7E00C503CB /* NLPHeaderView.swift in Sources */,
 				F5BE74FB27A1BB8400AC49FA /* KeyboardManager.swift in Sources */,
 				F5BE75C027A1BC6500AC49FA /* Notice.swift in Sources */,
 				F5BE74F127A1BB8400AC49FA /* UITableViewCell.swift in Sources */,
@@ -3132,7 +3188,7 @@
 		};
 		F5BE748E27A1B78500AC49FA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 177B714F31765019E321AFDC /* Pods-NLPMusic.debug.xcconfig */;
+			baseConfigurationReference = A468FCC15E23D3AEF27685BC /* Pods-NLPMusic.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = arm64;
@@ -3176,7 +3232,7 @@
 		};
 		F5BE748F27A1B78500AC49FA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F347A0FEDF79BD8C18D25E89 /* Pods-NLPMusic.release.xcconfig */;
+			baseConfigurationReference = 667CBE03D4FFFE78E144D0AB /* Pods-NLPMusic.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = arm64;

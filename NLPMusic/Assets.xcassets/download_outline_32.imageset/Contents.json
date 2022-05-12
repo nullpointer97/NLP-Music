@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "users_outline_28.png",
+      "filename" : "download_outline_28.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "users_outline_28@2x.png",
+      "filename" : "download_outline_28@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "users_outline_28@3x.png",
+      "filename" : "download_outline_28@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

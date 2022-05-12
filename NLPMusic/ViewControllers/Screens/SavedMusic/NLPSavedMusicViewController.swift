@@ -24,7 +24,6 @@ class NLPSavedMusicViewController: NLPBaseTableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didClearCache), name: NSNotification.Name("didCleanCache"), object: nil)
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: .init(named: "shuffle-2")?.tint(with: .getAccentColor(fromType: .common).withAlphaComponent(audioItems.count == 0 ? 0.5 : 1)), style: .done, target: self, action: #selector(didShuffleAll(_:))),
-            UIBarButtonItem(image: .init(named: "play.fill")?.tint(with: .getAccentColor(fromType: .common).withAlphaComponent(audioItems.count == 0 ? 0.5 : 1)), style: .done, target: self, action: #selector(didPlayAll(_:)))
         ]
     }
     
@@ -51,7 +50,6 @@ class NLPSavedMusicViewController: NLPBaseTableViewController {
             
             self.navigationItem.rightBarButtonItems = [
                 UIBarButtonItem(image: .init(named: "shuffle-2")?.tint(with: .getAccentColor(fromType: .common).withAlphaComponent(self.audioItems.count == 0 ? 0.5 : 1)), style: .done, target: self, action: #selector(self.didShuffleAll(_:))),
-                UIBarButtonItem(image: .init(named: "play.fill")?.tint(with: .getAccentColor(fromType: .common).withAlphaComponent(self.audioItems.count == 0 ? 0.5 : 1)), style: .done, target: self, action: #selector(self.didPlayAll(_:)))
             ]
         }
     }
