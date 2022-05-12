@@ -39,6 +39,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="RIm-ZC-7E0" secondAttribute="trailing" constant="16" id="0v0-Jh-vPV"/>
                     <constraint firstItem="IE6-jW-6uN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="OCZ-UY-Yeu"/>
@@ -49,6 +50,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="folderImageView" destination="IE6-jW-6uN" id="v6l-pg-CrS"/>
                 <outlet property="folderName" destination="RIm-ZC-7E0" id="q9h-IU-oUj"/>

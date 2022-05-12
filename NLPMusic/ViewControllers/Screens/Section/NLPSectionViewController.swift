@@ -55,7 +55,7 @@ final class NLPSectionViewController: NLPBaseTableViewController {
         }.ensure {
             self.didFinishLoad()
         }.catch { err in
-            self.error(message: "Произошла ошибка при загрузке\n\(err.toVK().toApi()?.message ?? "")")
+            self.error(message: "\(String.localized(.loadingError))\n\(err.toVK().toApi()?.message ?? "")")
         }
     }
 }

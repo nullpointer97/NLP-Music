@@ -15,6 +15,13 @@ protocol NLPAudioTableDelegate: AnyObject {
     func tableView(_ tableView: UITableView, willNeedPaginate cell: UITableViewCell, forRowAt indexPath: IndexPath)
 }
 
+protocol NLPAudioDataSourceActionsDelegate: AnyObject {
+    func didRemoveAudio(_ item: AudioPlayerItem)
+    func didAddAudio(_ item: AudioPlayerItem)
+    func didSaveAudio(_ item: AudioPlayerItem)
+    func didRemoveFromCacheAudio(_ item: AudioPlayerItem)
+}
+
 final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableViewDelegate {
     init(items: [AudioPlayerItem], parent: NLPBaseTableViewController?) {
         self.items = items
@@ -26,6 +33,9 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
             parent?.reload()
         }
     }
+    
+    var isCurrentUser: Bool = false
+    weak var actionDelegate: NLPAudioDataSourceActionsDelegate?
     
     var footerLineText: String? = "" {
         didSet {
@@ -79,6 +89,49 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         delegate?.tableView(tableView, willNeedPaginate: cell, forRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = items[indexPath.row]
+        let save = UIContextualAction(style: .normal, title: .localized(.save)) { [weak self] (action, view, completionHandler) in
+            self?.actionDelegate?.didSaveAudio(item)
+            completionHandler(true)
+        }
+        save.backgroundColor = .systemGreen
+
+        // Trash action
+        let addToLibrary = UIContextualAction(style: .destructive, title: .localized(.addToLibrary)) { [weak self] (action, view, completionHandler) in
+            self?.actionDelegate?.didAddAudio(item)
+            completionHandler(true)
+        }
+        addToLibrary.backgroundColor = .systemBlue
+
+        // Unread action
+        let delete = UIContextualAction(style: .normal, title: .localized(.delete)) { [weak self] (action, view, completionHandler) in
+            self?.actionDelegate?.didRemoveAudio(item)
+            completionHandler(true)
+        }
+        delete.backgroundColor = .systemRed
+        
+        let deleteFromCache = UIContextualAction(style: .normal, title: .localized(.deleteFromCache)) { [weak self] (action, view, completionHandler) in
+            self?.actionDelegate?.didRemoveFromCacheAudio(item)
+            completionHandler(true)
+        }
+        deleteFromCache.backgroundColor = .systemOrange
+        
+        let configuration: UISwipeActionsConfiguration
+        
+        if isCurrentUser {
+            configuration = UISwipeActionsConfiguration(actions: item.isDownloaded ? [delete, deleteFromCache].reversed() : [save, delete].reversed())
+        } else {
+            configuration = UISwipeActionsConfiguration(actions: item.isDownloaded ? [addToLibrary, deleteFromCache].reversed() : [addToLibrary, save].reversed())
+        }
+        
+        return configuration
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -23,7 +23,6 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var downloadedImage: UIImageView!
     @IBOutlet weak var trailingSecondConstraint: NSLayoutConstraint!
     @IBOutlet weak var durationLabel: UILabel!
@@ -47,10 +46,6 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
         downloadProgressRingView.maxValue = 100
         downloadProgressRingView.innerRingColor = .getAccentColor(fromType: .common)
         
-        morePlaceholderButton.add(to: contentView)
-        morePlaceholderButton.isUserInteractionEnabled = false
-        morePlaceholderButton.frame = moreButton.frame
-        
         playingAnimation = AnimationView(animation: Animation.named("playing"))
         playingAnimation.backgroundBehavior = .pauseAndRestore
         playingAnimation.loopMode = .loop
@@ -71,7 +66,7 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
 
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapAudio)))
         
-        moreButton.addTarget(self, action: #selector(onOpenMenu(_:)), for: .touchDown)
+        trailingSecondConstraint.constant = -28
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -79,9 +74,6 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
     }
     
     override func configure(with item: AudioPlayerItem) {
-        moreButton.setImage(.init(named: "more-horizontal")?.tint(with: .getAccentColor(fromType: .common)), for: .normal)
-        moreButton.setTitle("", for: .normal)
-        
         durationLabel.text = item.duration?.duration
         durationLabel.sizeToFit()
 
@@ -97,7 +89,7 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
             artistImageView.image = .init(named: "playlist_outline_56")
         }
         
-        setAnimation(isPlaying: item.isPlaying ?? false, isPaused: item.isPaused ?? false)
+        setAnimation(isPlaying: item.isPlaying , isPaused: item.isPaused)
         
         downloadedImage.isHidden = !item.isDownloaded
         
@@ -105,9 +97,6 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
     }
     
     func configure(withSavedItem item: AudioItem) {
-        moreButton.setImage(.init(named: "more-horizontal")?.tint(with: .getAccentColor(fromType: .common)), for: .normal)
-        moreButton.setTitle("", for: .normal)
-        
         durationLabel.text = item.duration?.duration
         durationLabel.sizeToFit()
 
@@ -131,12 +120,12 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
     func setDownloadProcess(_ status: DownloadStatus, indexPath: IndexPath) {
         switch status {
         case .none, .completed, .failed:
-            moreButton.isHidden = false
             downloadProgressRingView.isHidden = true
+            trailingSecondConstraint.constant = -28
         case .inProgress:
             tag = indexPath.row
-            moreButton.isHidden = true
             downloadProgressRingView.isHidden = false
+            trailingSecondConstraint.constant = 12
         }
     }
     
@@ -167,8 +156,5 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
 
     @IBAction func didOpenMenu(_ sender: UIButton) {
         menuDelegate?.didOpenMenu(audio: self)
-        if #available(iOS 14.0, *) {
-            moreButton.showsMenuAsPrimaryAction = true
-        }
     }
 }

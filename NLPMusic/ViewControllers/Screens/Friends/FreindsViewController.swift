@@ -16,7 +16,7 @@ class NLPFriendsViewController: NLPBaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Музыка друзей"
+        title = .localized(.friendsMusicTitle)
 
         setupTable()
         getFriends()
@@ -62,7 +62,7 @@ class NLPFriendsViewController: NLPBaseTableViewController {
     
     override func didFinishLoad() {
         super.didFinishLoad()
-        footer.loadingText = friends.isEmpty ? "У Вас нет друзей" : getStringByDeclension(number: friends.count, arrayWords: Localization.friendsCount)
+        footer.loadingText = friends.isEmpty ? "У Вас нет друзей" : getStringByDeclension(number: friends.count, arrayWords: Settings.language.contains("English") ? Localization.en.friendsCount : Localization.ru.friendsCount)
     }
     
     override func reloadAudioData() {
@@ -117,7 +117,8 @@ extension NLPFriendsViewController: UITableViewDelegate, SkeletonTableViewDataSo
         
         let audioController = NLPAudioWireframe().viewController
         audioController.userId = friend.id
-        audioController.navigationItem.title = "Музыка \(friend.firstNameGen)"
+        audioController.name = friend.firstNameGen
+        audioController.title = Settings.language.contains("English") ? "\(friend.firstNameGen)'s music" : "\(String.localized(.musicTitle)) \(friend.firstNameGen)"
         
         asdk_navigationViewController?.pushViewController(audioController, animated: true)
     }

@@ -30,7 +30,7 @@ class NLPTabController: UITabBarController {
     }()
     
     var viewControllersNames: [String] = [
-        "Музыка", "Рекомендации", "Поиск", "Друзья", "Настройки"
+        .localized(.musicTitle), .localized(.recommendationsTitle), .localized(.searchTitle), .localized(.freindsTitle), .localized(.settingsTitle)
     ]
     
     init() {
@@ -71,8 +71,8 @@ class NLPTabController: UITabBarController {
         
         playerViewController.popupItem.image = .init(named: "missing_song_artwork_generic_proxy")
         playerViewController.vkTabBarController = self
-        playerViewController.popupItem.attributedTitle = NSAttributedString(string: "Ожидает", attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 19 : 13, weight: .semibold), .foregroundColor: UIColor.label])
-        playerViewController.popupItem.attributedSubtitle = NSAttributedString(string: "воспроизведения", attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 15 : 12, weight: .regular), .foregroundColor: UIColor.secondaryLabel])
+        playerViewController.popupItem.attributedTitle = NSAttributedString(string: .localized(.playerWaitPrefix), attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 19 : 13, weight: .semibold), .foregroundColor: UIColor.label])
+        playerViewController.popupItem.attributedSubtitle = NSAttributedString(string: .localized(.playerWaitSuffix), attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 15 : 12, weight: .regular), .foregroundColor: UIColor.secondaryLabel])
         
         observables.append(UserDefaults.standard.observe(Int.self, key: "_playerStyle") {
             let isSmall = $0
@@ -98,8 +98,8 @@ class NLPTabController: UITabBarController {
                     }
                     self.playerViewController.popupItem.attributedSubtitle = NSAttributedString(string: currentItem.artist ?? "", attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 15 : 12, weight: .regular), .foregroundColor: UIColor.secondaryLabel])
                 } else {
-                    self.playerViewController.popupItem.attributedTitle = NSAttributedString(string: "Ожидает", attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 19 : 13, weight: .semibold), .foregroundColor: UIColor.label])
-                    self.playerViewController.popupItem.attributedSubtitle = NSAttributedString(string: "воспроизведения", attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 15 : 12, weight: .regular), .foregroundColor: UIColor.secondaryLabel])
+                    self.playerViewController.popupItem.attributedTitle = NSAttributedString(string: .localized(.playerWaitPrefix), attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 19 : 13, weight: .semibold), .foregroundColor: UIColor.label])
+                    self.playerViewController.popupItem.attributedSubtitle = NSAttributedString(string: .localized(.playerWaitSuffix), attributes: [.font: UIFont.systemFont(ofSize: Settings.playerStyle == 0 ? 15 : 12, weight: .regular), .foregroundColor: UIColor.secondaryLabel])
                 }
                 self.view.layoutIfNeeded()
             } completion: { _ in
@@ -229,11 +229,11 @@ class NLPTabController: UITabBarController {
         case .debug:
             SPAlert.present(title: "", message: message, preset: .done, haptic: .none)
         case .error:
-            SPAlert.present(title: "Ошибка", message: message, preset: .error, haptic: .error)
+            SPAlert.present(title: .localized(.commonErrorTitle), message: message, preset: .error, haptic: .error)
         case .warning:
-            SPAlert.present(title: "Внимание", message: message, preset: .custom((.init(named: "alert-triangle") ?? UIImage())), haptic: .warning)
+            SPAlert.present(title: .localized(.commonSuccessTitle), message: message, preset: .custom((.init(named: "alert-triangle") ?? UIImage())), haptic: .warning)
         case .success:
-            SPAlert.present(title: "Успешно", message: message, preset: .done, haptic: .success)
+            SPAlert.present(title: .localized(.commonWarningTitle), message: message, preset: .done, haptic: .success)
         }
     }
     
@@ -311,7 +311,7 @@ extension NLPTabController: AudioPlayerDelegate {
     
     func audioPlayer(_ audioPlayer: AudioPlayer, shouldStartPlaying item: AudioPlayerItem) -> Bool {
         guard let url = URL(string: item.url) else {
-            showEventMessage(.error, message: "Ссылка на аудио недоступна")
+            showEventMessage(.error, message: .localized(.audioURLError))
             return false
         }
         return UIApplication.shared.canOpenURL(url)

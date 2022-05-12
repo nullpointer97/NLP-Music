@@ -37,7 +37,7 @@ extension NLPAudioInteractor: NLPAudioInteractorInterface {
         }.ensure {
             self.presenter?.onDidFinishLoad()
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при загрузке\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
     
@@ -50,13 +50,12 @@ extension NLPAudioInteractor: NLPAudioInteractorInterface {
         try ApiV2.method(.addAudio, parameters: &parametersAudio, apiVersion: .defaultApiVersion).done { result in
             DispatchQueue.main.async { [self] in
                 let navigationController = presenter?.vkTabBarController?.viewControllers?.first as? NLPMNavigationController
-                let audioViewController = navigationController?.viewControllers.first as? NLPAudioViewController
-                guard audioViewController?.userId == currentUserId else { return }
-                audioViewController?.audioItems.insert(audio, at: 0)
-                audioViewController?.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .left)
+                let audioViewController = navigationController?.viewControllers.first as? NLPAudioV2ViewController
+                audioViewController?.presenter.dataSource?[2].items[0].items.insert(audio, at: 0)
+                audioViewController?.tableView.insertRows(at: [IndexPath(row: 0, section: 2)], with: .left)
             }
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при добавлении\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.addError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
     
@@ -70,7 +69,7 @@ extension NLPAudioInteractor: NLPAudioInteractorInterface {
             guard result["response"].intValue == 1 else { return }
             self.presenter?.didRemoveAudio(audio: audio)
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при удалении\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.deleteError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
 }

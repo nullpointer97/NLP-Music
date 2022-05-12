@@ -16,18 +16,19 @@ final class NLPAudioViewController: NLPBaseTableViewController {
 
     var presenter: NLPAudioPresenterInterface!
     var userId = currentUserId
+    var name = ""
 
     // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
-        
+
         do {
             try presenter.onGetAudio(userId: userId, isPaginate: false)
         } catch {
             print(error)
-            self.error(message: "Произошла ошибка")
+            self.error(message: .localized(.commonError))
         }
 
         if userId == currentUserId {
@@ -61,7 +62,7 @@ final class NLPAudioViewController: NLPBaseTableViewController {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let item = audioItems[indexPath.row]
         
-        let saveAction = MDCActionSheetAction(title: "Сохранить", image: UIImage(named: "download_outline_28")?.tint(with: .label)) { [weak self] _ in
+        let saveAction = MDCActionSheetAction(title: .localized(.save), image: UIImage(named: "download_outline_28")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
             self.didSaveAudio(item, indexPath: indexPath)
         }
@@ -69,7 +70,7 @@ final class NLPAudioViewController: NLPBaseTableViewController {
         saveAction.titleColor = .label
         saveAction.isEnabled = true
         
-        let addAction = MDCActionSheetAction(title: "Добавить к себе", image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
+        let addAction = MDCActionSheetAction(title: .localized(.addToLibrary), image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
             do {
                 try self.presenter.onAddAudio(audio: item)
@@ -81,19 +82,19 @@ final class NLPAudioViewController: NLPBaseTableViewController {
         addAction.titleColor = .label
         addAction.isEnabled = true
         
-        let removeAction = MDCActionSheetAction(title: "Удалить", image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
+        let removeAction = MDCActionSheetAction(title: .localized(.delete), image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
             guard let self = self else { return }
             do {
                 try self.presenter.onRemoveAudio(audio: item)
             } catch {
-                self.showEventMessage(.error, message: "Произошла ошибка при удалении")
+                self.showEventMessage(.error, message: .localized(.commonError))
             }
         }
         removeAction.tintColor = .systemRed
         removeAction.titleColor = .systemRed
         removeAction.isEnabled = true
-
-        let removeInCacheAction = MDCActionSheetAction(title: "Удалить из кэша", image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
+        
+        let removeInCacheAction = MDCActionSheetAction(title: .localized(.deleteFromCache), image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
             guard let self = self else { return }
             self.didRemoveAudio(item, indexPath: indexPath)
         }
@@ -102,14 +103,15 @@ final class NLPAudioViewController: NLPBaseTableViewController {
         removeInCacheAction.isEnabled = true
         
         if userId == currentUserId {
-            openMenu(fromItem: item, actions: item.isDownloaded ? [removeAction, removeInCacheAction] : [saveAction, removeAction])
+            openMenu(fromItem: item, actions: item.isDownloaded ? [removeAction, removeInCacheAction] : [saveAction, removeAction], title: item.title)
         } else {
-            openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction])
+            openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction], title: item.title)
         }
     }
     
     override func setupTable(style: UITableView.Style = .plain) {
         super.setupTable()
+        dataSource?.isCurrentUser = userId == currentUserId
         
         addRefreshControl()
         
@@ -119,7 +121,11 @@ final class NLPAudioViewController: NLPBaseTableViewController {
     
     override func reload() {
         super.reload()
-        footer.loadingText = audioItems.isEmpty ? "У Вас нет аудиозаписей" : getStringByDeclension(number: audioItems.count, arrayWords: Localization.audioCount)
+        if userId == currentUserId {
+            footer.loadingText = audioItems.isEmpty ? .localized(.noAudios) : getStringByDeclension(number: audioItems.count, arrayWords: Settings.language.contains("English") ? Localization.en.audioCount : Localization.ru.audioCount)
+        } else {
+            footer.loadingText = audioItems.isEmpty ? (.localized(.noAudiosPrefix) + name + .localized(.noAudiosSuffix)) : getStringByDeclension(number: audioItems.count, arrayWords: Settings.language.contains("English") ? Localization.en.audioCount : Localization.ru.audioCount)
+        }
     }
     
     override func reloadAudioData() {
@@ -127,7 +133,7 @@ final class NLPAudioViewController: NLPBaseTableViewController {
             try presenter.onGetAudio(userId: userId, isPaginate: false)
         } catch {
             print(error)
-            self.error(message: "Произошла ошибка")
+            self.error(message: .localized(.commonError))
         }
     }
     
@@ -137,7 +143,7 @@ final class NLPAudioViewController: NLPBaseTableViewController {
                 try presenter.onGetAudio(userId: userId, isPaginate: true)
             } catch {
                 print(error)
-                self.error(message: "Произошла ошибка")
+                self.error(message: .localized(.commonError))
             }
         }
     }
@@ -145,6 +151,30 @@ final class NLPAudioViewController: NLPBaseTableViewController {
     override func getIndexPath(byItem item: AudioPlayerItem) -> IndexPath? {
         guard let row = presenter.audioItems.firstIndex(of: item) else { return nil }
         return IndexPath(row: row, section: 1)
+    }
+    
+    override func didAddAudio(_ item: AudioPlayerItem) {
+        do {
+            try self.presenter.onAddAudio(audio: item)
+        } catch {
+            self.showEventMessage(.error, message: error.localizedDescription)
+        }
+    }
+    
+    override func didRemoveAudio(_ item: AudioPlayerItem) {
+        do {
+            try self.presenter.onRemoveAudio(audio: item)
+        } catch {
+            self.showEventMessage(.error, message: .localized(.commonError))
+        }
+    }
+    
+    override func didRemoveFromCacheAudio(_ item: AudioPlayerItem) {
+        didRemoveAudio(item, indexPath: getIndexPath(byItem: item) ?? IndexPath())
+    }
+    
+    override func didSaveAudio(_ item: AudioPlayerItem) {
+        didSaveAudio(item, indexPath: getIndexPath(byItem: item) ?? IndexPath())
     }
     
     @objc func openRecommendations(_ sender: UIBarButtonItem) {

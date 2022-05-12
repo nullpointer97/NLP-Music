@@ -43,7 +43,7 @@ struct ApiV2 {
         
         print(md5String)
         
-        parameters["lang"] = "ru"
+        parameters["lang"] = Settings.language
         parameters["v"] = v
         parameters["access_token"] = token
         print(token)

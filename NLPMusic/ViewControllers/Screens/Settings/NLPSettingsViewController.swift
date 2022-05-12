@@ -26,10 +26,11 @@ enum ActionType {
     case logout(() -> (Void))
     case cleanCache(() -> (Void))
     case update(() -> (Void))
+    case changeLanguage(() -> (Void))
 }
 
 enum PlayerStyle: String {
-    case vk = "VK"
+    case vk = "VK Music"
     case appleMusic = "Apple Music"
     case nlp = "NLP Music"
     
@@ -74,6 +75,14 @@ class Settings: NSObject {
             return standartUserDefaults.bool(forKey: "_namesInTabbar")
         } set {
             standartUserDefaults.set(newValue, forKey: "_namesInTabbar")
+        }
+    }
+    
+    class var language: String {
+        get {
+            return standartUserDefaults.string(forKey: "_languages") ?? getLanguage()
+        } set {
+            standartUserDefaults.set(newValue, forKey: "_languages")
         }
     }
     
@@ -191,24 +200,25 @@ class Settings: NSObject {
                 SettingViewModel(title: "", subtitle: "", setting: Settings.user, type: .plain, key: "_user", isEnabled: true, image: nil, user: nil)
             ],
             [
-                SettingViewModel(title: "Стиль плеера", subtitle: PlayerStyle.style(for: playerStyle).rawValue, setting: playerStyle, type: .additionalText(.changePlayerStyle( { } )), key: "_playerStyle", image: "palette_outline_16", imageColor: .color(from: 0xFF9500)),
-                SettingViewModel(title: "Цвет акцента", setting: String(format: "#%02X", accentColor), type: .anotherView, key: "_accentColor", image: "brush_outline_24", imageColor: .color(from: 0x007AFF)),
-                SettingViewModel(title: "Сворачивание плеера", subtitle: dismissType == 0 ? "Snap" : "Interactive", setting: dismissType, type: .additionalText(.changeDismissType( { } )), key: "_playerStyle", image: "interactive_24", imageColor: .color(from: 0x007AFF)),
-                SettingViewModel(title: "Подписи в таббаре", setting: namesInTabbar, type: .switch, key: "_namesInTabbar", defaultValue: true, image: "text_16", imageColor: .color(from: 0x34C759))
+                SettingViewModel(title: .localized(.playerStyle), subtitle: PlayerStyle.style(for: playerStyle).rawValue, setting: playerStyle, type: .additionalText(.changePlayerStyle( { } )), key: "_playerStyle", image: "palette_outline_16", imageColor: .color(from: 0xFF9500)),
+                SettingViewModel(title: .localized(.accentColor), setting: String(format: "#%02X", accentColor), type: .anotherView, key: "_accentColor", image: "brush_outline_24", imageColor: .color(from: 0x007AFF)),
+                SettingViewModel(title: .localized(.playerSwipe), subtitle: dismissType == 0 ? "Snap" : "Interactive", setting: dismissType, type: .additionalText(.changeDismissType( { } )), key: "_playerStyle", image: "interactive_24", imageColor: .color(from: 0x007AFF)),
+                SettingViewModel(title: .localized(.tabbarNames), setting: namesInTabbar, type: .switch, key: "_namesInTabbar", defaultValue: true, image: "text_16", imageColor: .color(from: 0x34C759)),
+                SettingViewModel(title: .localized(.language), subtitle: language, setting: language, type: .additionalText(.changeLanguage( { } )), key: "AppleLanguages", defaultValue: true, image: "articles_outline_20", imageColor: .color(from: 0xFF3B30))
             ],
             [
-                SettingViewModel(title: "Автоскачивание", setting: downloadAsPlaying, type: .switch, key: "_downloadAsPlaying", defaultValue: false, image: "down_16", imageColor: .color(from: 0x34C759)),
-                SettingViewModel(title: "Скачивать только через Wi-Fi", setting: downloadOnlyWifi, type: .switch, key: "_downloadOnlyWifi", defaultValue: true, image: "wifi", imageColor: .color(from: 0x007AFF)),
-                SettingViewModel(title: "Очистить кэш", setting: clean, type: .action(.cleanCache({ clearCache() })), key: "_clean", isEnabled: cacheSizeInt > 0, image: "clear_data_24", imageColor: .color(from: 0xFF3B30))
+                SettingViewModel(title: .localized(.autoDownload), setting: downloadAsPlaying, type: .switch, key: "_downloadAsPlaying", defaultValue: false, image: "down_16", imageColor: .color(from: 0x34C759)),
+                SettingViewModel(title: .localized(.downloadWifi), setting: downloadOnlyWifi, type: .switch, key: "_downloadOnlyWifi", defaultValue: true, image: "wifi", imageColor: .color(from: 0x007AFF)),
+                SettingViewModel(title: .localized(.clearCacheSettings), setting: clean, type: .action(.cleanCache({ clearCache() })), key: "_clean", isEnabled: cacheSizeInt > 0, image: "clear_data_24", imageColor: .color(from: 0xFF3B30))
             ],
             [
-                SettingViewModel(title: "Обновление", setting: update, type: .action(.update( { } ) ), key: "_update", isEnabled: false, image: "market_outline_16", imageColor: .color(from: 0xFF3B30))
+                SettingViewModel(title: .localized(.updates), setting: update, type: .action(.update( { } ) ), key: "_update", isEnabled: false, image: "market_outline_16", imageColor: .color(from: 0xFF3B30))
             ],
             [
-                SettingViewModel(title: "Телеграм канал разработчика", setting: tgChannel, type: .action(.tgChannel({ })), key: "_tgChannel", image: "navigation-2", imageColor: .color(from: 0x5856D6)),
-                SettingViewModel(title: "Поддержать разработчика", setting: donate, type: .action(.donate({ })), key: "_donate", image: "money_transfer_24", imageColor: .color(from: 0x5856D6)),
-                SettingViewModel(title: "Сообщить о проблеме", setting: report, type: .action(.report({ })), key: "_report", image: "advertising_24", imageColor: .color(from: 0x8E8E93)),
-                SettingViewModel(title: "Выход", setting: logout, type: .action(.logout({ VK.sessions.default.logOut() })), key: "_logout", settingColor: .systemRed, image: "share_external_24 iOS", imageColor: .systemRed)
+                SettingViewModel(title: .localized(.tgChannel), setting: tgChannel, type: .action(.tgChannel({ })), key: "_tgChannel", image: "navigation-2", imageColor: .color(from: 0x5856D6)),
+                SettingViewModel(title: .localized(.donate), setting: donate, type: .action(.donate({ })), key: "_donate", image: "money_transfer_24", imageColor: .color(from: 0x5856D6)),
+                SettingViewModel(title: .localized(.report), setting: report, type: .action(.report({ })), key: "_report", image: "advertising_24", imageColor: .color(from: 0x8E8E93)),
+                SettingViewModel(title: .localized(.logoutSettings), setting: logout, type: .action(.logout({ VK.sessions.default.logOut() })), key: "_logout", settingColor: .color(from: 0xFF3B30), image: "share_external_24 iOS", imageColor: .color(from: 0xFF3B30))
             ]
         ]
         return settings
@@ -394,6 +404,16 @@ class HSBColorPicker: UIView {
             delegate?.HSBColorColorPickerTouched(sender: self, color: color, point: point, state: gestureRecognizer.state)
         default: break
         }
+    }
+}
+
+func getLanguage() -> String {
+    let langCode = Bundle.main.preferredLocalizations[0]
+    let locale = Locale.current
+    if let languageName = locale.localizedString(forLanguageCode: langCode) {
+        return languageName
+    } else {
+        return "--"
     }
 }
 

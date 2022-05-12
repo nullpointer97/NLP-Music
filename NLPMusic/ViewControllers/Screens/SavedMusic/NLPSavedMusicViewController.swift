@@ -65,7 +65,7 @@ class NLPSavedMusicViewController: NLPBaseTableViewController {
         }
         removeInCacheAction.tintColor = .systemRed
         removeInCacheAction.titleColor = .systemRed
-        openMenu(fromItem: AudioPlayerItem(from: item), actions: [removeInCacheAction])
+        openMenu(fromItem: AudioPlayerItem(from: item), actions: [removeInCacheAction], title: item.title)
     }
     
     @objc func didClearCache() {

@@ -29,7 +29,7 @@ extension NLPRecommendationsInteractor: NLPRecommendationsInteractorInterface {
         }.ensure {
             self.presenter?.onDidFinishLoad()
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при загрузке\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
     
@@ -42,13 +42,12 @@ extension NLPRecommendationsInteractor: NLPRecommendationsInteractorInterface {
         try ApiV2.method(.addAudio, parameters: &parametersAudio, apiVersion: .defaultApiVersion).done { result in
             DispatchQueue.main.async { [self] in
                 let navigationController = presenter?.vkTabBarController?.viewControllers?.first as? NLPMNavigationController
-                let audioViewController = navigationController?.viewControllers.first as? NLPAudioViewController
-                guard audioViewController?.userId == currentUserId else { return }
-                audioViewController?.audioItems.insert(audio, at: 0)
-                audioViewController?.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .left)
+                let audioViewController = navigationController?.viewControllers.first as? NLPAudioV2ViewController
+                audioViewController?.presenter.dataSource?[2].items[0].items.insert(audio, at: 0)
+                audioViewController?.tableView.insertRows(at: [IndexPath(row: 0, section: 2)], with: .left)
             }
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при добавлении")
+            self.presenter?.onError(message: .localized(.addError))
         }
     }
 }

@@ -18,7 +18,7 @@ class NLPRecommendationsViewController: NLPBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Рекомендации"
+        title = .localized(.recommendationsTitle)
         
         setupTable()
         
@@ -56,7 +56,7 @@ class NLPRecommendationsViewController: NLPBaseTableViewController {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let item = audioItems[indexPath.row]
         
-        let saveAction = MDCActionSheetAction(title: "Сохранить", image: UIImage(named: "download_outline_28")?.tint(with: .label)) { [weak self] _ in
+        let saveAction = MDCActionSheetAction(title: .localized(.save), image: UIImage(named: "download_outline_28")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
             self.didSaveAudio(item, indexPath: indexPath)
         }
@@ -64,7 +64,7 @@ class NLPRecommendationsViewController: NLPBaseTableViewController {
         saveAction.titleColor = .label
         saveAction.isEnabled = true
         
-        let addAction = MDCActionSheetAction(title: "Добавить к себе", image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
+        let addAction = MDCActionSheetAction(title: .localized(.addToLibrary), image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
             do {
                 try self.presenter.onAddAudio(audio: item)
@@ -76,13 +76,15 @@ class NLPRecommendationsViewController: NLPBaseTableViewController {
         addAction.titleColor = .label
         addAction.isEnabled = true
         
-        let removeInCacheAction = MDCActionSheetAction(title: "Удалить из кэша", image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
+        let removeInCacheAction = MDCActionSheetAction(title: .localized(.deleteFromCache), image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
             guard let self = self else { return }
             self.didRemoveAudio(item, indexPath: indexPath)
         }
         removeInCacheAction.tintColor = .systemRed
         removeInCacheAction.titleColor = .systemRed
-        openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction])
+        removeInCacheAction.isEnabled = true
+        
+        openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction], title: item.title)
     }
     
     override func reloadAudioData() {
@@ -91,6 +93,22 @@ class NLPRecommendationsViewController: NLPBaseTableViewController {
         } catch {
             print(error)
         }
+    }
+    
+    override func didAddAudio(_ item: AudioPlayerItem) {
+        do {
+            try presenter.onAddAudio(audio: item)
+        } catch {
+            showEventMessage(.error, message: error.localizedDescription)
+        }
+    }
+    
+    override func didRemoveFromCacheAudio(_ item: AudioPlayerItem) {
+        didRemoveAudio(item, indexPath: IndexPath())
+    }
+    
+    override func didSaveAudio(_ item: AudioPlayerItem) {
+        didSaveAudio(item, indexPath: IndexPath())
     }
 }
 

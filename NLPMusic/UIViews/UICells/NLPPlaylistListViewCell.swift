@@ -48,9 +48,9 @@ class NLPPlaylistListViewCell: NLPBaseViewCell<Playlist> {
         let plays = item.plays ?? 0 > 0 ? "\(item.plays ?? 0)" : ""
         
         if !year.isEmpty && !plays.isEmpty {
-            additionalText = "\(year) · \(getStringByDeclension(number: item.plays, arrayWords: Localization.plays))"
+            additionalText = "\(year) · \(getStringByDeclension(number: item.plays, arrayWords: Settings.language.contains("English") ? Localization.en.plays : Localization.ru.plays))"
         } else if year.isEmpty && !plays.isEmpty {
-            additionalText = getStringByDeclension(number: item.plays, arrayWords: Localization.plays)
+            additionalText = getStringByDeclension(number: item.plays, arrayWords: Settings.language.contains("English") ? Localization.en.plays : Localization.ru.plays)
         } else if !year.isEmpty && plays.isEmpty {
             additionalText = year
         } else {

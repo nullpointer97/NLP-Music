@@ -83,8 +83,8 @@ open class NLPMNavigationController: UINavigationController, UINavigationControl
     
     func configure() {
         additionalSafeAreaInsets.top = 12
-        interactivePopGestureRecognizer?.isEnabled = false
-        view.addGestureRecognizer(fullScreenPanGestureRecognizer)
+//        interactivePopGestureRecognizer?.isEnabled = false
+//        view.addGestureRecognizer(fullScreenPanGestureRecognizer)
         
         navigationItem.largeTitleDisplayMode = .never
         navigationBar.prefersLargeTitles = false

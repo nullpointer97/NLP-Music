@@ -45,7 +45,7 @@ class NLPFolderViewCell: NLPBaseViewCell<AudioSectionItem> {
         folderImageView.image = "shuffle-2".toImage()?.tint(with: .getAccentColor(fromType: .common))
         folderName.textColor = .getAccentColor(fromType: .common)
         folderName.font = .systemFont(ofSize: 17, weight: UIFont.Weight(0.25))
-        folderName.text = "Перемешать все"
+        folderName.text = .localized(.shuffle)
         folderImageView.backgroundColor = .secondaryButton
         imageViewTopPadding.constant = 6
         imageViewBottomPadding.constant = 6

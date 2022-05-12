@@ -382,7 +382,7 @@ public class AudioPlayerItem: NSObject {
         }
     }
 
-    private var documentsDirectoryURL: URL { FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("music_cache") }
+    var documentsDirectoryURL: URL { FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("music_cache") }
     
     public var isPlaying: Bool {
         let service = AudioService.instance
@@ -475,7 +475,7 @@ public class AudioPlayerItem: NSObject {
                     }
                 }
                 
-                NotificationCenter.default.post(name: NSNotification.Name("AudioRemoved"), object: nil, userInfo: ["audioItem": self])
+                NotificationCenter.default.post(name: NSNotification.Name("didRemoveAudio"), object: nil, userInfo: ["item": self])
             }
         } else {
             throw "Audio not contain URL"

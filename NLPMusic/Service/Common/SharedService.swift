@@ -100,37 +100,4 @@ class SharedService: NSObject {
             return dt
         }
     }
-    
-    func onlineTime(with date: Date) -> DateFormatter {
-        let dt = DateFormatter()
-        dt.locale = Locale(identifier: "ru_RU")
-        
-        let elapsedTime = Date().timeIntervalSince(date)
-        let hours = floor(elapsedTime / 60 / 60).intValue
-        let minutes = floor((elapsedTime - (hours.doubleValue * 60 * 60)) / 60).intValue
-        let seconds = floor((elapsedTime - (minutes.doubleValue * 60))).intValue
-
-        if elapsedTime < 15 {
-            dt.dateFormat = "в сети только что"
-            return dt
-        } else if elapsedTime < 60 {
-            dt.dateFormat = "'в сети \(seconds) \(getStringByDeclension(number: Int(seconds), arrayWords: Localization.timeSeconds)) назад'"
-            return dt
-        } else if elapsedTime < 3600 {
-            dt.dateFormat = "'в сети \(minutes) \(getStringByDeclension(number: Int(minutes), arrayWords: Localization.timeMinutes)) назад'"
-            return dt
-        } else if elapsedTime < 18000 {
-            dt.dateFormat = "'в сети \(hours) \(getStringByDeclension(number: Int(hours), arrayWords: Localization.timeHours)) назад'"
-            return dt
-        } else if elapsedTime < 86399 {
-            dt.dateFormat = "'в сети сегодня в' HH:mm"
-            return dt
-        } else if elapsedTime < 172799 {
-            dt.dateFormat = "'в сети вчера в' HH:mm"
-            return dt
-        } else {
-            dt.dateFormat = "'в сети' d MMMM 'в' HH:mm"
-            return dt
-        }
-    }
 }

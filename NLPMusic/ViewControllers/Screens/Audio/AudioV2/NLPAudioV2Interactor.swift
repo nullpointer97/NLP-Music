@@ -26,11 +26,11 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
                 self.presenter?.audioItems.removeAll()
                 sectionHandler(sections[1]["id"].stringValue)
             }.catch { error in
-                self.presenter?.onError(message: "Произошла ошибка при загрузке\n\(error.toVK().toApi()?.message ?? "")")
+                self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(error.toVK().toApi()?.message ?? "")")
                 self.presenter?.onDidFinishLoad()
                 self.presenter?.dataSource = [
                     AudioSection(items: [
-                        AudioSectionItem(items: [], title: "Сохраненные аудиозаписи", image: "download_outline_32", blockId: "")
+                        AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
                     ], title: "", count: 0)
                 ]
                 sectionHandler("")
@@ -38,7 +38,7 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
         } catch {
             self.presenter?.dataSource = [
                 AudioSection(items: [
-                    AudioSectionItem(items: [], title: "Сохраненные аудиозаписи", image: "download_outline_32", blockId: "")
+                    AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
                 ], title: "", count: 0)
             ]
             sectionHandler("")
@@ -59,10 +59,10 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
                         AudioSection(items: [
                             AudioSectionItem(items: [], title: lastPlayingBlock["layout"]["title"].stringValue, image: "history_backward_outline_28", blockId: lastPlayingBlock["actions"].arrayValue[0]["section_id"].stringValue),
                             AudioSectionItem(items: [], title: playlistBlock["layout"]["title"].stringValue, image: "playlist_outline_28", blockId: playlistBlock["actions"].arrayValue[0]["section_id"].stringValue),
-                            AudioSectionItem(items: [], title: "Сохраненная музыка", image: "download_outline_32", blockId: "")
+                            AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
                         ], title: "", count: 0),
                         AudioSection(items: [
-                            AudioSectionItem(items: [], title: "Перемешать все", image: "shuffle-2", blockId: "")
+                            AudioSectionItem(items: [], title: .localized(.shuffle), image: "shuffle-2", blockId: "")
                         ], title: "", count: 0)
                     ]
                     
@@ -75,15 +75,15 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
                             do {
                                 try self.getBlock(sectionId: audioBlock["id"].stringValue, startFrom: audioBlock["next_from"].stringValue)
                             } catch {
-                                self.presenter?.onError(message: "Произошла ошибка при загрузке")
+                                self.presenter?.onError(message: "\(String.localized(.loadingError))")
                             }
                         }
                     }
                 }.catch { error in
-                    self.presenter?.onError(message: "Произошла ошибка при загрузке\n\(error.toVK().toApi()?.message ?? "")")
+                    self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(error.toVK().toApi()?.message ?? "")")
                 }
             } catch {
-                self.presenter?.onError(message: "Произошла ошибка при загрузке")
+                self.presenter?.onError(message: "\(String.localized(.loadingError))")
             }
         }
     }
@@ -96,13 +96,13 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
             
             try self.getAudiosByIds(audios: section["blocks"][0]["audios_ids"].arrayValue.compactMap { $0.stringValue })
         }.catch { err in
-            self.presenter?.onError(message: "Произошла ошибка при загрузке\n\(err.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(err.toVK().toApi()?.message ?? "")")
         }
     }
     
     private func getAudiosByIds(audios: [String]) throws {
         var parameters: Parameters = ["audios": audios]
-        try ApiV2.method("audio.getById", parameters: &parameters, requestMethod: .get, apiVersion: "5.171").done { response in
+        try ApiV2.method("audio.getById", parameters: &parameters, requestMethod: .get, apiVersion: "5.89").done { response in
             let audios = response["response"].arrayValue
             self.presenter?.audioItems.insert(contentsOf: audios.compactMap { AudioPlayerItem(fromJSON: $0) }.uniqued(), at: self.presenter?.audioItems.count ?? 0)
             
@@ -111,16 +111,16 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
             if dataSource.indices.contains(2) {
                 self.presenter?.dataSource?[2] = AudioSection(items: [
                     AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "", image: nil, blockId: ""),
-                ], title: "Аудиозаписи", count: (self.presenter?.audioItems ?? []).count)
+                ], title: .localized(.audiosTitle), count: (self.presenter?.audioItems ?? []).count)
             } else {
                 self.presenter?.dataSource?.append([AudioSection(items: [
-                    AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "Треки", image: nil, blockId: ""),
-                ], title: "Аудиозаписи", count: (self.presenter?.audioItems ?? []).count)])
+                    AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "", image: nil, blockId: ""),
+                ], title: .localized(.audiosTitle), count: (self.presenter?.audioItems ?? []).count)])
             }
         }.ensure {
             self.presenter?.onDidFinishLoad()
         }.catch { err in
-            self.presenter?.onError(message: "Произошла ошибка при загрузке\n\(err.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(err.toVK().toApi()?.message ?? "")")
         }
     }
     
@@ -134,12 +134,11 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
             DispatchQueue.main.async { [self] in
                 let navigationController = presenter?.vkTabBarController?.viewControllers?.first as? NLPMNavigationController
                 let audioViewController = navigationController?.viewControllers.first as? NLPAudioV2ViewController
-                guard audioViewController?.userId == currentUserId else { return }
-                audioViewController?.audioItems.insert(audio, at: 0)
-                audioViewController?.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .left)
+                audioViewController?.presenter.dataSource?[2].items[0].items.insert(audio, at: 0)
+                audioViewController?.tableView.insertRows(at: [IndexPath(row: 0, section: 2)], with: .left)
             }
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при добавлении\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.addError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
     
@@ -153,7 +152,7 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
             guard result["response"].intValue == 1 else { return }
             self.presenter?.didRemoveAudio(audio: audio)
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при удалении\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.deleteError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
 }

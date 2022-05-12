@@ -16,6 +16,7 @@ class TroubleSenderViewController: NLPModalViewController {
     @IBOutlet weak var sendReportButton: UIButton!
     @IBOutlet weak var reportTextView: UITextView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var troubleDecription: UILabel!
     
     var popupHeightWithoutKeyboard: CGFloat {
         return 211 + (UIDevice.current.hasNotch ? 24 : 8)
@@ -43,7 +44,7 @@ class TroubleSenderViewController: NLPModalViewController {
         view.backgroundColor = .systemBackground.withAlphaComponent(0.1)
         view.setBlurBackground(style: .regular)
         
-        titleLabel.text = "Отчет о проблеме"
+        titleLabel.text = .localized(.report)
         
         dismissButton.setTitle("", for: .normal)
         dismissButton.backgroundColor = .secondaryPopupFill.withAlphaComponent(0.2)
@@ -54,6 +55,8 @@ class TroubleSenderViewController: NLPModalViewController {
         reportTextView.drawBorder(10, width: 1, color: .getAccentColor(fromType: .common))
 
         sendReportButton.backgroundColor = .getAccentColor(fromType: .common)
+        
+        troubleDecription.text = .localized(.trouble)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

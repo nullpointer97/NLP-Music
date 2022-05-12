@@ -220,6 +220,7 @@
 		F5719ADB282CF1B4009F4213 /* NLPAudioV2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD6282CF1B3009F4213 /* NLPAudioV2Presenter.swift */; };
 		F5719ADC282CF1B4009F4213 /* NLPAudioV2Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD7282CF1B3009F4213 /* NLPAudioV2Wireframe.swift */; };
 		F5719ADD282CF1B4009F4213 /* NLPAudioV2Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5719AD8282CF1B3009F4213 /* NLPAudioV2Interactor.swift */; };
+		F578465E282D787200E6CAAB /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578465D282D787200E6CAAB /* Bundle.swift */; };
 		F5813B9A27CCCD1D00F647A5 /* SonogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5813B9927CCCD1D00F647A5 /* SonogramView.swift */; };
 		F5813BA327CCD37D00F647A5 /* AVAudioFileExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5813B9C27CCD37C00F647A5 /* AVAudioFileExtensions.swift */; };
 		F5813BA427CCD37D00F647A5 /* Chronometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5813B9D27CCD37C00F647A5 /* Chronometer.swift */; };
@@ -743,6 +744,7 @@
 		F5719AD6282CF1B3009F4213 /* NLPAudioV2Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2Presenter.swift; sourceTree = "<group>"; };
 		F5719AD7282CF1B3009F4213 /* NLPAudioV2Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2Wireframe.swift; sourceTree = "<group>"; };
 		F5719AD8282CF1B3009F4213 /* NLPAudioV2Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPAudioV2Interactor.swift; sourceTree = "<group>"; };
+		F578465D282D787200E6CAAB /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		F5813B9927CCCD1D00F647A5 /* SonogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonogramView.swift; sourceTree = "<group>"; };
 		F5813B9C27CCD37C00F647A5 /* AVAudioFileExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVAudioFileExtensions.swift; sourceTree = "<group>"; };
 		F5813B9D27CCD37C00F647A5 /* Chronometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chronometer.swift; sourceTree = "<group>"; };
@@ -1907,6 +1909,7 @@
 				F5BE74C627A1BB8400AC49FA /* UIImageView.swift */,
 				F5BE74C727A1BB8400AC49FA /* CGSize+Extension.swift */,
 				F5BE74C827A1BB8400AC49FA /* UITextField+Extension.swift */,
+				F578465D282D787200E6CAAB /* Bundle.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2836,6 +2839,7 @@
 				F536FC1827E32088004C21E1 /* DefaultColorPickerViewController.swift in Sources */,
 				F5BE750327A1BB8400AC49FA /* NSNotifications.swift in Sources */,
 				F5B8FA1827F43F8D00AF2DCD /* CollectionExtension.swift in Sources */,
+				F578465E282D787200E6CAAB /* Bundle.swift in Sources */,
 				F5EFD4192816F98E00F6CF2C /* CollectionViewDiffableDataSource.swift in Sources */,
 				F5BE759A27A1BC6500AC49FA /* URL+Offline.swift in Sources */,
 				F55E765127ABDCC000A3DE4D /* ContextMenuDelegate.swift in Sources */,

@@ -46,7 +46,7 @@ extension NLPAllPlaylistsInteractor: NLPAllPlaylistsInteractorInterface {
         }.ensure {
             self.presenter?.onDidFinishLoad()
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при загрузке\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
     
@@ -62,7 +62,7 @@ extension NLPAllPlaylistsInteractor: NLPAllPlaylistsInteractorInterface {
         }.ensure {
             self.presenter?.onDidFinishLoad()
         }.catch { error in
-            self.presenter?.onError(message: "Произошла ошибка при удалении\n\(error.toVK().toApi()?.message ?? "")")
+            self.presenter?.onError(message: "\(String.localized(.deleteError))\n\(error.toVK().toApi()?.message ?? "")")
         }
     }
 }

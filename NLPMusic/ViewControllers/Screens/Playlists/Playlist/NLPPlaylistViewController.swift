@@ -30,8 +30,8 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = playlist.title
-        
+        title = playlist.title
+
         setupTable()
         
         navigationItem.rightBarButtonItems = [
@@ -42,7 +42,7 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
             try presenter.onGetPlaylists(isPaginate: false, playlistId: playlist.id)
         } catch {
             print(error)
-            self.error(message: "Произошла ошибка")
+            self.error(message: .localized(.commonError))
         }
     }
     
@@ -85,7 +85,7 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
         }
         removeInCacheAction.tintColor = .systemRed
         removeInCacheAction.titleColor = .systemRed
-        openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction])
+        openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction], title: item.title)
     }
 
     override func setupTable(style: UITableView.Style = .plain) {
@@ -98,7 +98,7 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
 
         tableView.tableHeaderView = headerView
         
-        dataSource?.footerLineText = playlist.plays > 0 ? getStringByDeclension(number: playlist.plays, arrayWords: Localization.plays) : getStringByDeclension(number: playlist.count, arrayWords: Localization.audioCount)
+        dataSource?.footerLineText = playlist.plays > 0 ? getStringByDeclension(number: playlist.plays, arrayWords: Settings.language.contains("English") ? Localization.en.plays : Localization.ru.plays) : getStringByDeclension(number: playlist.count, arrayWords: Settings.language.contains("English") ? Localization.en.audioCount : Localization.ru.audioCount)
         
         addRefreshControl()
         
@@ -112,9 +112,25 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
                 try presenter.onGetPlaylists(isPaginate: true, playlistId: playlist.id)
             } catch {
                 print(error)
-                self.error(message: "Произошла ошибка")
+                self.error(message: .localized(.commonError))
             }
         }
+    }
+    
+    override func didAddAudio(_ item: AudioPlayerItem) {
+        do {
+            try self.presenter.onAddAudio(audio: item)
+        } catch {
+            self.showEventMessage(.error, message: error.localizedDescription)
+        }
+    }
+    
+    override func didRemoveFromCacheAudio(_ item: AudioPlayerItem) {
+        didRemoveAudio(item, indexPath: IndexPath())
+    }
+    
+    override func didSaveAudio(_ item: AudioPlayerItem) {
+        didSaveAudio(item, indexPath: IndexPath())
     }
     
     override func didFinishLoad() {
@@ -141,7 +157,7 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
             try presenter.onGetPlaylists(isPaginate: false, playlistId: playlist.id)
         } catch {
             print(error)
-            self.error(message: "Произошла ошибка")
+            self.error(message: .localized(.commonError))
         }
     }
     

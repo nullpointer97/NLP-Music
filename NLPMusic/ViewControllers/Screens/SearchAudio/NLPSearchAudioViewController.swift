@@ -54,8 +54,6 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         
         pulseButton.title = ""
         pulseButton.autoSetDimensions(to: .identity(28))
-        pulseButton.buttonBackgroundColor = .getAccentColor(fromType: .common).withAlphaComponent(0.75)
-        pulseButton.pulseBackgroundColor = .getAccentColor(fromType: .common).withAlphaComponent(0.35)
         pulseButton.circle = true
         
         if #available(iOS 15.0, *), !AVAudioSession.sharedInstance().isOtherAudioPlaying {
@@ -65,6 +63,8 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
             
             observables.append(UserDefaults.standard.observe(UInt32.self, key: "_accentColor") {
                 _ = $0
+                self.pulseButton.buttonBackgroundColor = .getAccentColor(fromType: .common).withAlphaComponent(0.75)
+                self.pulseButton.pulseBackgroundColor = .getAccentColor(fromType: .common).withAlphaComponent(0.35)
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.pulseButton)
             })
         }
@@ -97,7 +97,7 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let item = audioItems[indexPath.row]
         
-        let saveAction = MDCActionSheetAction(title: "Сохранить", image: UIImage(named: "download_outline_28")?.tint(with: .label)) { [weak self] _ in
+        let saveAction = MDCActionSheetAction(title: .localized(.save), image: UIImage(named: "download_outline_28")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
             self.didSaveAudio(item, indexPath: indexPath)
         }
@@ -105,7 +105,7 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         saveAction.titleColor = .label
         saveAction.isEnabled = true
         
-        let addAction = MDCActionSheetAction(title: "Добавить к себе", image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
+        let addAction = MDCActionSheetAction(title: .localized(.addToLibrary), image: UIImage(named: "add_outline_24")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
             do {
                 try self.presenter.onAddAudio(audio: item)
@@ -117,19 +117,21 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
         addAction.titleColor = .label
         addAction.isEnabled = true
         
-        let removeInCacheAction = MDCActionSheetAction(title: "Удалить из кэша", image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
+        let removeInCacheAction = MDCActionSheetAction(title: .localized(.deleteFromCache), image: UIImage(named: "delete_outline_28")?.tint(with: .systemRed)) { [weak self] _ in
             guard let self = self else { return }
             self.didRemoveAudio(item, indexPath: indexPath)
         }
         removeInCacheAction.tintColor = .systemRed
         removeInCacheAction.titleColor = .systemRed
-        openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction])
+        removeInCacheAction.isEnabled = true
+        
+        openMenu(fromItem: item, actions: item.isDownloaded ? [addAction, removeInCacheAction] : [addAction, saveAction], title: item.title)
     }
     
     override func reload() {
         super.reload()
         
-        dataSource?.footerLineText = audioItems.isEmpty ? "Введите ключевое слово для поиска" : "Конец списка"
+        dataSource?.footerLineText = audioItems.isEmpty ? .localized(.footerKeyword) : .localized(.endList)
     }
     
     override func didFinishLoad() {
@@ -146,6 +148,22 @@ class NLPSearchAudioViewController: NLPBaseTableViewController {
                 print(error)
             }
         }
+    }
+    
+    override func didAddAudio(_ item: AudioPlayerItem) {
+        do {
+            try presenter.onAddAudio(audio: item)
+        } catch {
+            self.showEventMessage(.error, message: error.localizedDescription)
+        }
+    }
+    
+    override func didRemoveFromCacheAudio(_ item: AudioPlayerItem) {
+        didRemoveAudio(item, indexPath: IndexPath())
+    }
+    
+    override func didSaveAudio(_ item: AudioPlayerItem) {
+        didSaveAudio(item, indexPath: IndexPath())
     }
     
     @available(iOS 15.0, *)

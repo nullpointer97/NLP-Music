@@ -234,7 +234,7 @@ class NLPPlayerViewController: NLPBaseViewController, AudioPlayerDelegate {
     }
     
     @IBAction func placeholder(_ sender: Any) {
-        SPAlert.present(message: "Временно недоступно", haptic: .warning)
+        SPAlert.present(message: .localized(.temporarilyUnavailable), haptic: .warning)
     }
 
     @IBAction func addAudio(_ sender: Any) {
@@ -252,7 +252,7 @@ class NLPPlayerViewController: NLPBaseViewController, AudioPlayerDelegate {
                     self.audioViewController?.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .left)
                     self.addButton?.alpha = 0.5
                 }
-                SPAlert.present(title: "Добавлено", preset: .done, haptic: .success)
+                SPAlert.present(title: .localized(.added), preset: .done, haptic: .success)
             }.catch { error in
                 DispatchQueue.main.async {
                     self.addButton?.alpha = 1
@@ -270,14 +270,14 @@ class NLPPlayerViewController: NLPBaseViewController, AudioPlayerDelegate {
     @IBAction func downloadAudio(_ sender: UIButton) {
         if let item = item {
             if item.isDownloaded {
-                SPAlert.present(message: "Файл уже загружен", haptic: .warning)
+                SPAlert.present(message: .localized(.alreadyDownloaded), haptic: .warning)
             } else {
-                SPAlert.present(message: "Файл загружается", haptic: .none)
+                SPAlert.present(message: .localized(.fileLoading), haptic: .none)
 
                 do {
                     try item.downloadAudio()
                 } catch {
-                    showEventMessage(.error, message: "Невозможно загрузить файл")
+                    showEventMessage(.error, message: .localized(.errorDownload))
                 }
             }
         }
@@ -643,11 +643,8 @@ extension NLPPlayerViewController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
         cell.nameLabel.textColor = .white
-        cell.moreButton?.setImage(.init(named: "more-horizontal")?.tint(with: .white), for: .normal)
-        cell.moreButton?.setTitle("", for: .normal)
         cell.artistNameLabel.textColor = .white.withAlphaComponent(0.5)
         cell.delegate = self
-        cell.moreButton.isHidden = true
         cell.trailingSecondConstraint.constant = -36
         return cell
     }

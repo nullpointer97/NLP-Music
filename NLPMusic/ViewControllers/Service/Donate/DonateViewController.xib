@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DonateViewController" customModule="NLPMusic" customModuleProvider="target">
             <connections>
                 <outlet property="dimsissButton" destination="ZX4-KC-uqa" id="8tK-3g-C96"/>
+                <outlet property="donateTextView" destination="c6e-O9-Csh" id="snM-jc-uoH"/>
+                <outlet property="titleLabel" destination="OLu-4B-Jay" id="4Wd-9B-gsI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

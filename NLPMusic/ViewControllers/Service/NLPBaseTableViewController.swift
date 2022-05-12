@@ -12,7 +12,7 @@ import CoreStore
 import MaterialComponents
 import SkeletonView
 
-open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPAudioTableDelegate {
+open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPAudioTableDelegate, NLPAudioDataSourceActionsDelegate {
     var tableView: UITableView!
     var footer: UITableViewFooter = UITableViewFooter(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80))
     lazy var refreshControl = UIRefreshControl()
@@ -49,7 +49,6 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         downloadService.session = session
         view.showAnimatedGradientSkeleton()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onItemEdited(_:)), name: NSNotification.Name("didRemoveAudio"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didCacheClean(_:)), name: NSNotification.Name("didCleanCache"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerChangeState(_:)), name: NSNotification.Name("didStartPlaying"), object: nil)
@@ -57,7 +56,8 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerChangeState(_:)), name: NSNotification.Name("didStopPlaying"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerChangeState(_:)), name: NSNotification.Name("didResumePlaying"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onPlayerChangeState(_:)), name: NSNotification.Name("didDownloadAudio"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(onPlayerChangeState(_:)), name: NSNotification.Name("didRemoveAudio"), object: nil)
+
         observables.append(UserDefaults.standard.observe(UInt32.self, key: "_accentColor") {
             _ = $0            
             let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NLPPairButtonViewCell
@@ -110,27 +110,21 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
                     vkTabBarController?.openPopup(animated: true)
                 } else {
                     player.play(items: audioItems, startAtIndex: indexPath.row)
-//                    vkTabBarController?.playerViewController.queueItems = player.queue?.queue ?? []
                 }
             case .playing:
                 if player.currentItem == selectedItem {
                     vkTabBarController?.openPopup(animated: true)
                 } else {
                     player.play(items: audioItems, startAtIndex: indexPath.row)
-//                    vkTabBarController?.playerViewController.queueItems = player.queue?.queue ?? []
                 }
             case .paused:
                 if player.currentItem == selectedItem {
                     player.resume()
                 } else {
                     player.play(items: audioItems, startAtIndex: indexPath.row)
-//                    vkTabBarController?.playerViewController.queueItems = player.queue?.queue ?? []
                 }
             case .stopped:
-                DispatchQueue.main.async { [self] in
-                    player.play(items: audioItems, startAtIndex: indexPath.row)
-//                    vkTabBarController?.playerViewController.queueItems = player.queue?.queue ?? []
-                }
+                player.play(items: audioItems, startAtIndex: indexPath.row)
             case .waitingForConnection:
                 log("player wait connection", type: .warning)
             case .failed(let error):
@@ -165,6 +159,7 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         
         dataSource = NLPAudioDataSource(items: audioItems, parent: self)
         dataSource?.delegate = self
+        dataSource?.actionDelegate = self
         
         tableView.delegate = dataSource
         tableView.dataSource = dataSource
@@ -215,6 +210,14 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         footer.loadingText = message
     }
     
+    func didAddAudio(_ item: AudioPlayerItem) { }
+    
+    func didRemoveAudio(_ item: AudioPlayerItem) { }
+    
+    func didRemoveFromCacheAudio(_ item: AudioPlayerItem) { }
+    
+    func didSaveAudio(_ item: AudioPlayerItem) { }
+    
     @objc func reload() {
         DispatchQueue.main.async { [self] in
             tableView.reloadData()
@@ -236,9 +239,9 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
     @objc func onPlayerChangeState(_ notification: Notification) {
         guard let item = notification.userInfo?["item"] as? AudioPlayerItem else { return }
         guard let row = audioItems.firstIndex(of: item) else { return }
-        guard let cell = tableView.cellForRow(at: IndexPath(row: row, section: 1)) as? NLPAudioViewCell else { return }
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            guard let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 1)) as? NLPAudioViewCell else { return }
             cell.setAnimation(isPlaying: item.isPlaying, isPaused: item.isPaused)
         }
     }
@@ -309,9 +312,9 @@ extension NLPBaseTableViewController: AudioItemActionDelegate {
             
             item.downloadStatus = .inProgress
             
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
                 guard let self = self else { return }
-                self.tableView.reloadRows(at: [IndexPath(row: self.audioItems.firstIndex(of: item) ?? 0, section: 1)], with: .none)
+                self.tableView.reloadRows(at: [indexPath], with: .none)
             }
             
             let operation = vkTabBarController?.downloadManager.queueDownload(url)
@@ -320,9 +323,9 @@ extension NLPBaseTableViewController: AudioItemActionDelegate {
             backgroundQ.async(group: group) {
                 operation?.onProgress = { (row, tableId, progress) in
                     print("Item \(item.id) progress: \(progress)")
-                    DispatchQueue.main.async {
-                        let indexpath = IndexPath(row: row, section: 1)
-                        let cell = self.tableView.cellForRow(at: indexpath) as? NLPAudioViewCell
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//                        let indexpath = IndexPath(row: row, section: 2)
+                        let cell = self.tableView.cellForRow(at: indexPath) as? NLPAudioViewCell
                         print("downloading for cell \(String(describing: cell?.tag))")
                         if progress <= 1.0 {
                             let progressRing = cell?.downloadProgressRingView
@@ -331,14 +334,14 @@ extension NLPBaseTableViewController: AudioItemActionDelegate {
                             if progress == 1.0 {
                                 self.audioItems[row].downloadStatus = .completed
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                    self.tableView.reloadRows(at: [indexpath], with: .none)
+                                    self.tableView.reloadRows(at: [indexPath], with: .none)
                                 }
                             }
                         } else {
                             if progress >= 1.0 {
                                 self.audioItems[row].downloadStatus = .completed
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                    self.tableView.reloadRows(at: [indexpath], with: .none)
+                                    self.tableView.reloadRows(at: [indexPath], with: .none)
                                 }
                             }
                         }

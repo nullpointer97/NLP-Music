@@ -61,7 +61,7 @@ final class NLPAllPlaylistsViewController: NLPBaseTableViewController {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let playlist = presenter.playlistItems[indexPath.row]
         
-        let removeAction = MDCActionSheetAction(title: "Удалить", image: UIImage(named: "delete_outline_28")?.tint(with: .label)) { [weak self] _ in
+        let removeAction = MDCActionSheetAction(title: .localized(.delete), image: UIImage(named: "delete_outline_28")?.tint(with: .label)) { [weak self] _ in
             guard let self = self else { return }
             do {
                 try self.presenter.onRemovePlaylist(playlist: playlist)
@@ -72,12 +72,12 @@ final class NLPAllPlaylistsViewController: NLPBaseTableViewController {
         removeAction.tintColor = .systemRed
         removeAction.titleColor = .systemRed
 
-        openMenu(actions: [removeAction], title: "Меню плейлиста")
+        openMenu(actions: [removeAction], title: playlist.title)
     }
     
     override func didFinishLoad() {
         super.didFinishLoad()
-        footer.loadingText = presenter.playlistItems.isEmpty ? "У Вас нет плейлистов" : getStringByDeclension(number: presenter.playlistItems.count, arrayWords: Localization.playlistCount)
+        footer.loadingText = presenter.playlistItems.isEmpty ? .localized(.noPlaylists) : getStringByDeclension(number: presenter.playlistItems.count, arrayWords: Settings.language.contains("English") ? Localization.en.playlistCount : Localization.ru.playlistCount)
     }
     
     override func reloadAudioData() {

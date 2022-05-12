@@ -17,6 +17,7 @@
                 <outlet property="reportTextView" destination="7VO-IC-ggZ" id="bQi-V6-W4N"/>
                 <outlet property="sendReportButton" destination="I7b-NV-1We" id="5R7-sH-X9F"/>
                 <outlet property="titleLabel" destination="Ns2-65-wL0" id="gOe-la-OfP"/>
+                <outlet property="troubleDecription" destination="8DT-TB-36E" id="cGO-ob-EU7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -91,7 +92,6 @@
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7VO-IC-ggZ">
                             <rect key="frame" x="16" y="98" width="343" height="499"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

@@ -28,13 +28,13 @@ class NLPSettingsController: NLPBaseTableViewController {
         let bundle = Bundle.main
         let versionNumber = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
         let buildNumber = bundle.infoDictionary?[kCFBundleVersionKey as String] as? String ?? "1.0"
-        return [nil, nil, "Размер кэша: \(Settings.cacheSize)", "Обновления недоступны", "NLP Music \(versionNumber)-\(buildNumber)"]
+        return [nil, nil, "\(String.localized(.cacheFooter)) \(Settings.cacheSize)", String.localized(.updatesFooter), "NLP Music \(versionNumber)-\(buildNumber)"]
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Настройки"
+        title = .localized(.settingsTitle)
         asdk_navigationViewController?.navigationBar.alpha = 0
         
         setupTable()
@@ -83,7 +83,7 @@ class NLPSettingsController: NLPBaseTableViewController {
     }
     
     @objc func didCleanCache() {
-        footers[2] = "Размер кэша: \(Settings.cacheSize)"
+        footers[2] = "\(String.localized(.cacheFooter)) \(Settings.cacheSize)"
         settings[2][2].isEnabled = Settings.cacheSizeInt > 0
         tableView.reloadSections(IndexSet(integer: 2), with: .fade)
         tableView.reloadRows(at: [IndexPath(row: 2, section: 2)], with: .fade)
@@ -161,7 +161,7 @@ extension NLPSettingsController: SettingActionDelegate {
         case .additionalText(let action):
             switch action {
             case .changeDismissType(_):
-                let snapAction = MDCActionSheetAction(title: "Сопротивляющийся", image: .init(named: "snap_24")) { [weak self] _ in
+                let snapAction = MDCActionSheetAction(title: .localized(.resistingSwipe), image: .init(named: "snap_24")) { [weak self] _ in
                     guard let self = self else { return }
                     self.changeDismissType(0)
                 }
@@ -169,7 +169,7 @@ extension NLPSettingsController: SettingActionDelegate {
                 snapAction.titleColor = .label
                 snapAction.isEnabled = true
                 
-                let interactiveAction = MDCActionSheetAction(title: "Интерактивный", image: .init(named: "interactive_24")) { [weak self] _ in
+                let interactiveAction = MDCActionSheetAction(title: .localized(.interactiveSwipe), image: .init(named: "interactive_24")) { [weak self] _ in
                     guard let self = self else { return }
                     self.changeDismissType(1)
                 }
@@ -203,6 +203,54 @@ extension NLPSettingsController: SettingActionDelegate {
                 nlpAction.titleColor = .label
                 
                 openMenu(actions: [vkAction, appleAction, nlpAction], title: cell.settingTitleLabel.text)
+            case .changeLanguage(_):
+                let ruAction = MDCActionSheetAction(title: Language.russian.name, image: nil) { [weak self] _ in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: .localized(.needReload), message: nil, preferredStyle: .alert)
+                        
+                        let confrim = UIAlertAction(title: .localized(.reload), style: .destructive) { _ in
+                            self.changeLaunguge(.russian)
+                        }
+                        
+                        let cancel = UIAlertAction(title: .localized(.cancel), style: .cancel) { _ in
+                            alert.dismiss(animated: true)
+                        }
+                        
+                        alert.addAction(confrim)
+                        alert.addAction(cancel)
+                        
+                        self.present(alert, animated: true)
+                    }
+                }
+                ruAction.tintColor = .label
+                ruAction.titleColor = .label
+                ruAction.isEnabled = true
+                
+                let enAction = MDCActionSheetAction(title: Language.english(.us).name, image: nil) { [weak self] _ in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: .localized(.needReload), message: nil, preferredStyle: .alert)
+                        
+                        let confrim = UIAlertAction(title: .localized(.reload), style: .destructive) { _ in
+                            self.changeLaunguge(.english(.us))
+                        }
+                        
+                        let cancel = UIAlertAction(title: .localized(.cancel), style: .cancel) { _ in
+                            alert.dismiss(animated: true)
+                        }
+                        
+                        alert.addAction(confrim)
+                        alert.addAction(cancel)
+                        
+                        self.present(alert, animated: true)
+                    }
+                }
+                enAction.tintColor = .label
+                enAction.titleColor = .label
+                enAction.isEnabled = true
+                
+                openMenu(actions: [ruAction, enAction], title: cell.settingTitleLabel.text)
             default: break
             }
         case .anotherView:
@@ -235,13 +283,13 @@ extension NLPSettingsController: SettingActionDelegate {
                 break
             case .logout(let void):
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Выход", message: "Выйти из аккаунта?", preferredStyle: .alert)
+                    let alert = UIAlertController(title: .localized(.logoutSettings), message: .localized(.logoutTitle), preferredStyle: .alert)
                     
-                    let confrim = UIAlertAction(title: "Выйти", style: .destructive) { _ in
+                    let confrim = UIAlertAction(title: .localized(.logout), style: .destructive) { _ in
                         void()
                     }
                     
-                    let cancel = UIAlertAction(title: "Отмена", style: .cancel) { _ in
+                    let cancel = UIAlertAction(title: .localized(.cancel), style: .cancel) { _ in
                         alert.dismiss(animated: true)
                     }
                     
@@ -252,13 +300,13 @@ extension NLPSettingsController: SettingActionDelegate {
                 }
             case .cleanCache(let void):
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Очистка кэша", message: "Удалить всю сохраненную музыку?", preferredStyle: .alert)
+                    let alert = UIAlertController(title: .localized(.clearCacheTitle), message: .localized(.clearCache), preferredStyle: .alert)
                     
-                    let confrim = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+                    let confrim = UIAlertAction(title: .localized(.delete), style: .destructive) { _ in
                         void()
                     }
                     
-                    let cancel = UIAlertAction(title: "Отмена", style: .cancel) { _ in
+                    let cancel = UIAlertAction(title: .localized(.cancel), style: .cancel) { _ in
                         alert.dismiss(animated: true)
                     }
                     
@@ -272,6 +320,15 @@ extension NLPSettingsController: SettingActionDelegate {
         }
     }
     
+    private func changeLaunguge(_ lang: Language) {
+        Bundle.set(language: lang)
+        Settings.language = lang.name
+        settings[1][4].subtitle = lang.name
+
+        UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
+        exit(0)
+    }
+
     private func changePlayerStyle(_ style: PlayerStyle) {
         switch style {
         case .vk:
@@ -291,7 +348,7 @@ extension NLPSettingsController: SettingActionDelegate {
     
     private func changeDismissType(_ type: Int) {
         Settings.dismissType = type
-        settings[1][2].subtitle = type == 0 ? "snap" : "interactive"
+        settings[1][2].subtitle = type == 0 ? "Snap" : "Interactive"
         
         tableView.reloadRows(at: [IndexPath(row: 2, section: 1)], with: .fade)
     }
