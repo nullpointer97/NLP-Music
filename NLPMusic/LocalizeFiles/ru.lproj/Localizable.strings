@@ -26,7 +26,7 @@
 
 // MARK: Actions
 "NLPBaseTableViewController.Actions.Save" = "Сохранить";
-"NLPBaseTableViewController.Actions.AddToLibrary" = "Добавить в библиотеку";
+"NLPBaseTableViewController.Actions.AddToLibrary" = "Добавить";
 "NLPBaseTableViewController.Actions.Delete" = "Удалить";
 "NLPBaseTableViewController.Actions.DeleteFromCache" = "Удалить из кэша";
 "NLPBaseTableViewController.Actions.InteractiveSwipe" = "Интерактивный";
@@ -84,3 +84,6 @@
 "NLPCommon.Warning" = "Внимание";
 "NLPCommon.Donate" = "Если Вы хотите поддержать разработчика финансово, можете перевести любую сумму на СберКарту: ";
 "NLPCommon.Trouble" = "Ваша проблема";
+
+// MARK: Funny (NOT PROD!)
+"NLPFunny.Hohol" = "Хохла спросить забыли";

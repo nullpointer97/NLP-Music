@@ -88,6 +88,7 @@ extension NLPFriendsViewController: UITableViewDelegate, SkeletonTableViewDataSo
         guard friends.indices.contains(indexPath.row) else { return cell }
         let friend = friends[indexPath.row]
         cell.configure(with: friend)
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
@@ -107,7 +108,7 @@ extension NLPFriendsViewController: UITableViewDelegate, SkeletonTableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        44
+        48
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

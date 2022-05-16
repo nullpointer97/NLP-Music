@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NLPLargeAlbumViewCell" id="gTV-IL-0wX" customClass="NLPLargeAlbumViewCell" customModule="NLPMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="84"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="84"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CFe-zn-j6B">
+                        <rect key="frame" x="0.0" y="6" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="QUc-8c-nVO"/>
+                            <constraint firstAttribute="width" constant="72" id="xxh-ff-kQX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gzb-v0-dc5">
+                        <rect key="frame" x="355" y="24" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="Cnu-YY-nWV"/>
+                            <constraint firstAttribute="height" constant="36" id="eHY-ug-Wb0"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="more-horizontal"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMy-aV-Mzc">
+                        <rect key="frame" x="84" y="12" width="259" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="siv-UY-zJ4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCN-aO-1Vu">
+                        <rect key="frame" x="84" y="35" width="259" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="7uh-YT-h7K"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM6-Zg-BCo">
+                        <rect key="frame" x="84" y="55" width="259" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="52R-Ld-Yif"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="CFe-zn-j6B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5Lb-Sd-NJb"/>
+                <constraint firstItem="vCN-aO-1Vu" firstAttribute="leading" secondItem="CFe-zn-j6B" secondAttribute="trailing" constant="12" id="IEF-ah-BTr"/>
+                <constraint firstItem="qMy-aV-Mzc" firstAttribute="leading" secondItem="CFe-zn-j6B" secondAttribute="trailing" constant="12" id="Ifq-UI-wm1"/>
+                <constraint firstItem="rM6-Zg-BCo" firstAttribute="top" secondItem="vCN-aO-1Vu" secondAttribute="bottom" constant="4" id="NNm-5g-6St"/>
+                <constraint firstItem="vCN-aO-1Vu" firstAttribute="top" secondItem="qMy-aV-Mzc" secondAttribute="bottom" constant="3" id="QAF-In-uee"/>
+                <constraint firstAttribute="trailing" secondItem="Gzb-v0-dc5" secondAttribute="trailing" constant="2" id="ROO-LV-Zbo"/>
+                <constraint firstItem="rM6-Zg-BCo" firstAttribute="leading" secondItem="CFe-zn-j6B" secondAttribute="trailing" constant="12" id="SAd-DJ-iBH"/>
+                <constraint firstItem="Gzb-v0-dc5" firstAttribute="leading" secondItem="vCN-aO-1Vu" secondAttribute="trailing" constant="12" id="T1Z-T1-lit"/>
+                <constraint firstAttribute="bottom" secondItem="rM6-Zg-BCo" secondAttribute="bottom" constant="13" id="T7C-fw-EhT"/>
+                <constraint firstItem="CFe-zn-j6B" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="bBP-VQ-QNY"/>
+                <constraint firstItem="Gzb-v0-dc5" firstAttribute="leading" secondItem="rM6-Zg-BCo" secondAttribute="trailing" constant="12" id="beP-6z-2Bo"/>
+                <constraint firstItem="Gzb-v0-dc5" firstAttribute="leading" secondItem="qMy-aV-Mzc" secondAttribute="trailing" constant="12" id="c3m-nJ-mO3"/>
+                <constraint firstItem="qMy-aV-Mzc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="fcW-Bd-wBj"/>
+                <constraint firstItem="Gzb-v0-dc5" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="m8g-Lu-Txg"/>
+            </constraints>
+            <size key="customSize" width="393" height="86"/>
+            <connections>
+                <outlet property="artworkImageView" destination="CFe-zn-j6B" id="7Qd-dY-RD3"/>
+                <outlet property="moreButton" destination="Gzb-v0-dc5" id="eN6-Fd-gv2"/>
+                <outlet property="subtitleSecondView" destination="rM6-Zg-BCo" id="n9U-0H-jqm"/>
+                <outlet property="subtitleView" destination="vCN-aO-1Vu" id="THw-cI-3gt"/>
+                <outlet property="titleView" destination="qMy-aV-Mzc" id="SN1-fN-QN9"/>
+            </connections>
+            <point key="canvasLocation" x="380.43478260869568" y="119.86607142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="more-horizontal" width="16" height="16"/>
+    </resources>
+</document>

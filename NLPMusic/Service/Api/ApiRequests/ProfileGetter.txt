@@ -1,10 +1,15 @@
-var userId = insert_user_id;
-var fields = insert_fields;
+var artist_id = insert_artist_id;
 
-var profile = API.users.get({"user_ids": userId, "fields": fields});
+var artistCatalog = API.catalog.getAudioArtist({"artist_id": artist_id});
 
-if (!profile.can_access_closed) {
-    return {"profile" : profile, "photos" : API.photos.getAll({"owner_id": userId, "extended": 1, "count": 4}), "friends": API.friends.get({"user_id": userId, "fields": fields, "count": 20})};
-} else {
-    return {"profile" : profile};
-}
+var section = API.catalog.getSection({"section_id": artistCatalog.catalog.default_section});
+
+var popular = API.catalog.getBlockItems({"block_id": section.section.blocks[2].id}).audios;
+
+var releases = API.catalog.getBlockItems({"block_id": section.section.blocks[5].id}).playlists;
+
+var releasesFeat = API.catalog.getBlockItems({"block_id": section.section.blocks[8].id}).playlists;
+
+var groups = API.catalog.getBlockItems({"block_id": section.section.blocks[11].id}).links;
+
+return {"items": [{"name": section.section.blocks[1].layout.title, "type": "popular", "items": popular}, {"name": section.section.blocks[4].layout.title, "type": "releases", "items": releases}, {"name": section.section.blocks[7].layout.title, "type": "releaseFeat", "items": releasesFeat}, {"name": section.section.blocks[10].layout.title, "type": "groups", "items": groups}]};

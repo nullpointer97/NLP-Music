@@ -250,7 +250,43 @@ extension NLPSettingsController: SettingActionDelegate {
                 enAction.titleColor = .label
                 enAction.isEnabled = true
                 
+                let uaAction = MDCActionSheetAction(title: "Украинский", image: nil) { [weak self] _ in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "🤣🤣🤣", message: nil, preferredStyle: .alert)
+                        let imageView = UIImageView()
+                        imageView.image = .init(named: "hohol")
+                        imageView.contentMode = .scaleAspectFill
+                        alert.view.addSubview(imageView)
+                        imageView.autoPinEdge(.top, to: .top, of: alert.view, withOffset: 60)
+                        imageView.autoPinEdge(.bottom, to: .bottom, of: alert.view, withOffset: -44)
+                        imageView.autoAlignAxis(toSuperviewAxis: .vertical)
+                        
+                        let myImageWidth: CGFloat = 1280
+                        let myImageHeight: CGFloat = 720
+                        let myViewWidth = screenWidth - 120
+                        
+                        let ratio = myViewWidth / myImageWidth
+                        let scaledHeight = myImageHeight * ratio
+                        
+                        imageView.autoSetDimensions(to: .custom(myViewWidth, scaledHeight))
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                            alert.dismiss(animated: true)
+                        }))
+                        
+                        self.present(alert, animated: true)
+                    }
+                }
+                uaAction.tintColor = .label
+                uaAction.titleColor = .label
+                uaAction.isEnabled = true
+                
+                #if DEBUG
+                openMenu(actions: [ruAction, enAction, uaAction], title: cell.settingTitleLabel.text)
+                #else
                 openMenu(actions: [ruAction, enAction], title: cell.settingTitleLabel.text)
+                #endif
             default: break
             }
         case .anotherView:

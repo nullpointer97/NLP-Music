@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwipeCellKit
+import MaterialComponents
 
 enum ListViewCell: String {
     case audio = "NLPAudioViewCell"
@@ -20,11 +22,15 @@ enum ListViewCell: String {
     case setting = "NLPSettingViewCell"
     case bigUser = "NLPSettingUserViewCell"
     case folder = "NLPFolderViewCell"
+    case collectionAudio = "NLPAudioCollectionViewCell"
+    case collectionAlbum = "NLPLargeAlbumViewCell"
+    case collectionLargeImage = "NLPLargeImageViewCell"
+    case collectionGroup = "NLPGroupViewCell"
 }
 
-class NLPBaseViewCell<T>: UITableViewCell {
+class NLPBaseViewCell<T>: SwipeTableViewCell {
     var morePlaceholderButton: UIButton = UIButton()
-    weak var delegate: VKMBaseItemDelegate?
+    weak var _delegate: VKMBaseItemDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +43,7 @@ class NLPBaseViewCell<T>: UITableViewCell {
     func configure(with item: T) {}
 }
 
-class NLPBaseCollectionViewCell<T>: UICollectionViewCell {
+class NLPBaseCollectionViewCell<T>: MDCCollectionViewCell {
     weak var delegate: VKMBaseItemDelegate?
 
     override func awakeFromNib() {

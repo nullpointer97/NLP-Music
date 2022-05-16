@@ -103,12 +103,17 @@ class NLPRecommendationsViewController: NLPBaseTableViewController {
         }
     }
     
+    override func getIndexPath(byItem item: AudioPlayerItem) -> IndexPath? {
+        guard let index = audioItems.firstIndex(of: item) else { return nil }
+        return IndexPath(row: index, section: 1)
+    }
+    
     override func didRemoveFromCacheAudio(_ item: AudioPlayerItem) {
-        didRemoveAudio(item, indexPath: IndexPath())
+        didRemoveAudio(item, indexPath: getIndexPath(byItem: item) ?? IndexPath())
     }
     
     override func didSaveAudio(_ item: AudioPlayerItem) {
-        didSaveAudio(item, indexPath: IndexPath())
+        didSaveAudio(item, indexPath: getIndexPath(byItem: item) ?? IndexPath())
     }
 }
 

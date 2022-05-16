@@ -25,8 +25,8 @@
 "NLPTabController.Player.Suffix" = "playback";
 
 // MARK: Actions
-"NLPBaseTableViewController.Actions.Save" = "Save audio";
-"NLPBaseTableViewController.Actions.AddToLibrary" = "Add to library";
+"NLPBaseTableViewController.Actions.Save" = "Save";
+"NLPBaseTableViewController.Actions.AddToLibrary" = "Add";
 "NLPBaseTableViewController.Actions.Delete" = "Delete";
 "NLPBaseTableViewController.Actions.DeleteFromCache" = "Delete from cache";
 "NLPBaseTableViewController.Actions.InteractiveSwipe" = "Interactive";
@@ -84,3 +84,6 @@
 "NLPCommon.Warning" = "Warning";
 "NLPCommon.Donate" = "If you want to support the developer financially, you can transfer any amount to SberCard: ";
 "NLPCommon.Trouble" = "You're trouble";
+
+// MARK: Funny (NOT PROD!)
+"NLPFunny.Hohol" = "Hohol forgot to ask";

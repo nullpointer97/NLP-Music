@@ -32,6 +32,7 @@ class Playlist: NSObject, Mappable {
         title <- map["title"]
         itemDescription <- map["description"]
         count <- map["count"]
+        genres <- map["genres"]
         followers <- map["followers"]
         plays <- map["plays"]
         createTime <- map["create_time"]

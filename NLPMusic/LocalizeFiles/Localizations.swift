@@ -87,6 +87,10 @@ enum Localizations: String {
     case commonWarningTitle = "NLPCommon.Warning"
     case donateDescription = "NLPCommon.Donate"
     case trouble = "NLPCommon.Trouble"
+    
+    #if DEBUG
+    case hohol = "NLPFunny.Hohol"
+    #endif
 }
 
 extension String {

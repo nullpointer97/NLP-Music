@@ -243,6 +243,7 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             guard let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 1)) as? NLPAudioViewCell else { return }
             cell.setAnimation(isPlaying: item.isPlaying, isPaused: item.isPaused)
+            cell.setDownloaded(item.isDownloaded)
         }
     }
     
@@ -257,7 +258,7 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
 
 extension NLPBaseTableViewController: URLSessionDownloadDelegate {
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        var documentsDirectoryURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("music_cache")
+        let documentsDirectoryURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("music_cache")
 
         guard let sourceURL = downloadTask.originalRequest?.url else {
             return

@@ -54,7 +54,7 @@ class NLPFolderViewCell: NLPBaseViewCell<AudioSectionItem> {
     }
     
     @objc func didTapAudio(_ sender: UIGestureRecognizer) {
-        delegate?.perform(from: self)
+        _delegate?.perform(from: self)
     }
 }
 

@@ -147,7 +147,7 @@ class NLPAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
     }
     
     @objc func didTapAudio(_ sender: UIGestureRecognizer) {
-        delegate?.didTap(self)
+        _delegate?.didTap(self)
     }
 
     @IBAction func onOpenMenu(_ sender: UIButton) {

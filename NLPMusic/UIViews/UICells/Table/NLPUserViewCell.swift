@@ -28,7 +28,7 @@ class NLPUserViewCell: NLPBaseViewCell<NLPUser> {
     }
     
     func configureLayout() {
-        avatarImageView.drawBorder(15, width: 0.5, color: .adaptableBorder)
+        avatarImageView.drawBorder(20, width: 0.5, color: .adaptableBorder)
         nameLabel.font = .systemFont(ofSize: 16, weight: UIFont.Weight(0.24))
     }
 }

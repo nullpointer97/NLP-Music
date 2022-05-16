@@ -349,6 +349,7 @@ public class AudioPlayerItem: NSObject {
         title = json["title"].string
         artist = json["artist"].string
         albumName = json["album"]["title"].string
+        artistId = json["main_artists"].arrayValue.first?["id"].string
         albumThumb135 = json["album"]["thumb"]["photo_135"].string
         albumThumb300 = json["album"]["thumb"]["photo_300"].string
         albumThumb600 = json["album"]["thumb"]["photo_600"].string
@@ -365,6 +366,7 @@ public class AudioPlayerItem: NSObject {
     var albumThumb135: String?
     var albumThumb300: String?
     var albumThumb600: String?
+    var artistId: String?
     
     weak var delegate: DownloadItemProtocol?
     

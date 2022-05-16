@@ -644,7 +644,7 @@ extension NLPPlayerViewController: UITableViewDataSource, UITableViewDelegate {
         cell.contentView.backgroundColor = .clear
         cell.nameLabel.textColor = .white
         cell.artistNameLabel.textColor = .white.withAlphaComponent(0.5)
-        cell.delegate = self
+        cell._delegate = self
         cell.trailingSecondConstraint.constant = -36
         return cell
     }

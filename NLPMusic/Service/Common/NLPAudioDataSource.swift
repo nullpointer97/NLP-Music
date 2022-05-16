@@ -10,6 +10,7 @@ import Foundation
 import CoreStore
 import UIKit
 import SkeletonView
+import SwipeCellKit
 
 protocol NLPAudioTableDelegate: AnyObject {
     func tableView(_ tableView: UITableView, willNeedPaginate cell: UITableViewCell, forRowAt indexPath: IndexPath)
@@ -22,7 +23,7 @@ protocol NLPAudioDataSourceActionsDelegate: AnyObject {
     func didRemoveFromCacheAudio(_ item: AudioPlayerItem)
 }
 
-final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableViewDelegate {
+final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableViewDelegate, SwipeTableViewCellDelegate {
     init(items: [AudioPlayerItem], parent: NLPBaseTableViewController?) {
         self.items = items
         self.parent = parent
@@ -62,7 +63,7 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
             guard let cell = tableView.dequeueReusableCell(withIdentifier: .listCell(.folder), for: indexPath) as? NLPFolderViewCell else { return UITableViewCell() }
             cell.configureShuffleButton()
             
-            cell.delegate = parent
+            cell._delegate = parent
             
             return cell
         } else {
@@ -70,7 +71,8 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
             guard let cell = tableView.dequeueReusableCell(withIdentifier: .listCell(.audio), for: indexPath) as? NLPAudioViewCell else { return UITableViewCell() }
             cell.configure(with: audio)
             
-            cell.delegate = parent
+            cell._delegate = parent
+            cell.delegate = self
             cell.menuDelegate = parent
             
             cell.setDownloadProcess(item.downloadStatus, indexPath: indexPath)
@@ -91,47 +93,61 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
         delegate?.tableView(tableView, willNeedPaginate: cell, forRowAt: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
         let item = items[indexPath.row]
-        let save = UIContextualAction(style: .normal, title: .localized(.save)) { [weak self] (action, view, completionHandler) in
-            self?.actionDelegate?.didSaveAudio(item)
-            completionHandler(true)
-        }
-        save.backgroundColor = .systemGreen
 
-        // Trash action
-        let addToLibrary = UIContextualAction(style: .destructive, title: .localized(.addToLibrary)) { [weak self] (action, view, completionHandler) in
-            self?.actionDelegate?.didAddAudio(item)
-            completionHandler(true)
+        let saveAction = SwipeAction(style: .default, title: .localized(.save)) { [weak self] action, indexPath in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                self?.actionDelegate?.didSaveAudio(item)
+            }
         }
+        saveAction.image = UIImage(named: "download_outline_24")?.tint(with: .white)
+        saveAction.backgroundColor = .systemGreen
+        
+        let addToLibrary = SwipeAction(style: .default, title: .localized(.addToLibrary)) { [weak self] action, indexPath in
+            DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now() + 0.7) {
+                self?.actionDelegate?.didAddAudio(item)
+            }
+        }
+        addToLibrary.image = UIImage(named: "add_outline_24")?.tint(with: .white)
         addToLibrary.backgroundColor = .systemBlue
-
-        // Unread action
-        let delete = UIContextualAction(style: .normal, title: .localized(.delete)) { [weak self] (action, view, completionHandler) in
-            self?.actionDelegate?.didRemoveAudio(item)
-            completionHandler(true)
+        
+        let delete = SwipeAction(style: .default, title: .localized(.delete)) { [weak self] action, indexPath in
+            DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now() + 0.7) {
+                self?.actionDelegate?.didRemoveAudio(item)
+            }
         }
+        delete.image = UIImage(named: "delete_outline_28")?.tint(with: .white)
         delete.backgroundColor = .systemRed
         
-        let deleteFromCache = UIContextualAction(style: .normal, title: .localized(.deleteFromCache)) { [weak self] (action, view, completionHandler) in
+        let deleteFromCache = SwipeAction(style: .destructive, title: .localized(.deleteFromCache)) { [weak self] action, indexPath in
             self?.actionDelegate?.didRemoveFromCacheAudio(item)
-            completionHandler(true)
         }
+        deleteFromCache.image = UIImage(named: "delete_outline_28")?.tint(with: .white)
         deleteFromCache.backgroundColor = .systemOrange
         
-        let configuration: UISwipeActionsConfiguration
-        
-        if isCurrentUser {
-            configuration = UISwipeActionsConfiguration(actions: item.isDownloaded ? [delete, deleteFromCache].reversed() : [save, delete].reversed())
-        } else {
-            configuration = UISwipeActionsConfiguration(actions: item.isDownloaded ? [addToLibrary, deleteFromCache].reversed() : [addToLibrary, save].reversed())
-        }
-        
-        return configuration
+        configure(action: saveAction)
+        configure(action: addToLibrary)
+        configure(action: delete)
+        configure(action: deleteFromCache)
+
+        return isCurrentUser ? (item.isDownloaded ? [delete, deleteFromCache] : [saveAction, delete].reversed()) : (item.isDownloaded ? [addToLibrary, deleteFromCache].reversed() : [addToLibrary, saveAction].reversed())
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .selection
+        options.transitionStyle = .reveal
+        options.buttonSpacing = 3
+        options.backgroundColor = .adaptableBorder
+        return options
+    }
+    
+    func configure(action: SwipeAction) {
+        action.hidesWhenSelected = true
+        action.font = .systemFont(ofSize: 11)
+        action.transitionDelegate = ScaleTransition.default
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

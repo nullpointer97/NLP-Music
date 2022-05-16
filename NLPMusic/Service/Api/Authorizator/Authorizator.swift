@@ -115,7 +115,7 @@ final class AuthorizatorImpl: Authorizator {
             "client_secret": Constants.clientSecret,
             "username": login,
             "password": password,
-            "v": "5.93",
+            "v": "5.63",
             "scope": settings,
             "lang": "ru",
             "2fa_supported": 1,

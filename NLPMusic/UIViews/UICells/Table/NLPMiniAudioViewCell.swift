@@ -63,7 +63,7 @@ class VKMiniAudioViewCell: NLPBaseViewCell<AudioPlayerItem> {
     }
     
     @objc func didTapAudio() {
-        delegate?.didTap(self)
+        _delegate?.didTap(self)
     }
 
     @IBAction func onOpenMenu(_ sender: UIButton) {

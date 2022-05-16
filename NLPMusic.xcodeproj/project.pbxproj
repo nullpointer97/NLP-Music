@@ -247,6 +247,7 @@
 		F5A30E8D282503F50088179F /* PlayButton+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A30E83282503F40088179F /* PlayButton+tvOS.swift */; };
 		F5A30E8E282503F50088179F /* PlayButtonPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A30E84282503F40088179F /* PlayButtonPreviews.swift */; };
 		F5A30E912826B6FC0088179F /* NLPMiniPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A30E902826B6FC0088179F /* NLPMiniPlayerController.swift */; };
+		F5ADE0DE283246CD003E253D /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = F5ADE0DD283246CD003E253D /* SwipeCellKit */; };
 		F5AED90927F24A04008A4BC2 /* InsetGroupedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AED90827F24A04008A4BC2 /* InsetGroupedTableView.swift */; };
 		F5AED90B27F25B11008A4BC2 /* StyckyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AED90A27F25B11008A4BC2 /* StyckyHeaderView.swift */; };
 		F5B0746C27F347BA00D8717A /* NLPPlaylistListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0746A27F347BA00D8717A /* NLPPlaylistListViewCell.swift */; };
@@ -416,9 +417,16 @@
 		F5CC0BFB27B14C8300EAE83B /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F5CC0BFA27B14C8300EAE83B /* Sentry */; };
 		F5D5FD4A27B1979500DFC20A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D5FD4927B1979500DFC20A /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F5D5FD4C27B1A14200DFC20A /* headphone_messages.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D5FD4B27B1A14200DFC20A /* headphone_messages.json */; };
+		F5DB0743283258ED000A84A2 /* NLPLargeAlbumViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB0741283258ED000A84A2 /* NLPLargeAlbumViewCell.swift */; };
+		F5DB0744283258ED000A84A2 /* NLPLargeAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DB0742283258ED000A84A2 /* NLPLargeAlbumViewCell.xib */; };
+		F5DB074728325BCC000A84A2 /* NLPLargeImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB074528325BCC000A84A2 /* NLPLargeImageViewCell.swift */; };
+		F5DB074828325BCC000A84A2 /* NLPLargeImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5DB074628325BCC000A84A2 /* NLPLargeImageViewCell.xib */; };
 		F5E57A4127D214E000B4FCDF /* NLPPlaylistViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E57A3F27D214E000B4FCDF /* NLPPlaylistViewCell.xib */; };
 		F5E57A4427D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E57A4227D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.swift */; };
 		F5E57A4527D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E57A4327D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.xib */; };
+		F5E89DB72832B64800E5EA2A /* NLPGroupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E89DB52832B64800E5EA2A /* NLPGroupViewCell.swift */; };
+		F5E89DB82832B64800E5EA2A /* NLPGroupViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E89DB62832B64800E5EA2A /* NLPGroupViewCell.xib */; };
+		F5E89DBB2832B91100E5EA2A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E89DBA2832B91100E5EA2A /* Group.swift */; };
 		F5E9B62527DA6813001230B7 /* NLPPairButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9B62327DA6813001230B7 /* NLPPairButtonViewCell.swift */; };
 		F5E9B62627DA6813001230B7 /* NLPPairButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E9B62427DA6813001230B7 /* NLPPairButtonViewCell.xib */; };
 		F5EFD4082816EA4E00F6CF2C /* NLPSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EFD4072816EA4E00F6CF2C /* NLPSettingsController.swift */; };
@@ -491,6 +499,11 @@
 		F5F681FB27C6AE9A00173DD5 /* UIViewController+LNPopupSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = F5F681C427C6AE9900173DD5 /* UIViewController+LNPopupSupport.h */; };
 		F5F681FC27C6AE9A00173DD5 /* LNPopupContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = F5F681C527C6AE9900173DD5 /* LNPopupContentView.h */; };
 		F5F681FE27C6AFA000173DD5 /* SwiftRefinements.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F681FD27C6AFA000173DD5 /* SwiftRefinements.swift */; };
+		F5FBDD2F2831070000EFBE51 /* NLPBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FBDD2E2831070000EFBE51 /* NLPBaseCollectionViewController.swift */; };
+		F5FBDD32283108D700EFBE51 /* NLPArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FBDD31283108D700EFBE51 /* NLPArtistViewController.swift */; };
+		F5FBDD35283122B800EFBE51 /* NLPCollectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FBDD34283122B800EFBE51 /* NLPCollectionHeaderCollectionReusableView.swift */; };
+		F5FBDD3A28313A4B00EFBE51 /* NLPAudioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FBDD3828313A4B00EFBE51 /* NLPAudioCollectionViewCell.swift */; };
+		F5FBDD3B28313A4B00EFBE51 /* NLPAudioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5FBDD3928313A4B00EFBE51 /* NLPAudioCollectionViewCell.xib */; };
 		F5FBEC8C27D6589100D6AD4C /* NLPSavedMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FBEC8B27D6589100D6AD4C /* NLPSavedMusicViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -934,9 +947,16 @@
 		F5CC0BF127B1310900EAE83B /* NLPMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NLPMusic.entitlements; sourceTree = "<group>"; };
 		F5D5FD4927B1979500DFC20A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F5D5FD4B27B1A14200DFC20A /* headphone_messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = headphone_messages.json; sourceTree = "<group>"; };
+		F5DB0741283258ED000A84A2 /* NLPLargeAlbumViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPLargeAlbumViewCell.swift; sourceTree = "<group>"; };
+		F5DB0742283258ED000A84A2 /* NLPLargeAlbumViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPLargeAlbumViewCell.xib; sourceTree = "<group>"; };
+		F5DB074528325BCC000A84A2 /* NLPLargeImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPLargeImageViewCell.swift; sourceTree = "<group>"; };
+		F5DB074628325BCC000A84A2 /* NLPLargeImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPLargeImageViewCell.xib; sourceTree = "<group>"; };
 		F5E57A3F27D214E000B4FCDF /* NLPPlaylistViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPPlaylistViewCell.xib; sourceTree = "<group>"; };
 		F5E57A4227D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5E57A4327D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPPlaylistCollectionViewCell.xib; sourceTree = "<group>"; };
+		F5E89DB52832B64800E5EA2A /* NLPGroupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPGroupViewCell.swift; sourceTree = "<group>"; };
+		F5E89DB62832B64800E5EA2A /* NLPGroupViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPGroupViewCell.xib; sourceTree = "<group>"; };
+		F5E89DBA2832B91100E5EA2A /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F5E9B62327DA6813001230B7 /* NLPPairButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPPairButtonViewCell.swift; sourceTree = "<group>"; };
 		F5E9B62427DA6813001230B7 /* NLPPairButtonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPPairButtonViewCell.xib; sourceTree = "<group>"; };
 		F5EFD4072816EA4E00F6CF2C /* NLPSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSettingsController.swift; sourceTree = "<group>"; };
@@ -1009,6 +1029,11 @@
 		F5F681C427C6AE9900173DD5 /* UIViewController+LNPopupSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LNPopupSupport.h"; sourceTree = "<group>"; };
 		F5F681C527C6AE9900173DD5 /* LNPopupContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNPopupContentView.h; sourceTree = "<group>"; };
 		F5F681FD27C6AFA000173DD5 /* SwiftRefinements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRefinements.swift; sourceTree = "<group>"; };
+		F5FBDD2E2831070000EFBE51 /* NLPBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPBaseCollectionViewController.swift; sourceTree = "<group>"; };
+		F5FBDD31283108D700EFBE51 /* NLPArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPArtistViewController.swift; sourceTree = "<group>"; };
+		F5FBDD34283122B800EFBE51 /* NLPCollectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPCollectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		F5FBDD3828313A4B00EFBE51 /* NLPAudioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPAudioCollectionViewCell.swift; sourceTree = "<group>"; };
+		F5FBDD3928313A4B00EFBE51 /* NLPAudioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPAudioCollectionViewCell.xib; sourceTree = "<group>"; };
 		F5FBEC8B27D6589100D6AD4C /* NLPSavedMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPSavedMusicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1029,6 +1054,7 @@
 				F59A403727E397DE004278B4 /* MBProgressHUD in Frameworks */,
 				F507071E2816FA3000EF9E55 /* DifferenceKit in Frameworks */,
 				F5CBE80F281AB3A100781C89 /* RNCryptor in Frameworks */,
+				F5ADE0DE283246CD003E253D /* SwipeCellKit in Frameworks */,
 				F5BE760527A1BD8900AC49FA /* Lottie in Frameworks */,
 				F5217AC227AAA10B00A90265 /* CoreStore in Frameworks */,
 				7FD36FFA497C51E882B807B2 /* Pods_NLPMusic.framework in Frameworks */,
@@ -1094,6 +1120,7 @@
 		F5217AAC27AA904E00A90265 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F5E89DB92832B90800E5EA2A /* Groups */,
 				F5217AAF27AA904E00A90265 /* User */,
 				F5217AB127AA904E00A90265 /* Audio */,
 			);
@@ -1156,6 +1183,7 @@
 		F5217AD727AAA71400A90265 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				F5FBDD332831229300EFBE51 /* NLPCollectionHeader */,
 				F55B9754282A9DE800E17937 /* DRPLoadingSpinner */,
 				F5A30E79282503F40088179F /* PlaybackButton */,
 				F53DEF70281020BA003EB8EF /* UICircularProgress */,
@@ -1343,33 +1371,8 @@
 		F54C9EBE27AAEB70003EF618 /* UICells */ = {
 			isa = PBXGroup;
 			children = (
-				F570059227D64C93002A9F66 /* NLPMiniAudioViewCell.swift */,
-				F570059127D64C93002A9F66 /* NLPMiniAudioViewCell.xib */,
-				F5199F2C27C405A200946140 /* ColorPickerViewCell.swift */,
-				F5199F2D27C405A200946140 /* ColorPickerViewCell.xib */,
-				F5199F2E27C405A200946140 /* ControlViewCell.swift */,
-				F5199F2B27C405A200946140 /* ControlViewCell.xib */,
-				F54C9EBF27AAEB8B003EF618 /* NLPBaseViewCell.swift */,
-				F563F4FC27AD1F8900CD89FE /* NLPSettingsViewCell.swift */,
-				F524C79C27FB0D0300706CE9 /* NLPSettingsViewCell.xib */,
-				F524C79B27FB0D0300706CE9 /* NLPPlaylistViewCell.swift */,
-				F5E57A3F27D214E000B4FCDF /* NLPPlaylistViewCell.xib */,
-				F5E57A4227D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.swift */,
-				F5E57A4327D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.xib */,
-				F5E9B62327DA6813001230B7 /* NLPPairButtonViewCell.swift */,
-				F5E9B62427DA6813001230B7 /* NLPPairButtonViewCell.xib */,
-				F5B0746A27F347BA00D8717A /* NLPPlaylistListViewCell.swift */,
-				F5B0746B27F347BA00D8717A /* NLPPlaylistListViewCell.xib */,
-				F524C79F27FB117700706CE9 /* NLPAudioViewCell.swift */,
-				F524C7A027FB117700706CE9 /* NLPAudioViewCell.xib */,
-				F55F2F9328114B5000D5D5FE /* NLPUserViewCell.swift */,
-				F55F2F9428114B5000D5D5FE /* NLPUserViewCell.xib */,
-				F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */,
-				F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */,
-				F507072428170E4100EF9E55 /* NLPSettingUserViewCell.swift */,
-				F507072528170E4100EF9E55 /* NLPSettingUserViewCell.xib */,
-				F515BE74282D0CB700C503CB /* NLPFolderViewCell.swift */,
-				F515BE75282D0CB700C503CB /* NLPFolderViewCell.xib */,
+				F5FBDD372831399200EFBE51 /* Collection */,
+				F5FBDD362831398D00EFBE51 /* Table */,
 			);
 			path = UICells;
 			sourceTree = "<group>";
@@ -2233,6 +2236,14 @@
 			path = Playlists;
 			sourceTree = "<group>";
 		};
+		F5E89DB92832B90800E5EA2A /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				F5E89DBA2832B91100E5EA2A /* Group.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
 		F5EFD40B2816F98E00F6CF2C /* DiffableDataSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -2276,6 +2287,7 @@
 		F5F38F9B27F88615005216DB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F5FBDD30283108B300EFBE51 /* Artist */,
 				F515BE7A282D19B200C503CB /* Section */,
 				F55F2F9728114F1000D5D5FE /* Friends */,
 				F5430B3C27FB00FF00844880 /* Settings */,
@@ -2293,6 +2305,7 @@
 		F5F38F9C27F88632005216DB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F5FBDD2D283106E700EFBE51 /* Base */,
 				F5A30E8F2826B6EA0088179F /* NLPMiniPlayerController */,
 				F5B0747027F43BB500D8717A /* AdvancedActionSheet */,
 				F5348EBD27CE7E0A000E85F7 /* TroubleSender */,
@@ -2300,11 +2313,6 @@
 				F5B8FA1E27F49DAA00AF2DCD /* Donate */,
 				F55E75D127ABC3A300A3DE4D /* Popup */,
 				F54C9EBA27AAE203003EF618 /* Auth */,
-				F5217AD327AAA6A800A90265 /* NLPBaseViewController.swift */,
-				F5217AD427AAA6A800A90265 /* NLPMNavigationController.swift */,
-				F5F6818C27C6AA3500173DD5 /* NLPTabController.swift */,
-				F5F38F9D27F88664005216DB /* NLPModalViewController.swift */,
-				F5430B3F27FB024200844880 /* NLPBaseTableViewController.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2361,6 +2369,84 @@
 				F5F681C327C6AE9900173DD5 /* LNPopupOpenTapGestureRecognizer.h */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		F5FBDD2D283106E700EFBE51 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F5217AD327AAA6A800A90265 /* NLPBaseViewController.swift */,
+				F5217AD427AAA6A800A90265 /* NLPMNavigationController.swift */,
+				F5F6818C27C6AA3500173DD5 /* NLPTabController.swift */,
+				F5F38F9D27F88664005216DB /* NLPModalViewController.swift */,
+				F5430B3F27FB024200844880 /* NLPBaseTableViewController.swift */,
+				F5FBDD2E2831070000EFBE51 /* NLPBaseCollectionViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F5FBDD30283108B300EFBE51 /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				F5FBDD31283108D700EFBE51 /* NLPArtistViewController.swift */,
+			);
+			path = Artist;
+			sourceTree = "<group>";
+		};
+		F5FBDD332831229300EFBE51 /* NLPCollectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				F5FBDD34283122B800EFBE51 /* NLPCollectionHeaderCollectionReusableView.swift */,
+			);
+			path = NLPCollectionHeader;
+			sourceTree = "<group>";
+		};
+		F5FBDD362831398D00EFBE51 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				F570059227D64C93002A9F66 /* NLPMiniAudioViewCell.swift */,
+				F570059127D64C93002A9F66 /* NLPMiniAudioViewCell.xib */,
+				F5199F2C27C405A200946140 /* ColorPickerViewCell.swift */,
+				F5199F2D27C405A200946140 /* ColorPickerViewCell.xib */,
+				F5199F2E27C405A200946140 /* ControlViewCell.swift */,
+				F5199F2B27C405A200946140 /* ControlViewCell.xib */,
+				F54C9EBF27AAEB8B003EF618 /* NLPBaseViewCell.swift */,
+				F563F4FC27AD1F8900CD89FE /* NLPSettingsViewCell.swift */,
+				F524C79C27FB0D0300706CE9 /* NLPSettingsViewCell.xib */,
+				F524C79B27FB0D0300706CE9 /* NLPPlaylistViewCell.swift */,
+				F5E57A3F27D214E000B4FCDF /* NLPPlaylistViewCell.xib */,
+				F5E9B62327DA6813001230B7 /* NLPPairButtonViewCell.swift */,
+				F5E9B62427DA6813001230B7 /* NLPPairButtonViewCell.xib */,
+				F5B0746A27F347BA00D8717A /* NLPPlaylistListViewCell.swift */,
+				F5B0746B27F347BA00D8717A /* NLPPlaylistListViewCell.xib */,
+				F524C79F27FB117700706CE9 /* NLPAudioViewCell.swift */,
+				F524C7A027FB117700706CE9 /* NLPAudioViewCell.xib */,
+				F55F2F9328114B5000D5D5FE /* NLPUserViewCell.swift */,
+				F55F2F9428114B5000D5D5FE /* NLPUserViewCell.xib */,
+				F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */,
+				F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */,
+				F507072428170E4100EF9E55 /* NLPSettingUserViewCell.swift */,
+				F507072528170E4100EF9E55 /* NLPSettingUserViewCell.xib */,
+				F515BE74282D0CB700C503CB /* NLPFolderViewCell.swift */,
+				F515BE75282D0CB700C503CB /* NLPFolderViewCell.xib */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		F5FBDD372831399200EFBE51 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				F5E57A4227D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.swift */,
+				F5E57A4327D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.xib */,
+				F5FBDD3828313A4B00EFBE51 /* NLPAudioCollectionViewCell.swift */,
+				F5FBDD3928313A4B00EFBE51 /* NLPAudioCollectionViewCell.xib */,
+				F5DB0741283258ED000A84A2 /* NLPLargeAlbumViewCell.swift */,
+				F5DB0742283258ED000A84A2 /* NLPLargeAlbumViewCell.xib */,
+				F5DB074528325BCC000A84A2 /* NLPLargeImageViewCell.swift */,
+				F5DB074628325BCC000A84A2 /* NLPLargeImageViewCell.xib */,
+				F5E89DB52832B64800E5EA2A /* NLPGroupViewCell.swift */,
+				F5E89DB62832B64800E5EA2A /* NLPGroupViewCell.xib */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2445,6 +2531,7 @@
 				F507071D2816FA3000EF9E55 /* DifferenceKit */,
 				F567A89D2817A1FD00E3A2B0 /* SkeletonView */,
 				F5CBE80E281AB3A100781C89 /* RNCryptor */,
+				F5ADE0DD283246CD003E253D /* SwipeCellKit */,
 			);
 			productName = vkmusic;
 			productReference = F5BE747927A1B78400AC49FA /* NLPMusic.app */;
@@ -2513,6 +2600,7 @@
 				F507071C2816FA3000EF9E55 /* XCRemoteSwiftPackageReference "DifferenceKit" */,
 				F567A89C2817A1FD00E3A2B0 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				F5CBE80D281AB3A100781C89 /* XCRemoteSwiftPackageReference "RNCryptor" */,
+				F5ADE0DC283246CD003E253D /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = F5BE747A27A1B78400AC49FA /* Products */;
 			projectDirPath = "";
@@ -2535,7 +2623,9 @@
 				F55F2F9628114B5000D5D5FE /* NLPUserViewCell.xib in Resources */,
 				F5B8FA2227F49DC300AF2DCD /* DonateViewController.xib in Resources */,
 				F570059327D64C93002A9F66 /* NLPMiniAudioViewCell.xib in Resources */,
+				F5FBDD3B28313A4B00EFBE51 /* NLPAudioCollectionViewCell.xib in Resources */,
 				F5348EC127CE7E21000E85F7 /* TroubleSenderViewController.xib in Resources */,
+				F5DB0744283258ED000A84A2 /* NLPLargeAlbumViewCell.xib in Resources */,
 				F524C79E27FB0D0300706CE9 /* NLPSettingsViewCell.xib in Resources */,
 				F5217AD127AAA66E00A90265 /* LoginViewController.xib in Resources */,
 				F5BE748927A1B78500AC49FA /* LaunchScreen.storyboard in Resources */,
@@ -2552,6 +2642,7 @@
 				F5BE748427A1B78400AC49FA /* Main.storyboard in Resources */,
 				F536FC1927E32089004C21E1 /* NLPColorPickerViewController.xib in Resources */,
 				F5BE75F727A1BC6500AC49FA /* ProfileGetter.txt in Resources */,
+				F5DB074828325BCC000A84A2 /* NLPLargeImageViewCell.xib in Resources */,
 				F5BE75F827A1BC6500AC49FA /* OfficialProfileGetter.txt in Resources */,
 				F5B0746D27F347BA00D8717A /* NLPPlaylistListViewCell.xib in Resources */,
 				F5E57A4527D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.xib in Resources */,
@@ -2559,6 +2650,7 @@
 				F59147CC27B280750008F6B5 /* notification.wav in Resources */,
 				F5E57A4127D214E000B4FCDF /* NLPPlaylistViewCell.xib in Resources */,
 				F54C9EC727AB1FCC003EF618 /* playing.json in Resources */,
+				F5E89DB82832B64800E5EA2A /* NLPGroupViewCell.xib in Resources */,
 				F5E9B62627DA6813001230B7 /* NLPPairButtonViewCell.xib in Resources */,
 				F507072728170E4100EF9E55 /* NLPSettingUserViewCell.xib in Resources */,
 				F5217ACF27AAA66E00A90265 /* CaptchaViewController.xib in Resources */,
@@ -2623,11 +2715,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F57005F927D64DF2002A9F66 /* HeroPlugin.swift in Sources */,
+				F5FBDD2F2831070000EFBE51 /* NLPBaseCollectionViewController.swift in Sources */,
 				F5BE75FC27A1BC6500AC49FA /* VKError.swift in Sources */,
 				F541527B2804512800414DDD /* NLPSearchAudioPresenter.swift in Sources */,
 				F5BE74F527A1BB8400AC49FA /* UIEdgeInsets+Extension.swift in Sources */,
 				F57005E527D64DF2002A9F66 /* HeroDefaultAnimator.swift in Sources */,
 				F57005FF27D6517E002A9F66 /* VKBaseAuthViewController.swift in Sources */,
+				F5DB074728325BCC000A84A2 /* NLPLargeImageViewCell.swift in Sources */,
 				F5BE74EF27A1BB8400AC49FA /* UIViewController+Extension.swift in Sources */,
 				F5217ACE27AAA66E00A90265 /* ValidationViewController.swift in Sources */,
 				F55A599A27E243A40043CA20 /* NLPColorPickerViewController.swift in Sources */,
@@ -2638,6 +2732,7 @@
 				F5C0244E27FB052B00D70C30 /* NLPAudioWireframe.swift in Sources */,
 				F541527A2804512800414DDD /* NLPSearchAudioInterfaces.swift in Sources */,
 				F5BE75FF27A1BC6500AC49FA /* SessionStorage.swift in Sources */,
+				F5DB0743283258ED000A84A2 /* NLPLargeAlbumViewCell.swift in Sources */,
 				F55F2F9928114F2400D5D5FE /* FreindsViewController.swift in Sources */,
 				F5BE750E27A1BB8400AC49FA /* UIStoryboardExtension.swift in Sources */,
 				F5C0243627F893AB00D70C30 /* NLPAllPlaylistsInteractor.swift in Sources */,
@@ -2665,8 +2760,10 @@
 				F5B8FA0C27F43F8D00AF2DCD /* AdcancedActionSheetNormalCell.swift in Sources */,
 				F5508B7227B65174002F02BC /* GestureAnimating.swift in Sources */,
 				F5508B6F27B65174002F02BC /* Extensions.swift in Sources */,
+				F5FBDD35283122B800EFBE51 /* NLPCollectionHeaderCollectionReusableView.swift in Sources */,
 				F5B8FA1227F43F8D00AF2DCD /* RoundCheckBox.swift in Sources */,
 				F5BE75A027A1BC6500AC49FA /* AudioPlayerItem.swift in Sources */,
+				F5E89DB72832B64800E5EA2A /* NLPGroupViewCell.swift in Sources */,
 				F57005CD27D64DF2002A9F66 /* HeroTypes.swift in Sources */,
 				F5EFD4182816F98E00F6CF2C /* TableViewDiffableDataSource.swift in Sources */,
 				F5F681D927C6AE9A00173DD5 /* _LNPopupBarBackgroundView.m in Sources */,
@@ -2712,6 +2809,7 @@
 				F55A599027E243A40043CA20 /* ColorPickerController.swift in Sources */,
 				F5B8FA1527F43F8D00AF2DCD /* ImageUtility.swift in Sources */,
 				F55A599B27E243A40043CA20 /* ColorPickerDelegate.swift in Sources */,
+				F5FBDD3A28313A4B00EFBE51 /* NLPAudioCollectionViewCell.swift in Sources */,
 				F5F681CE27C6AE9A00173DD5 /* LNPopupController.m in Sources */,
 				F5BE75F027A1BC6500AC49FA /* LongPoll.swift in Sources */,
 				F5BE750627A1BB8400AC49FA /* FileManager+Extension.swift in Sources */,
@@ -2767,6 +2865,7 @@
 				F5C0244327F8A94500D70C30 /* NLPPlaylistInteractor.swift in Sources */,
 				F55A598A27E243A40043CA20 /* ColorControl.swift in Sources */,
 				F5A30E8D282503F50088179F /* PlayButton+tvOS.swift in Sources */,
+				F5E89DBB2832B91100E5EA2A /* Group.swift in Sources */,
 				F5430B3E27FB010000844880 /* NLPSettingsViewController.swift in Sources */,
 				F5217AD227AAA66E00A90265 /* LoginViewController.swift in Sources */,
 				F5BE750727A1BB8400AC49FA /* OperationConvertible.swift in Sources */,
@@ -2935,6 +3034,7 @@
 				F5F681F927C6AE9A00173DD5 /* LNPopupBarAppearance.m in Sources */,
 				F5BE759927A1BC6500AC49FA /* BackgroundHandler.swift in Sources */,
 				F5F681D027C6AE9A00173DD5 /* LNPopupCustomBarViewController.m in Sources */,
+				F5FBDD32283108D700EFBE51 /* NLPArtistViewController.swift in Sources */,
 				F5430B4027FB024200844880 /* NLPBaseTableViewController.swift in Sources */,
 				F55A598227E243A40043CA20 /* ColorSliderControl.swift in Sources */,
 				F57005D027D64DF2002A9F66 /* CascadePreprocessor.swift in Sources */,
@@ -3195,7 +3295,7 @@
 			baseConfigurationReference = A468FCC15E23D3AEF27685BC /* Pods-NLPMusic.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -3239,7 +3339,7 @@
 			baseConfigurationReference = 667CBE03D4FFFE78E144D0AB /* Pods-NLPMusic.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -3281,7 +3381,7 @@
 		F5CC0BEB27B1302900EAE83B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_ENTITLEMENTS = NLPMusicServiceExtension/NLPMusicServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
@@ -3310,7 +3410,7 @@
 		F5CC0BEC27B1302900EAE83B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_ENTITLEMENTS = NLPMusicServiceExtension/NLPMusicServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
@@ -3425,6 +3525,14 @@
 				kind = branch;
 			};
 		};
+		F5ADE0DC283246CD003E253D /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		F5BE760327A1BD8900AC49FA /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -3515,6 +3623,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F59A403527E397DE004278B4 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
 			productName = MBProgressHUD;
+		};
+		F5ADE0DD283246CD003E253D /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5ADE0DC283246CD003E253D /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
 		};
 		F5BE760427A1BD8900AC49FA /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

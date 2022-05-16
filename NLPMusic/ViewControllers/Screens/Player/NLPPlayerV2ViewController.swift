@@ -146,8 +146,8 @@ class NLPPlayerV2ViewController: NLPBaseViewController, PlayerSliderProtocol {
         secondDurationLabel.textColor = .secondaryLabel
         firstDurationLabel.textColor = .secondaryLabel
         
-        titleLabel.showAnimatedGradientSkeleton()
-        subtitleLabel.showAnimatedGradientSkeleton()
+        subtitleLabel.isUserInteractionEnabled = true
+        subtitleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openArtist)))
     }
     
     internal func onValueChanged(progress: Float, timePast: TimeInterval) {
@@ -184,6 +184,20 @@ class NLPPlayerV2ViewController: NLPBaseViewController, PlayerSliderProtocol {
             gestureRecognizer.setTranslation(.zero, in: artworkImageView)
         default:
             break
+        }
+    }
+    
+    @objc func openArtist() {
+        if let artistId = player?.currentItem?.artistId, !artistId.isEmpty {
+            vkTabBarController?.closePopup(animated: true) { [weak self] in
+                DispatchQueue.main.async {
+                    let artistViewController = NLPArtistViewController(artistId: artistId)
+                    artistViewController.title = self?.player?.currentItem?.artist
+                    (self?.vkTabBarController?.selectedViewController as? UINavigationController)?.pushViewController(artistViewController, animated: true)
+                }
+            }
+        } else {
+            showEventMessage(.error, message: "Отсутствует ID исполнителя")
         }
     }
     

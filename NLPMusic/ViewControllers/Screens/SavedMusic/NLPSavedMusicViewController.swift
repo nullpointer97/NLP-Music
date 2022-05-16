@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import CoreStore
 import MaterialComponents
+import SwipeCellKit
 
 class NLPSavedMusicViewController: NLPBaseTableViewController {
     private var diffableDataSource: DiffableDataSource.TableViewAdapter<AudioItem>?
@@ -37,6 +38,7 @@ class NLPSavedMusicViewController: NLPBaseTableViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: .listCell(.audio), for: indexPath) as? NLPAudioViewCell else { return UITableViewCell() }
             cell.configure(withSavedItem: audio)
             
+            cell._delegate = self
             cell.delegate = self
             cell.menuDelegate = self
             
@@ -74,8 +76,58 @@ class NLPSavedMusicViewController: NLPBaseTableViewController {
     }
 }
 
-extension NLPSavedMusicViewController: UITableViewDelegate {
+extension NLPSavedMusicViewController: UITableViewDelegate, SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let item = AudioDataStackService.audios.snapshot[indexPath.row].object else { return nil }
+        
+        let deleteFromCache = UIContextualAction(style: .normal, title: .localized(.deleteFromCache)) { [weak self] (action, view, completionHandler) in
+            self?.didRemoveAudio(AudioPlayerItem(from: item), indexPath: indexPath)
+            completionHandler(true)
+        }
+        deleteFromCache.backgroundColor = .systemOrange
+        
+        let configuration: UISwipeActionsConfiguration = UISwipeActionsConfiguration(actions: [deleteFromCache])
+        
+        return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        guard let item = AudioDataStackService.audios.snapshot[indexPath.row].object else { return nil }
+        
+        let deleteFromCache = SwipeAction(style: .destructive, title: .localized(.deleteFromCache)) { [weak self] action, indexPath in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                self?.didRemoveAudio(AudioPlayerItem(from: item), indexPath: indexPath)
+            }
+        }
+        deleteFromCache.image = UIImage(named: "delete_outline_28")?.tint(with: .white)
+        deleteFromCache.backgroundColor = .systemOrange
+
+        configure(action: deleteFromCache)
+
+        return [deleteFromCache]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .selection
+        options.transitionStyle = .reveal
+        options.buttonSpacing = 3
+        options.backgroundColor = .adaptableBorder
+        return options
+    }
+    
+    func configure(action: SwipeAction) {
+        action.hidesWhenSelected = true
+        action.font = .systemFont(ofSize: 11)
+        action.transitionDelegate = ScaleTransition.default
     }
 }
