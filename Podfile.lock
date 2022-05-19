@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.9.1)
-  - Kingfisher (6.3.1)
   - MaterialComponents (124.2.0):
     - MaterialComponents/ActionSheet (= 124.2.0)
     - "MaterialComponents/ActionSheet+Theming (= 124.2.0)"
@@ -661,7 +660,6 @@ PODS:
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
-  - Kingfisher
   - MaterialComponents
   - PromiseKit (~> 6.8)
   - PromiseKit/Alamofire (~> 6.0)
@@ -670,7 +668,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
-    - Kingfisher
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
@@ -681,7 +678,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
@@ -690,6 +686,6 @@ SPEC CHECKSUMS:
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 149e36cde13b25046168ba8229ae9f0220cd6b99
+PODFILE CHECKSUM: 96a2a2d5ce4d54f32c5d3ed697e609826d716fa7
 
 COCOAPODS: 1.11.2

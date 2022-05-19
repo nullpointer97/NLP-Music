@@ -8,5 +8,4 @@ target 'NLPMusic' do
   pod "PromiseKit", "~> 6.8"
   pod 'SwiftyJSON', '~> 4.0'
   pod "MaterialComponents"
-  pod "Kingfisher"
 end

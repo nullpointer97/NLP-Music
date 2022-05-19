@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3DB4C45D282C38DA00A2787D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4C45F282C38DA00A2787D /* Localizable.strings */; };
-		7FD36FFA497C51E882B807B2 /* Pods_NLPMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CE5AFBFE523D73BC165330 /* Pods_NLPMusic.framework */; };
+		4578EB012FD9F341C21F270D /* Pods_NLPMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44BAC364015F588F28069A5 /* Pods_NLPMusic.framework */; };
 		F507071E2816FA3000EF9E55 /* DifferenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F507071D2816FA3000EF9E55 /* DifferenceKit */; };
 		F50707222816FFA000EF9E55 /* NLPSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */; };
 		F50707232816FFA000EF9E55 /* NLPSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */; };
@@ -256,6 +256,7 @@
 		F5B8FA1D27F43F8D00AF2DCD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B8FA0827F43F8D00AF2DCD /* UIImage+Extension.swift */; };
 		F5B8FA2127F49DC300AF2DCD /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B8FA1F27F49DC300AF2DCD /* DonateViewController.swift */; };
 		F5B8FA2227F49DC300AF2DCD /* DonateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B8FA2027F49DC300AF2DCD /* DonateViewController.xib */; };
+		F5BBDD842836DD7200B87844 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F5BBDD832836DD7200B87844 /* Kingfisher */; };
 		F5BE747D27A1B78400AC49FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE747C27A1B78400AC49FA /* AppDelegate.swift */; };
 		F5BE747F27A1B78400AC49FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE747E27A1B78400AC49FA /* SceneDelegate.swift */; };
 		F5BE748127A1B78400AC49FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE748027A1B78400AC49FA /* ViewController.swift */; };
@@ -523,15 +524,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		11CE5AFBFE523D73BC165330 /* Pods_NLPMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NLPMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FAEEFC0CBB4E9D3DFCC901C /* Pods-NLPMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.debug.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		3DB4C459282C38B300A2787D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DB4C45A282C38B300A2787D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DB4C45B282C38BB00A2787D /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DB4C45C282C38BB00A2787D /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DB4C45E282C38DA00A2787D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3DB4C460282C38DC00A2787D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		667CBE03D4FFFE78E144D0AB /* Pods-NLPMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.release.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.release.xcconfig"; sourceTree = "<group>"; };
-		A468FCC15E23D3AEF27685BC /* Pods-NLPMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.debug.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		B44BAC364015F588F28069A5 /* Pods_NLPMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NLPMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2ACD8830EC1864B7D8EFB3E /* Pods-NLPMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NLPMusic.release.xcconfig"; path = "Target Support Files/Pods-NLPMusic/Pods-NLPMusic.release.xcconfig"; sourceTree = "<group>"; };
 		F50707202816FF9F00EF9E55 /* NLPSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSettingViewCell.swift; sourceTree = "<group>"; };
 		F50707212816FFA000EF9E55 /* NLPSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPSettingViewCell.xib; sourceTree = "<group>"; };
 		F507072428170E4100EF9E55 /* NLPSettingUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPSettingUserViewCell.swift; sourceTree = "<group>"; };
@@ -1018,8 +1019,9 @@
 				F5CBE80F281AB3A100781C89 /* RNCryptor in Frameworks */,
 				F5ADE0DE283246CD003E253D /* SwipeCellKit in Frameworks */,
 				F5BE760527A1BD8900AC49FA /* Lottie in Frameworks */,
+				F5BBDD842836DD7200B87844 /* Kingfisher in Frameworks */,
 				F5217AC227AAA10B00A90265 /* CoreStore in Frameworks */,
-				7FD36FFA497C51E882B807B2 /* Pods_NLPMusic.framework in Frameworks */,
+				4578EB012FD9F341C21F270D /* Pods_NLPMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,7 +1041,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D5FD4927B1979500DFC20A /* SwiftUI.framework */,
-				11CE5AFBFE523D73BC165330 /* Pods_NLPMusic.framework */,
+				B44BAC364015F588F28069A5 /* Pods_NLPMusic.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1056,8 +1058,8 @@
 		C5A70773EF33069393495040 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A468FCC15E23D3AEF27685BC /* Pods-NLPMusic.debug.xcconfig */,
-				667CBE03D4FFFE78E144D0AB /* Pods-NLPMusic.release.xcconfig */,
+				2FAEEFC0CBB4E9D3DFCC901C /* Pods-NLPMusic.debug.xcconfig */,
+				F2ACD8830EC1864B7D8EFB3E /* Pods-NLPMusic.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2437,14 +2439,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5BE748D27A1B78500AC49FA /* Build configuration list for PBXNativeTarget "NLPMusic" */;
 			buildPhases = (
-				63688DF7C93A2C3CB60DC9B9 /* [CP] Check Pods Manifest.lock */,
+				B302BB6D0E7E37734446F9D0 /* [CP] Check Pods Manifest.lock */,
 				F55E761927ABC3ED00A3DE4D /* Headers */,
 				F5BE747527A1B78400AC49FA /* Sources */,
 				F5BE747627A1B78400AC49FA /* Frameworks */,
 				F5BE747727A1B78400AC49FA /* Resources */,
 				F55E757B27ABBC4800A3DE4D /* Embed Frameworks */,
 				F5CC0BED27B1302900EAE83B /* Embed App Extensions */,
-				C817FE11CBF93FD867CFBEDA /* [CP] Embed Pods Frameworks */,
+				EA9B1C93A5B103809BE305FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2467,6 +2469,7 @@
 				F567A89D2817A1FD00E3A2B0 /* SkeletonView */,
 				F5CBE80E281AB3A100781C89 /* RNCryptor */,
 				F5ADE0DD283246CD003E253D /* SwipeCellKit */,
+				F5BBDD832836DD7200B87844 /* Kingfisher */,
 			);
 			productName = vkmusic;
 			productReference = F5BE747927A1B78400AC49FA /* NLPMusic.app */;
@@ -2536,6 +2539,7 @@
 				F567A89C2817A1FD00E3A2B0 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				F5CBE80D281AB3A100781C89 /* XCRemoteSwiftPackageReference "RNCryptor" */,
 				F5ADE0DC283246CD003E253D /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				F5BBDD822836DD7200B87844 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F5BE747A27A1B78400AC49FA /* Products */;
 			projectDirPath = "";
@@ -2603,7 +2607,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		63688DF7C93A2C3CB60DC9B9 /* [CP] Check Pods Manifest.lock */ = {
+		B302BB6D0E7E37734446F9D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2625,7 +2629,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C817FE11CBF93FD867CFBEDA /* [CP] Embed Pods Frameworks */ = {
+		EA9B1C93A5B103809BE305FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3208,7 +3212,7 @@
 		};
 		F5BE748E27A1B78500AC49FA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A468FCC15E23D3AEF27685BC /* Pods-NLPMusic.debug.xcconfig */;
+			baseConfigurationReference = 2FAEEFC0CBB4E9D3DFCC901C /* Pods-NLPMusic.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
@@ -3252,7 +3256,7 @@
 		};
 		F5BE748F27A1B78500AC49FA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 667CBE03D4FFFE78E144D0AB /* Pods-NLPMusic.release.xcconfig */;
+			baseConfigurationReference = F2ACD8830EC1864B7D8EFB3E /* Pods-NLPMusic.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
@@ -3449,6 +3453,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		F5BBDD822836DD7200B87844 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		F5BE760327A1BD8900AC49FA /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -3544,6 +3556,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F5ADE0DC283246CD003E253D /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
 			productName = SwipeCellKit;
+		};
+		F5BBDD832836DD7200B87844 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5BBDD822836DD7200B87844 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		F5BE760427A1BD8900AC49FA /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
