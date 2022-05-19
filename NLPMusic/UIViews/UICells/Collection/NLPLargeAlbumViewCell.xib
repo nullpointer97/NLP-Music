@@ -31,7 +31,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gzb-v0-dc5">
-                        <rect key="frame" x="355" y="24" width="36" height="36"/>
+                        <rect key="frame" x="345" y="24" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="Cnu-YY-nWV"/>
                             <constraint firstAttribute="height" constant="36" id="eHY-ug-Wb0"/>
@@ -43,8 +43,8 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMy-aV-Mzc">
-                        <rect key="frame" x="84" y="12" width="259" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMy-aV-Mzc">
+                        <rect key="frame" x="84" y="12" width="249" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="siv-UY-zJ4"/>
                         </constraints>
@@ -58,8 +58,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCN-aO-1Vu">
-                        <rect key="frame" x="84" y="35" width="259" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCN-aO-1Vu">
+                        <rect key="frame" x="84" y="35" width="249" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="7uh-YT-h7K"/>
                         </constraints>
@@ -73,8 +73,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM6-Zg-BCo">
-                        <rect key="frame" x="84" y="55" width="259" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM6-Zg-BCo">
+                        <rect key="frame" x="84" y="55" width="249" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="52R-Ld-Yif"/>
                         </constraints>
@@ -97,7 +97,7 @@
                 <constraint firstItem="qMy-aV-Mzc" firstAttribute="leading" secondItem="CFe-zn-j6B" secondAttribute="trailing" constant="12" id="Ifq-UI-wm1"/>
                 <constraint firstItem="rM6-Zg-BCo" firstAttribute="top" secondItem="vCN-aO-1Vu" secondAttribute="bottom" constant="4" id="NNm-5g-6St"/>
                 <constraint firstItem="vCN-aO-1Vu" firstAttribute="top" secondItem="qMy-aV-Mzc" secondAttribute="bottom" constant="3" id="QAF-In-uee"/>
-                <constraint firstAttribute="trailing" secondItem="Gzb-v0-dc5" secondAttribute="trailing" constant="2" id="ROO-LV-Zbo"/>
+                <constraint firstAttribute="trailing" secondItem="Gzb-v0-dc5" secondAttribute="trailing" constant="12" id="ROO-LV-Zbo"/>
                 <constraint firstItem="rM6-Zg-BCo" firstAttribute="leading" secondItem="CFe-zn-j6B" secondAttribute="trailing" constant="12" id="SAd-DJ-iBH"/>
                 <constraint firstItem="Gzb-v0-dc5" firstAttribute="leading" secondItem="vCN-aO-1Vu" secondAttribute="trailing" constant="12" id="T1Z-T1-lit"/>
                 <constraint firstAttribute="bottom" secondItem="rM6-Zg-BCo" secondAttribute="bottom" constant="13" id="T7C-fw-EhT"/>

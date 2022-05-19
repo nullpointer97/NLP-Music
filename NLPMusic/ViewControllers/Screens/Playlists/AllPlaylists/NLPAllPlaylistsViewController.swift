@@ -15,9 +15,20 @@ import SkeletonView
 final class NLPAllPlaylistsViewController: NLPBaseTableViewController {
 
     // MARK: - Public properties -
+    var isOnlyAlbums: Bool
 
     var presenter: NLPAllPlaylistsPresenterInterface!
 
+    init(isOnlyAlbums: Bool) {
+        self.isOnlyAlbums = isOnlyAlbums
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.isOnlyAlbums = false
+        super.init(coder: coder)
+    }
+    
     // MARK: - Lifecycle -
 
     override func viewDidLoad() {
@@ -26,7 +37,7 @@ final class NLPAllPlaylistsViewController: NLPBaseTableViewController {
         setupTable()
         
         do {
-            try presenter.onGetPlaylists(isPaginate: false)
+            try presenter.onGetPlaylists(isOnlyAlbums: isOnlyAlbums, isPaginate: false)
         } catch {
             print(error)
         }
@@ -84,7 +95,7 @@ final class NLPAllPlaylistsViewController: NLPBaseTableViewController {
         super.reloadAudioData()
         
         do {
-            try presenter.onGetPlaylists(isPaginate: false)
+            try presenter.onGetPlaylists(isOnlyAlbums: isOnlyAlbums, isPaginate: false)
         } catch {
             print(error)
         }
@@ -94,7 +105,7 @@ final class NLPAllPlaylistsViewController: NLPBaseTableViewController {
     override func tableView(_ tableView: UITableView, willNeedPaginate cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.item == presenter.playlistItems.count - 5 && presenter.isPageNeed {
             do {
-                try presenter.onGetPlaylists(isPaginate: true)
+                try presenter.onGetPlaylists(isOnlyAlbums: isOnlyAlbums, isPaginate: true)
             } catch {
                 print(error)
             }

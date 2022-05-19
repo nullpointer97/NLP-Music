@@ -17,7 +17,7 @@ final class NLPAllPlaylistsInteractor {
 // MARK: - Extensions -
 
 extension NLPAllPlaylistsInteractor: NLPAllPlaylistsInteractorInterface {
-    func getPlaylists(isPaginate: Bool = false) throws {
+    func getPlaylists(isOnlyAlbums: Bool, isPaginate: Bool = false) throws {
         var parametersAudio: Parameters = [
             "owner_id" : currentUserId,
             "count" : 200,
@@ -34,10 +34,10 @@ extension NLPAllPlaylistsInteractor: NLPAllPlaylistsInteractorInterface {
             guard let items = Mapper<Response<PlaylistResponse>>().map(JSONString: data.string(encoding: .utf8) ?? "{ }")?.response.items else { return }
             
             if isPaginate {
-                self.presenter?.playlistItems.append(contentsOf: items.uniqued())
+                self.presenter?.playlistItems.append(contentsOf: isOnlyAlbums ? items.filter { $0.albumType == "main_only" }.uniqued() : items.filter { $0.albumType == "playlist" }.uniqued())
             } else {
                 self.presenter?.playlistItems.removeAll()
-                self.presenter?.playlistItems.insert(contentsOf: items.uniqued(), at: 0)
+                self.presenter?.playlistItems.insert(contentsOf: isOnlyAlbums ? items.filter { $0.albumType == "main_only" }.uniqued() : items.filter { $0.albumType == "playlist" }.uniqued(), at: 0)
             }
             
             for duplicate in self.presenter?.playlistItems.duplicates() ?? [] {

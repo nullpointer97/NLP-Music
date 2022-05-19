@@ -22,7 +22,8 @@ protocol NLPAudioV2PresenterInterface: PresenterInterface {
     var audioItems: [AudioPlayerItem] { get set }
     var dataSource: [AudioSection]? { get set }
     var vkTabBarController: NLPTabController? { get }
-    func onGetAudio(userId: Int, isPaginate: Bool) throws
+    func onGetAudio() throws
+    func onPreloadAudio() throws
     func onRemoveAudio(audio: AudioPlayerItem) throws
     func didRemoveAudio(audio: AudioPlayerItem)
     func onOpenRecommendations()
@@ -31,7 +32,8 @@ protocol NLPAudioV2PresenterInterface: PresenterInterface {
 }
 
 protocol NLPAudioV2InteractorInterface: InteractorInterface {
-    func getAudio(userId: Int, isPaginate: Bool) throws
+    func getAudio() throws
+    func preloadAudio() throws
     func removeAudio(audio: AudioPlayerItem) throws
     func addAudio(audio: AudioPlayerItem) throws
 }

@@ -44,7 +44,7 @@ class NLPBaseViewCell<T>: SwipeTableViewCell {
 }
 
 class NLPBaseCollectionViewCell<T>: MDCCollectionViewCell {
-    weak var delegate: VKMBaseItemDelegate?
+    weak var delegate: NLPCollectionBaseItemDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

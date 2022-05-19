@@ -45,11 +45,11 @@ final class NLPPlaylistPresenter {
 // MARK: - Extensions -
 
 extension NLPPlaylistPresenter: NLPPlaylistPresenterInterface {
-    func onGetPlaylists(isPaginate: Bool = false, playlistId: Int) throws {
+    func onGetPlaylists(isPaginate: Bool = false, ownerId: Int, playlistId: Int) throws {
         DispatchQueue.main.async {
             self.view.startRefreshing()
         }
-        try interactor.getPlaylists(isPaginate: isPaginate, playlistId: playlistId)
+        try interactor.getPlaylists(isPaginate: isPaginate, ownerId: ownerId, playlistId: playlistId)
     }
     
     func onAddAudio(audio: AudioPlayerItem) throws {

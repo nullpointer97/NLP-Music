@@ -9,6 +9,12 @@ import Foundation
 import UIKit
 
 open class NLPMNavigationController: UINavigationController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
+    var isLight: Bool = false {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+
     public var panScrollable: UIScrollView? {
         return nil
     }
@@ -50,6 +56,10 @@ open class NLPMNavigationController: UINavigationController, UINavigationControl
         gestureRecognizer.delegate = self
         return gestureRecognizer
     }()
+    
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return isLight ? .lightContent : .darkContent
+    }
     
     public override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
@@ -140,7 +150,6 @@ class NLPNavigationBar: UINavigationBar {
 private var AssociatedObjectHandle: UInt8 = 0
 
 extension NLPNavigationBar {
-    
     var height: CGFloat {
         get {
             if let h = objc_getAssociatedObject(self, &AssociatedObjectHandle) as? CGFloat {
@@ -151,5 +160,35 @@ extension NLPNavigationBar {
         set {
             objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
+    }
+}
+
+extension UINavigationBar {
+    var backgroundView: UIView? {
+        for subview in subviews {
+            let stringFromClass = NSStringFromClass(subview.classForCoder)
+            
+            if stringFromClass.contains("UIBarBackground") {
+                return subview
+            }
+        }
+        
+        return nil
+    }
+    
+    func setBackgroundAlpha(_ alpha: CGFloat) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState]) { [weak self] in
+            self?.backgroundView?.alpha = alpha
+        }
+    }
+}
+
+extension UINavigationController {
+    open override var childForStatusBarStyle: UIViewController? {
+        return topViewController
+    }
+
+    open override var childForStatusBarHidden: UIViewController? {
+        return topViewController
     }
 }

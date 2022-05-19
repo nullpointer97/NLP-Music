@@ -15,6 +15,7 @@ public class Group: NSObject {
     var title: String = ""
     var subtitle: String? = nil
     var url: String = ""
+    var isVerified: Bool = false
     
     func parse(from json: JSON) -> Group {
         id = json["id"].stringValue
@@ -22,6 +23,8 @@ public class Group: NSObject {
         title = json["title"].stringValue
         subtitle = json["subtitle"].string
         url = json["url"].stringValue
+        
+        isVerified = json["meta"]["icon"].stringValue == "verified"
         
         return self
     }

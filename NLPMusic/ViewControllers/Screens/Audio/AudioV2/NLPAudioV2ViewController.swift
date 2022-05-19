@@ -25,7 +25,7 @@ final class NLPAudioV2ViewController: NLPBaseTableViewController {
         setupTable()
         
         do {
-            try presenter.onGetAudio(userId: userId, isPaginate: false)
+            try presenter.onGetAudio()
         } catch {
             print(error)
             self.error(message: .localized(.commonError))
@@ -47,9 +47,9 @@ final class NLPAudioV2ViewController: NLPBaseTableViewController {
             case 0:
                 guard let sectionId = presenter.dataSource?[0].items[indexPath.row].blockId else { return }
                 viewController = NLPSectionViewController(sectionId: sectionId)
-            case 1:
-                viewController = NLPAllPlaylistsWireframe().viewController
-            case 2:
+            case 1, 2:
+                viewController = NLPAllPlaylistsWireframe(isOnlyAlbums: indexPath.row == 2).viewController
+            case 3:
                 viewController = NLPSavedMusicViewController()
             default:
                 break
@@ -136,21 +136,10 @@ final class NLPAudioV2ViewController: NLPBaseTableViewController {
     
     override func reloadAudioData() {
         do {
-            try presenter.onGetAudio(userId: userId, isPaginate: false)
+            try presenter.onGetAudio()
         } catch {
             print(error)
             self.error(message: .localized(.commonError))
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, willNeedPaginate cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == presenter.audioItems.count - 10 && presenter.isPageNeed {
-            do {
-                try presenter.onGetAudio(userId: userId, isPaginate: true)
-            } catch {
-                print(error)
-                self.error(message: .localized(.commonError))
-            }
         }
     }
     
@@ -170,10 +159,6 @@ final class NLPAudioV2ViewController: NLPBaseTableViewController {
         }
     }
     
-    @objc func openRecommendations(_ sender: UIBarButtonItem) {
-        presenter.onOpenRecommendations()
-    }
-    
     @objc func changeIcon(_ sender: UIBarButtonItem) {
         UIApplication.shared.setAlternateIconName("AppIcon-1") { error in
             if let error = error {
@@ -182,10 +167,6 @@ final class NLPAudioV2ViewController: NLPBaseTableViewController {
                 print("Success!")
             }
         }
-    }
-    
-    @objc func openFriends(_ sender: UIBarButtonItem) {
-        presenter.onOpenFriends()
     }
 }
 
@@ -267,6 +248,17 @@ extension NLPAudioV2ViewController: UITableViewDelegate, UITableViewDataSource, 
             return 0
         default:
             return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == presenter.audioItems.count - 5 && presenter.isPageNeed {
+            do {
+                try presenter.onPreloadAudio()
+            } catch {
+                print(error)
+                self.error(message: .localized(.commonError))
+            }
         }
     }
     
@@ -363,7 +355,7 @@ extension NLPAudioV2ViewController: UITableViewDelegate, UITableViewDataSource, 
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            return 4
         case 1:
             return 1
         case 2:

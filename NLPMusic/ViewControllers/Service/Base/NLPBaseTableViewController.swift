@@ -106,19 +106,19 @@ open class NLPBaseTableViewController: NLPBaseViewController, MenuDelegate, NLPA
             
             switch player.state {
             case .buffering:
-                if player.currentItem == selectedItem {
+                if player.currentItem?.id == selectedItem.id {
                     vkTabBarController?.openPopup(animated: true)
                 } else {
                     player.play(items: audioItems, startAtIndex: indexPath.row)
                 }
             case .playing:
-                if player.currentItem == selectedItem {
+                if player.currentItem?.id == selectedItem.id {
                     vkTabBarController?.openPopup(animated: true)
                 } else {
                     player.play(items: audioItems, startAtIndex: indexPath.row)
                 }
             case .paused:
-                if player.currentItem == selectedItem {
+                if player.currentItem?.id == selectedItem.id {
                     player.resume()
                 } else {
                     player.play(items: audioItems, startAtIndex: indexPath.row)

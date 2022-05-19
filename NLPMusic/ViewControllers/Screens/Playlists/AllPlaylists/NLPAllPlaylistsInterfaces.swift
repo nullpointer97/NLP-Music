@@ -23,13 +23,13 @@ protocol NLPAllPlaylistsViewInterface: ViewInterface {
 protocol NLPAllPlaylistsPresenterInterface: PresenterInterface {
     var playlistItems: [Playlist] { get set }
     var nextFrom: String { get set }
-    func onGetPlaylists(isPaginate: Bool) throws
+    func onGetPlaylists(isOnlyAlbums: Bool, isPaginate: Bool) throws
     func onOpenPlaylist(_ playlist: Playlist)
     func onRemovePlaylist(playlist: Playlist) throws
     func didRemovePlaylist(playlist: Playlist)
 }
 
 protocol NLPAllPlaylistsInteractorInterface: InteractorInterface {
-    func getPlaylists(isPaginate: Bool) throws
+    func getPlaylists(isOnlyAlbums: Bool, isPaginate: Bool) throws
     func deletePlaylist(playlist: Playlist) throws
 }

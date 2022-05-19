@@ -60,11 +60,15 @@ final class NLPAudioV2Presenter {
 // MARK: - Extensions -
 
 extension NLPAudioV2Presenter: NLPAudioV2PresenterInterface {
-    func onGetAudio(userId: Int, isPaginate: Bool) throws {
+    func onGetAudio() throws {
         DispatchQueue.main.async {
             self.view.startRefreshing()
         }
-        try interactor.getAudio(userId: userId, isPaginate: isPaginate)
+        try interactor.getAudio()
+    }
+    
+    func onPreloadAudio() throws {
+        try interactor.preloadAudio()
     }
     
     func onAddAudio(audio: AudioPlayerItem) throws {

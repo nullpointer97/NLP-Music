@@ -38,7 +38,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-L9-2n7">
-                        <rect key="frame" x="60" y="7" width="245" height="26"/>
+                        <rect key="frame" x="60" y="7" width="249" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="tEu-tc-mS4"/>
                         </constraints>
@@ -53,7 +53,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-9U-Mf8">
-                        <rect key="frame" x="60" y="33" width="245" height="16"/>
+                        <rect key="frame" x="60" y="33" width="249" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="HGT-4J-kYb"/>
                         </constraints>
@@ -67,33 +67,28 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more-horizontal" translatesAutoresizingMaskIntoConstraints="NO" id="rqv-Bk-Xld">
-                        <rect key="frame" x="317" y="12" width="36" height="36"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vep-Qc-4eK">
+                        <rect key="frame" x="321" y="12" width="36" height="36"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="36" id="a6N-6X-2XP"/>
-                            <constraint firstAttribute="width" constant="36" id="cc5-CQ-Cg1"/>
+                            <constraint firstAttribute="height" constant="36" id="2zo-1U-Cys"/>
+                            <constraint firstAttribute="width" constant="36" id="nMQ-D3-Cz9"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                <real key="value" value="4"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
-                        </userDefinedRuntimeAttributes>
-                    </imageView>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="more-horizontal"/>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="vep-Qc-4eK" firstAttribute="leading" secondItem="hrz-L9-2n7" secondAttribute="trailing" constant="12" id="9Jf-mt-Xnk"/>
                 <constraint firstItem="hrz-L9-2n7" firstAttribute="leading" secondItem="T46-MT-Tyo" secondAttribute="trailing" constant="12" id="GRl-TH-R3e"/>
+                <constraint firstItem="vep-Qc-4eK" firstAttribute="leading" secondItem="NrN-9U-Mf8" secondAttribute="trailing" constant="12" id="O9Z-dD-4ia"/>
                 <constraint firstItem="T46-MT-Tyo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OEN-f0-8dp"/>
+                <constraint firstItem="vep-Qc-4eK" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="PAb-hU-PvQ"/>
                 <constraint firstItem="T46-MT-Tyo" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ZfU-Qj-bfg"/>
-                <constraint firstItem="rqv-Bk-Xld" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cLZ-2q-wIp"/>
                 <constraint firstItem="NrN-9U-Mf8" firstAttribute="top" secondItem="hrz-L9-2n7" secondAttribute="bottom" id="gtn-kF-1sg"/>
-                <constraint firstItem="rqv-Bk-Xld" firstAttribute="leading" secondItem="hrz-L9-2n7" secondAttribute="trailing" constant="12" id="q7U-Cp-Ouo"/>
-                <constraint firstItem="rqv-Bk-Xld" firstAttribute="leading" secondItem="NrN-9U-Mf8" secondAttribute="trailing" constant="12" id="qMG-TE-NxG"/>
                 <constraint firstAttribute="bottom" secondItem="NrN-9U-Mf8" secondAttribute="bottom" constant="11" id="qrQ-B5-tlF"/>
-                <constraint firstAttribute="trailing" secondItem="rqv-Bk-Xld" secondAttribute="trailing" constant="16" id="rgu-Cf-FlY"/>
+                <constraint firstAttribute="trailing" secondItem="vep-Qc-4eK" secondAttribute="trailing" constant="12" id="tsj-Qn-ODY"/>
                 <constraint firstItem="NrN-9U-Mf8" firstAttribute="leading" secondItem="T46-MT-Tyo" secondAttribute="trailing" constant="12" id="u0g-N8-gPg"/>
                 <constraint firstItem="hrz-L9-2n7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="yL3-1P-6Pt"/>
             </constraints>
@@ -101,7 +96,7 @@
             <connections>
                 <outlet property="artistLabel" destination="NrN-9U-Mf8" id="zUq-ns-Gtv"/>
                 <outlet property="artworkImageView" destination="T46-MT-Tyo" id="kdP-Uj-IoH"/>
-                <outlet property="moreButton" destination="rqv-Bk-Xld" id="21A-8p-qxa"/>
+                <outlet property="moreButton" destination="vep-Qc-4eK" id="9Zk-PG-kRg"/>
                 <outlet property="titleLabel" destination="hrz-L9-2n7" id="NKe-AU-5l4"/>
             </connections>
             <point key="canvasLocation" x="368.84057971014494" y="92.410714285714278"/>

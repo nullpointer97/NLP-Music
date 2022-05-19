@@ -23,6 +23,12 @@ protocol VKMBaseItemDelegate: AnyObject {
     func logout<T>(from cell: NLPBaseViewCell<T>)
 }
 
+protocol NLPCollectionBaseItemDelegate: AnyObject {
+    func didTap<T>(_ cell: NLPBaseCollectionViewCell<T>)
+    func perform<T>(from cell: NLPBaseCollectionViewCell<T>)
+    func logout<T>(from cell: NLPBaseCollectionViewCell<T>)
+}
+
 open class NLPBaseViewController: UIViewController, BaseControllerProtocol, VKMBaseItemDelegate {
     var observables: [Observable] = []
     

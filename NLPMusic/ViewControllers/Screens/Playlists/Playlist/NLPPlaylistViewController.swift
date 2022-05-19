@@ -39,7 +39,7 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
         ]
         
         do {
-            try presenter.onGetPlaylists(isPaginate: false, playlistId: playlist.id)
+            try presenter.onGetPlaylists(isPaginate: false, ownerId: playlist.ownerId, playlistId: playlist.id)
         } catch {
             print(error)
             self.error(message: .localized(.commonError))
@@ -48,9 +48,15 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
+        asdk_navigationViewController?.navigationBar.setBackgroundAlpha(0)
         asdk_navigationViewController?.navigationBar.titleTextAttributes?[.foregroundColor] = UIColor.label.withAlphaComponent(0)
-        navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        asdk_navigationViewController?.navigationBar.setBackgroundAlpha(1)
+        asdk_navigationViewController?.navigationBar.titleTextAttributes?[.foregroundColor] = UIColor.label.withAlphaComponent(1)
     }
     
     override func didOpenMenu(audio cell: NLPBaseViewCell<AudioPlayerItem>) {
@@ -109,7 +115,7 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
     override func tableView(_ tableView: UITableView, willNeedPaginate cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == audioItems.count && presenter.isPageNeed {
             do {
-                try presenter.onGetPlaylists(isPaginate: true, playlistId: playlist.id)
+                try presenter.onGetPlaylists(isPaginate: true, ownerId: playlist.ownerId, playlistId: playlist.id)
             } catch {
                 print(error)
                 self.error(message: .localized(.commonError))
@@ -159,7 +165,7 @@ final class NLPPlaylistViewController: NLPBaseTableViewController {
     
     override func reloadAudioData() {
         do {
-            try presenter.onGetPlaylists(isPaginate: false, playlistId: playlist.id)
+            try presenter.onGetPlaylists(isPaginate: false, ownerId: playlist.ownerId, playlistId: playlist.id)
         } catch {
             print(error)
             self.error(message: .localized(.commonError))

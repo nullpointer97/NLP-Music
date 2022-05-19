@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "download_check_outline_28.png",
+      "filename" : "vinyl_outline_28.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "download_check_outline_28@2x.png",
+      "filename" : "vinyl_outline_28@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "download_check_outline_28@3x.png",
+      "filename" : "vinyl_outline_28@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

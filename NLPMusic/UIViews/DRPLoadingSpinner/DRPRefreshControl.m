@@ -198,8 +198,6 @@
         CGFloat draggedOffset = scrollView.contentInset.top + scrollView.contentOffset.y;
         CGFloat percentToThreshold = draggedOffset / [self appleMagicOffset];
 
-        NSPrint([NSString stringWithFormat: @"%.2f", (percentToThreshold * stretchLength) - .25]);
-
         self.loadingSpinner.staticArcLength = (percentToThreshold * stretchLength) - 1.5;
     }
 }

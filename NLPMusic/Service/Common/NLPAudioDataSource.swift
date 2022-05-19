@@ -159,14 +159,23 @@ final class NLPAudioDataSource: NSObject, SkeletonTableViewDataSource, UITableVi
         var progress = (scrollView.contentOffset.y + 32) / height
         progress = min(progress, 1)
 
-        if progress <= 1 && progress >= 0 {
-            UIView.animate(withDuration: 0.05, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState]) { [weak self] in
-                self?.parent?.asdk_navigationViewController?.navigationBar.titleTextAttributes?[.foregroundColor] = UIColor.label.withAlphaComponent(progress)
-                headerView.imageView.alpha = 1 - progress
-                headerView.titleLabel.alpha = 1 - progress
-                headerView.subtitleLabel.alpha = 1 - progress
-                headerView.subtitleSecondLabel.alpha = 1 - progress
+        UIView.animate(withDuration: 0.05, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState]) { [weak self] in
+            var newProgress: CGFloat = 0
+            
+            if progress < 0 {
+                newProgress = 0
+            } else if progress > 1 {
+                newProgress = 1
+            } else {
+                newProgress = progress
             }
+
+            self?.parent?.asdk_navigationViewController?.navigationBar.titleTextAttributes?[.foregroundColor] = UIColor.label.withAlphaComponent(newProgress)
+            self?.parent?.asdk_navigationViewController?.navigationBar.backgroundView?.alpha = newProgress
+            headerView.imageView.alpha = 1 - newProgress
+            headerView.titleLabel.alpha = 1 - newProgress
+            headerView.subtitleLabel.alpha = 1 - newProgress
+            headerView.subtitleSecondLabel.alpha = 1 - newProgress
         }
     }
     

@@ -13,6 +13,10 @@ class NLPBaseCollectionViewController: NLPBaseViewController {
     var collectionView: UICollectionView!
     var pullToRefresh: DRPRefreshControl!
 
+    var vkTabBarController: NLPTabController? {
+        return tabBarController as? NLPTabController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

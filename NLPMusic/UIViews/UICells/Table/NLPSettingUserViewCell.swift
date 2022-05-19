@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol SettingUserActionDelegate: AnyObject {
+    func didOpenUser(_ cell: NLPSettingUserViewCell)
+}
+
 class NLPSettingUserViewCell: NLPBaseViewCell<NLPUser> {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
-    
+
+    weak var settingDelegate: SettingUserActionDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -23,6 +29,9 @@ class NLPSettingUserViewCell: NLPBaseViewCell<NLPUser> {
             view.showAnimatedGradientSkeleton()
             view.startSkeletonAnimation()
         }
+        
+        contentView.isUserInteractionEnabled = true
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didOpenUser(_:))))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,5 +47,9 @@ class NLPSettingUserViewCell: NLPBaseViewCell<NLPUser> {
         for view in contentView.subviews {
             view.hideSkeleton()
         }
+    }
+    
+    @objc func didOpenUser(_ gestureRecognizer: UITapGestureRecognizer) {
+        settingDelegate?.didOpenUser(self)
     }
 }

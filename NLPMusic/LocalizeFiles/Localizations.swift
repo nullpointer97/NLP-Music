@@ -24,6 +24,9 @@ enum Localizations: String {
     case friendsMusicTitle = "NLPMNavigationController.Freinds.Title"
     case settingsTitle = "NLPTabController.Settings.Title"
     case savedMusicTitle = "NLPTabController.SavedMusic.Title"
+    case recentTitle = "NLPTabController.Recent.Title"
+    case playlistsTitle = "NLPTabController.Playlists.Title"
+    case albumsTitle = "NLPTabController.Albums.Title"
     case playerWaitPrefix = "NLPTabController.Player.Prefix"
     case playerWaitSuffix = "NLPTabController.Player.Suffix"
 
@@ -87,10 +90,6 @@ enum Localizations: String {
     case commonWarningTitle = "NLPCommon.Warning"
     case donateDescription = "NLPCommon.Donate"
     case trouble = "NLPCommon.Trouble"
-    
-    #if DEBUG
-    case hohol = "NLPFunny.Hohol"
-    #endif
 }
 
 extension String {

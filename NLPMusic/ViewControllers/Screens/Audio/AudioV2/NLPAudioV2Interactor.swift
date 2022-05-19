@@ -12,28 +12,55 @@ import Alamofire
 final class NLPAudioV2Interactor {
     weak var presenter: NLPAudioV2PresenterInterface?
     var startFrom = ""
+    var audioBlockId: String = ""
 }
 
 // MARK: - Extensions -
 
 extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
-    func getSection(_ sectionHandler: @escaping ((String) -> ())) {
-        var parametersAudio: Parameters = [:]
-        
+    func getAudio() throws {
         do {
-            try ApiV2.method("catalog.getAudio", parameters: &parametersAudio, apiVersion: "5.171").done { result in
-                let sections = result["response"]["catalog"]["sections"].arrayValue
-                self.presenter?.audioItems.removeAll()
-                sectionHandler(sections[1]["id"].stringValue)
-            }.catch { error in
-                self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(error.toVK().toApi()?.message ?? "")")
-                self.presenter?.onDidFinishLoad()
-                self.presenter?.dataSource = [
-                    AudioSection(items: [
-                        AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
-                    ], title: "", count: 0)
-                ]
-                sectionHandler("")
+            if let path = Bundle.main.path(forResource: "OfficialProfileGetter", ofType: "txt") {
+                let code = try String(contentsOfFile: path, encoding: .utf8).replacingOccurrences(of: "INSERT_USER_ID", with: currentUserId.stringValue)
+                
+                var execParams: Parameters = ["code": code]
+                
+                try ApiV2.method("execute", parameters: &execParams).done { response in
+                    let blocks = response["response"]["blocks"].arrayValue[0]
+
+                    let recentBlock = blocks["recents"]
+                    let playlistsBlock = blocks["playlists"]
+                    let audioBlock = blocks["audios"]
+                    
+                    self.presenter?.audioItems = audioBlock["audios"].arrayValue.compactMap { AudioPlayerItem(fromJSON: $0) }.uniqued()
+                    self.presenter?.dataSource = [
+                        AudioSection(items: [
+                            AudioSectionItem(items: [], title: .localized(.recentTitle), image: "history_backward_outline_28", blockId: recentBlock["block_id"].stringValue),
+                            AudioSectionItem(items: [], title: .localized(.playlistsTitle), image: "playlist_outline_28", blockId: playlistsBlock["block_id"].stringValue),
+                            AudioSectionItem(items: [], title: .localized(.albumsTitle), image: "vinyl_outline_28", blockId: playlistsBlock["block_id"].stringValue),
+                            AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
+                        ], title: "", count: 0),
+                        AudioSection(items: [
+                            AudioSectionItem(items: [], title: .localized(.shuffle), image: "shuffle-2", blockId: "")
+                        ], title: "", count: 0),
+                        AudioSection(items: [
+                            AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "", image: nil, blockId: audioBlock["block_id"].stringValue),
+                        ], title: .localized(.audiosTitle), count: (self.presenter?.audioItems ?? []).count)
+                    ]
+                    self.startFrom = audioBlock["next_from"].stringValue
+                    self.audioBlockId = audioBlock["block_id"].stringValue
+                    
+                    try self.preloadAudio()
+                }.ensure {
+                    self.presenter?.onDidFinishLoad()
+                }.catch { err in
+                    self.presenter?.dataSource = [
+                        AudioSection(items: [
+                            AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
+                        ], title: "", count: 0)
+                    ]
+                    self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(err.toVK().toApi()?.message ?? "")")
+                }
             }
         } catch {
             self.presenter?.dataSource = [
@@ -41,86 +68,43 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
                     AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
                 ], title: "", count: 0)
             ]
-            sectionHandler("")
         }
     }
     
-    func getAudio(userId: Int, isPaginate: Bool = false) throws {
-        getSection { sectionId in
-            var parametersAudio: Parameters = isPaginate ? ["section_id" : sectionId, "start_from": self.startFrom] : ["section_id" : sectionId]
-            
-            do {
-                try ApiV2.method("catalog.getSection", parameters: &parametersAudio, apiVersion: "5.171").done { result in
-                    let items = result["response"]
-                    let lastPlayingBlock = items["section"]["blocks"].arrayValue[0]
-                    let playlistBlock = items["section"]["blocks"].arrayValue[3]
-                    
-                    self.presenter?.dataSource = [
-                        AudioSection(items: [
-                            AudioSectionItem(items: [], title: lastPlayingBlock["layout"]["title"].stringValue, image: "history_backward_outline_28", blockId: lastPlayingBlock["actions"].arrayValue[0]["section_id"].stringValue),
-                            AudioSectionItem(items: [], title: playlistBlock["layout"]["title"].stringValue, image: "playlist_outline_28", blockId: playlistBlock["actions"].arrayValue[0]["section_id"].stringValue),
-                            AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
-                        ], title: "", count: 0),
-                        AudioSection(items: [
-                            AudioSectionItem(items: [], title: .localized(.shuffle), image: "shuffle-2", blockId: "")
-                        ], title: "", count: 0)
-                    ]
-                    
-                    let audioBlock = items["section"]["blocks"].arrayValue.filter { $0["data_type"].stringValue == "music_audios" && $0["layout"]["name"].stringValue == "list" }[0]
+    func preloadAudio() throws {
+        presenter?.isPageNeed = false
 
-                    try self.getBlock(sectionId: audioBlock["id"].stringValue)
-                    
-                    if !audioBlock["next_from"].stringValue.isEmpty {
-                        DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now() + 2) {
-                            do {
-                                try self.getBlock(sectionId: audioBlock["id"].stringValue, startFrom: audioBlock["next_from"].stringValue)
-                            } catch {
-                                self.presenter?.onError(message: "\(String.localized(.loadingError))")
-                            }
-                        }
-                    }
-                }.catch { error in
-                    self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(error.toVK().toApi()?.message ?? "")")
+        guard !startFrom.isEmpty else {
+            return
+        }
+        do {
+            var execParams: Parameters = ["block_id": audioBlockId, "start_from": startFrom]
+            
+            try ApiV2.method("catalog.getBlockItems", parameters: &execParams).done { response in
+                let audioBlock = response["response"]["audios"]
+                
+                self.presenter?.audioItems.insert(contentsOf: audioBlock.arrayValue.compactMap { AudioPlayerItem(fromJSON: $0) }.uniqued(), at: self.presenter?.audioItems.count ?? 0)
+                
+                guard let dataSource = self.presenter?.dataSource else { return }
+                
+                if dataSource.indices.contains(2) {
+                    self.presenter?.dataSource?[2] = AudioSection(items: [
+                        AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "", image: nil, blockId: ""),
+                    ], title: .localized(.audiosTitle), count: (self.presenter?.audioItems ?? []).count)
+                } else {
+                    self.presenter?.dataSource?.append([AudioSection(items: [
+                        AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "", image: nil, blockId: ""),
+                    ], title: .localized(.audiosTitle), count: (self.presenter?.audioItems ?? []).count)])
                 }
-            } catch {
-                self.presenter?.onError(message: "\(String.localized(.loadingError))")
+                self.startFrom = response["response"]["block"]["next_from"].stringValue
+            }.ensure {
+                self.presenter?.onDidFinishLoad()
+                self.presenter?.isPageNeed = !self.startFrom.isEmpty
+            }.catch { err in
+                self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(err.toVK().toApi()?.message ?? "")")
             }
-        }
-    }
-    
-    private func getBlock(sectionId: String, startFrom: String = "") throws {
-        var parametersAudio: Parameters = !startFrom.isEmpty ? ["section_id" : sectionId, "start_from": startFrom] : ["section_id" : sectionId]
-        
-        try ApiV2.method("catalog.getSection", parameters: &parametersAudio, requestMethod: .get, apiVersion: "5.171").done { response in
-            let section = response["response"]["section"]
-            
-            try self.getAudiosByIds(audios: section["blocks"][0]["audios_ids"].arrayValue.compactMap { $0.stringValue })
-        }.catch { err in
-            self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(err.toVK().toApi()?.message ?? "")")
-        }
-    }
-    
-    private func getAudiosByIds(audios: [String]) throws {
-        var parameters: Parameters = ["audios": audios]
-        try ApiV2.method("audio.getById", parameters: &parameters, requestMethod: .get, apiVersion: "5.89").done { response in
-            let audios = response["response"].arrayValue
-            self.presenter?.audioItems.insert(contentsOf: audios.compactMap { AudioPlayerItem(fromJSON: $0) }.uniqued(), at: self.presenter?.audioItems.count ?? 0)
-            
-            guard let dataSource = self.presenter?.dataSource else { return }
-            
-            if dataSource.indices.contains(2) {
-                self.presenter?.dataSource?[2] = AudioSection(items: [
-                    AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "", image: nil, blockId: ""),
-                ], title: .localized(.audiosTitle), count: (self.presenter?.audioItems ?? []).count)
-            } else {
-                self.presenter?.dataSource?.append([AudioSection(items: [
-                    AudioSectionItem(items: self.presenter?.audioItems ?? [], title: "", image: nil, blockId: ""),
-                ], title: .localized(.audiosTitle), count: (self.presenter?.audioItems ?? []).count)])
-            }
-        }.ensure {
-            self.presenter?.onDidFinishLoad()
-        }.catch { err in
-            self.presenter?.onError(message: "\(String.localized(.loadingError))\n\(err.toVK().toApi()?.message ?? "")")
+        } catch {
+            self.presenter?.onError(message: error.localizedDescription)
         }
     }
     

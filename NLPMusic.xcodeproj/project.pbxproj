@@ -134,25 +134,6 @@
 		F55B9760282A9DE800E17937 /* DRPRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F55B9759282A9DE800E17937 /* DRPRefreshControl.m */; };
 		F55B9761282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = F55B975A282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m */; };
 		F55B9762282A9DE800E17937 /* DRPLoadingSpinner.h in Headers */ = {isa = PBXBuildFile; fileRef = F55B975B282A9DE800E17937 /* DRPLoadingSpinner.h */; };
-		F55E764627ABDCC000A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763327ABDCBF00A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */; };
-		F55E764727ABDCC000A3DE4D /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763427ABDCBF00A3DE4D /* ContextMenu.swift */; };
-		F55E764827ABDCC000A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763527ABDCBF00A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift */; };
-		F55E764927ABDCC000A3DE4D /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763627ABDCBF00A3DE4D /* UIViewController+Extensions.swift */; };
-		F55E764A27ABDCC000A3DE4D /* ClippedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763727ABDCBF00A3DE4D /* ClippedContainerViewController.swift */; };
-		F55E764B27ABDCC000A3DE4D /* ContextMenuDismissing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763827ABDCBF00A3DE4D /* ContextMenuDismissing.swift */; };
-		F55E764C27ABDCC000A3DE4D /* ContextMenu+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763927ABDCBF00A3DE4D /* ContextMenu+Position.swift */; };
-		F55E764D27ABDCC000A3DE4D /* ContextMenu+MenuStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763A27ABDCBF00A3DE4D /* ContextMenu+MenuStyle.swift */; };
-		F55E764E27ABDCC000A3DE4D /* ContextMenu+HapticFeedbackStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763B27ABDCBF00A3DE4D /* ContextMenu+HapticFeedbackStyle.swift */; };
-		F55E764F27ABDCC000A3DE4D /* ContextMenu+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763C27ABDCBF00A3DE4D /* ContextMenu+Options.swift */; };
-		F55E765027ABDCC000A3DE4D /* ContextMenu+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763D27ABDCBF00A3DE4D /* ContextMenu+Animations.swift */; };
-		F55E765127ABDCC000A3DE4D /* ContextMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763E27ABDCBF00A3DE4D /* ContextMenuDelegate.swift */; };
-		F55E765227ABDCC000A3DE4D /* CGRect+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E763F27ABDCBF00A3DE4D /* CGRect+Area.swift */; };
-		F55E765327ABDCC000A3DE4D /* ContextMenu+ContainerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E764027ABDCBF00A3DE4D /* ContextMenu+ContainerStyle.swift */; };
-		F55E765427ABDCC000A3DE4D /* ContextMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E764127ABDCBF00A3DE4D /* ContextMenuPresentationController.swift */; };
-		F55E765527ABDCC000A3DE4D /* ContextMenuPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E764227ABDCBF00A3DE4D /* ContextMenuPresenting.swift */; };
-		F55E765627ABDCC000A3DE4D /* ContextMenu+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E764327ABDCBF00A3DE4D /* ContextMenu+Item.swift */; };
-		F55E765727ABDCC000A3DE4D /* SourceViewCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E764427ABDCBF00A3DE4D /* SourceViewCorner.swift */; };
-		F55E765827ABDCC000A3DE4D /* CGRect+DominantCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E764527ABDCBF00A3DE4D /* CGRect+DominantCorner.swift */; };
 		F55E765B27ABDCE800A3DE4D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E765A27ABDCE800A3DE4D /* MenuViewController.swift */; };
 		F55E766427ABFB1B00A3DE4D /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = F55E766327ABFB1B00A3DE4D /* MarqueeLabel */; };
 		F55F2F9528114B5000D5D5FE /* NLPUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55F2F9328114B5000D5D5FE /* NLPUserViewCell.swift */; };
@@ -673,25 +654,6 @@
 		F55B975A282A9DE800E17937 /* DRPLoadingSpinnerTimingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRPLoadingSpinnerTimingFunction.m; sourceTree = "<group>"; };
 		F55B975B282A9DE800E17937 /* DRPLoadingSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRPLoadingSpinner.h; sourceTree = "<group>"; };
 		F55E75D027ABC27600A3DE4D /* NLPMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NLPMusic-Bridging-Header.h"; sourceTree = "<group>"; };
-		F55E763327ABDCBF00A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+ContextMenuPresentationControllerDelegate.swift"; sourceTree = "<group>"; };
-		F55E763427ABDCBF00A3DE4D /* ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
-		F55E763527ABDCBF00A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
-		F55E763627ABDCBF00A3DE4D /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		F55E763727ABDCBF00A3DE4D /* ClippedContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClippedContainerViewController.swift; sourceTree = "<group>"; };
-		F55E763827ABDCBF00A3DE4D /* ContextMenuDismissing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuDismissing.swift; sourceTree = "<group>"; };
-		F55E763927ABDCBF00A3DE4D /* ContextMenu+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+Position.swift"; sourceTree = "<group>"; };
-		F55E763A27ABDCBF00A3DE4D /* ContextMenu+MenuStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+MenuStyle.swift"; sourceTree = "<group>"; };
-		F55E763B27ABDCBF00A3DE4D /* ContextMenu+HapticFeedbackStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+HapticFeedbackStyle.swift"; sourceTree = "<group>"; };
-		F55E763C27ABDCBF00A3DE4D /* ContextMenu+Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+Options.swift"; sourceTree = "<group>"; };
-		F55E763D27ABDCBF00A3DE4D /* ContextMenu+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+Animations.swift"; sourceTree = "<group>"; };
-		F55E763E27ABDCBF00A3DE4D /* ContextMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuDelegate.swift; sourceTree = "<group>"; };
-		F55E763F27ABDCBF00A3DE4D /* CGRect+Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Area.swift"; sourceTree = "<group>"; };
-		F55E764027ABDCBF00A3DE4D /* ContextMenu+ContainerStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+ContainerStyle.swift"; sourceTree = "<group>"; };
-		F55E764127ABDCBF00A3DE4D /* ContextMenuPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuPresentationController.swift; sourceTree = "<group>"; };
-		F55E764227ABDCBF00A3DE4D /* ContextMenuPresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuPresenting.swift; sourceTree = "<group>"; };
-		F55E764327ABDCBF00A3DE4D /* ContextMenu+Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextMenu+Item.swift"; sourceTree = "<group>"; };
-		F55E764427ABDCBF00A3DE4D /* SourceViewCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceViewCorner.swift; sourceTree = "<group>"; };
-		F55E764527ABDCBF00A3DE4D /* CGRect+DominantCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+DominantCorner.swift"; sourceTree = "<group>"; };
 		F55E765A27ABDCE800A3DE4D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F55F2F9328114B5000D5D5FE /* NLPUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPUserViewCell.swift; sourceTree = "<group>"; };
 		F55F2F9428114B5000D5D5FE /* NLPUserViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLPUserViewCell.xib; sourceTree = "<group>"; };
@@ -1193,7 +1155,6 @@
 				F52E4E4927B5A12700F796E0 /* PlayerSlider */,
 				F52E4E4627B5976100F796E0 /* KVolumeSlider */,
 				F563F4F727AD18D300CD89FE /* TOInsetGroupedTableView */,
-				F55E763227ABDCBF00A3DE4D /* ContextMenu */,
 				F54C9EBE27AAEB70003EF618 /* UICells */,
 				F5217AD827AAA72400A90265 /* OneTimeCodeTextFields.swift */,
 				F5F6183827C4275200A57DAB /* EdgeShadowLayer.swift */,
@@ -1504,32 +1465,6 @@
 				F5F681C427C6AE9900173DD5 /* UIViewController+LNPopupSupport.h */,
 			);
 			path = Popup;
-			sourceTree = "<group>";
-		};
-		F55E763227ABDCBF00A3DE4D /* ContextMenu */ = {
-			isa = PBXGroup;
-			children = (
-				F55E763327ABDCBF00A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift */,
-				F55E763427ABDCBF00A3DE4D /* ContextMenu.swift */,
-				F55E763527ABDCBF00A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift */,
-				F55E763627ABDCBF00A3DE4D /* UIViewController+Extensions.swift */,
-				F55E763727ABDCBF00A3DE4D /* ClippedContainerViewController.swift */,
-				F55E763827ABDCBF00A3DE4D /* ContextMenuDismissing.swift */,
-				F55E763927ABDCBF00A3DE4D /* ContextMenu+Position.swift */,
-				F55E763A27ABDCBF00A3DE4D /* ContextMenu+MenuStyle.swift */,
-				F55E763B27ABDCBF00A3DE4D /* ContextMenu+HapticFeedbackStyle.swift */,
-				F55E763C27ABDCBF00A3DE4D /* ContextMenu+Options.swift */,
-				F55E763D27ABDCBF00A3DE4D /* ContextMenu+Animations.swift */,
-				F55E763E27ABDCBF00A3DE4D /* ContextMenuDelegate.swift */,
-				F55E763F27ABDCBF00A3DE4D /* CGRect+Area.swift */,
-				F55E764027ABDCBF00A3DE4D /* ContextMenu+ContainerStyle.swift */,
-				F55E764127ABDCBF00A3DE4D /* ContextMenuPresentationController.swift */,
-				F55E764227ABDCBF00A3DE4D /* ContextMenuPresenting.swift */,
-				F55E764327ABDCBF00A3DE4D /* ContextMenu+Item.swift */,
-				F55E764427ABDCBF00A3DE4D /* SourceViewCorner.swift */,
-				F55E764527ABDCBF00A3DE4D /* CGRect+DominantCorner.swift */,
-			);
-			path = ContextMenu;
 			sourceTree = "<group>";
 		};
 		F55E765927ABDCDE00A3DE4D /* Menu */ = {
@@ -2728,7 +2663,6 @@
 				F5BE75B327A1BC6500AC49FA /* AudioPlayerDelegate.swift in Sources */,
 				F5BE74F327A1BB8400AC49FA /* UISpringTimingParameters.swift in Sources */,
 				F57005D427D64DF2002A9F66 /* SourcePreprocessor.swift in Sources */,
-				F55E765527ABDCC000A3DE4D /* ContextMenuPresenting.swift in Sources */,
 				F5C0244E27FB052B00D70C30 /* NLPAudioWireframe.swift in Sources */,
 				F541527A2804512800414DDD /* NLPSearchAudioInterfaces.swift in Sources */,
 				F5BE75FF27A1BC6500AC49FA /* SessionStorage.swift in Sources */,
@@ -2793,7 +2727,6 @@
 				F5BE75BD27A1BC6500AC49FA /* DefaultsService.swift in Sources */,
 				F5C0244127F8A94500D70C30 /* NLPPlaylistPresenter.swift in Sources */,
 				F5508B6E27B65174002F02BC /* Animations.swift in Sources */,
-				F55E764727ABDCC000A3DE4D /* ContextMenu.swift in Sources */,
 				F507072628170E4100EF9E55 /* NLPSettingUserViewCell.swift in Sources */,
 				F5BE750C27A1BB8400AC49FA /* BaseWireframe.swift in Sources */,
 				F5E9B62527DA6813001230B7 /* NLPPairButtonViewCell.swift in Sources */,
@@ -2819,7 +2752,6 @@
 				F5AED90B27F25B11008A4BC2 /* StyckyHeaderView.swift in Sources */,
 				F5E57A4427D218CB00B4FCDF /* NLPPlaylistCollectionViewCell.swift in Sources */,
 				F5813BA827CCD37D00F647A5 /* BaseNibView.swift in Sources */,
-				F55E764E27ABDCC000A3DE4D /* ContextMenu+HapticFeedbackStyle.swift in Sources */,
 				F5AED90927F24A04008A4BC2 /* InsetGroupedTableView.swift in Sources */,
 				F5BE74F427A1BB8400AC49FA /* UIImage.swift in Sources */,
 				F54C9EC027AAEB8B003EF618 /* NLPBaseViewCell.swift in Sources */,
@@ -2827,7 +2759,6 @@
 				F5F681DD27C6AE9A00173DD5 /* LNPopupOpenTapGestureRecognizer.m in Sources */,
 				F55A599727E243A40043CA20 /* CGRectExtension.swift in Sources */,
 				F5F681D627C6AE9A00173DD5 /* _LNPopupSwizzlingUtils.m in Sources */,
-				F55E765727ABDCC000A3DE4D /* SourceViewCorner.swift in Sources */,
 				F57005D227D64DF2002A9F66 /* ConditionalPreprocessor.swift in Sources */,
 				F5813BA427CCD37D00F647A5 /* Chronometer.swift in Sources */,
 				F5BE75A727A1BC6500AC49FA /* RetryEventProducer.swift in Sources */,
@@ -2837,14 +2768,12 @@
 				F5A30E87282503F50088179F /* CGPath+Extensions.swift in Sources */,
 				F53DEF7A281020C4003EB8EF /* UICircularProgressRingStyle.swift in Sources */,
 				F5F6183927C4275200A57DAB /* EdgeShadowLayer.swift in Sources */,
-				F55E764B27ABDCC000A3DE4D /* ContextMenuDismissing.swift in Sources */,
 				F5C0244A27FB052B00D70C30 /* NLPAudioInterfaces.swift in Sources */,
 				F57005DE27D64DF2002A9F66 /* HeroTransition+UINavigationControllerDelegate.swift in Sources */,
 				F5719ADB282CF1B4009F4213 /* NLPAudioV2Presenter.swift in Sources */,
 				F5BE74FE27A1BB8400AC49FA /* JSON.swift in Sources */,
 				F5A30E8A282503F50088179F /* CA+Extensions.swift in Sources */,
 				F5C0242A27F88B5100D70C30 /* NLPRecommendationsWireframe.swift in Sources */,
-				F55E765427ABDCC000A3DE4D /* ContextMenuPresentationController.swift in Sources */,
 				F5B0746C27F347BA00D8717A /* NLPPlaylistListViewCell.swift in Sources */,
 				F5A30E86282503F50088179F /* Modes.swift in Sources */,
 				F5BE750427A1BB8400AC49FA /* Error.swift in Sources */,
@@ -2876,13 +2805,11 @@
 				F55A598E27E243A40043CA20 /* ColorSliderDelegate.swift in Sources */,
 				F5348EBC27CE7DB9000E85F7 /* DimmedView.swift in Sources */,
 				F5BE75FE27A1BC6500AC49FA /* TokenStorage.swift in Sources */,
-				F55E765027ABDCC000A3DE4D /* ContextMenu+Animations.swift in Sources */,
 				F57005D127D64DF2002A9F66 /* IgnoreSubviewModifiersPreprocessor.swift in Sources */,
 				F5C0243727F893AB00D70C30 /* NLPAllPlaylistsWireframe.swift in Sources */,
 				F5BE760027A1BC6500AC49FA /* Token.swift in Sources */,
 				F5B8FA1D27F43F8D00AF2DCD /* UIImage+Extension.swift in Sources */,
 				F57005F727D64DF2002A9F66 /* HeroCompatible.swift in Sources */,
-				F55E764A27ABDCC000A3DE4D /* ClippedContainerViewController.swift in Sources */,
 				F57005F627D64DF2002A9F66 /* HeroTargetState.swift in Sources */,
 				F55F2F9528114B5000D5D5FE /* NLPUserViewCell.swift in Sources */,
 				F5B8FA1627F43F8D00AF2DCD /* UIModels.swift in Sources */,
@@ -2909,7 +2836,6 @@
 				F55B975F282A9DE800E17937 /* DRPLoadingSpinner.m in Sources */,
 				F5BE75AD27A1BC6500AC49FA /* AudioPlayer+PlayerEvent.swift in Sources */,
 				F55A598F27E243A40043CA20 /* ColorPaletteDelegate.swift in Sources */,
-				F55E764F27ABDCC000A3DE4D /* ContextMenu+Options.swift in Sources */,
 				F5BE75F527A1BC6500AC49FA /* Authorizator.swift in Sources */,
 				F5BE750927A1BB8400AC49FA /* NSMutableAttributedString.swift in Sources */,
 				F55A598C27E243A40043CA20 /* RectangularHSBPaletteDelegate.swift in Sources */,
@@ -2922,13 +2848,11 @@
 				F5348E9B27CE7624000E85F7 /* NLPSearchAudioViewController.swift in Sources */,
 				F5BE75B927A1BC6500AC49FA /* VKGeneralDelegate.swift in Sources */,
 				F5813BA727CCD37D00F647A5 /* AudioContext.swift in Sources */,
-				F55E764D27ABDCC000A3DE4D /* ContextMenu+MenuStyle.swift in Sources */,
 				F55A598827E243A40043CA20 /* ComponentSliderControls.swift in Sources */,
 				F54BE57B27AC2F5200398458 /* NLPAudioDataSource.swift in Sources */,
 				F55A599127E243A40043CA20 /* HSBColor.swift in Sources */,
 				F5BE759D27A1BC6500AC49FA /* AudioService.swift in Sources */,
 				F5508B7327B65174002F02BC /* Movin.swift in Sources */,
-				F55E764C27ABDCC000A3DE4D /* ContextMenu+Position.swift in Sources */,
 				F57005DB27D64DF2002A9F66 /* HeroTransition+Animate.swift in Sources */,
 				F55E765B27ABDCE800A3DE4D /* MenuViewController.swift in Sources */,
 				F5BE747F27A1B78400AC49FA /* SceneDelegate.swift in Sources */,
@@ -2941,14 +2865,12 @@
 				F578465E282D787200E6CAAB /* Bundle.swift in Sources */,
 				F5EFD4192816F98E00F6CF2C /* CollectionViewDiffableDataSource.swift in Sources */,
 				F5BE759A27A1BC6500AC49FA /* URL+Offline.swift in Sources */,
-				F55E765127ABDCC000A3DE4D /* ContextMenuDelegate.swift in Sources */,
 				F5F38F9E27F88664005216DB /* NLPModalViewController.swift in Sources */,
 				F5B8FA2127F49DC300AF2DCD /* DonateViewController.swift in Sources */,
 				F5B8FA1327F43F8D00AF2DCD /* Assets.swift in Sources */,
 				F5BE75A627A1BC6500AC49FA /* QualityAdjustmentEventProducer.swift in Sources */,
 				F55A598D27E243A40043CA20 /* ComponentSliderDelegates.swift in Sources */,
 				F55A598927E243A40043CA20 /* ControlWithThumbView.swift in Sources */,
-				F55E765627ABDCC000A3DE4D /* ContextMenu+Item.swift in Sources */,
 				F5508B7027B65174002F02BC /* TimingCurve.swift in Sources */,
 				F5F681CC27C6AE9A00173DD5 /* LNForwardingDelegate.m in Sources */,
 				F55A599C27E243A40043CA20 /* LimitedGestureCircleView.swift in Sources */,
@@ -2977,9 +2899,7 @@
 				F5BE75B427A1BC6500AC49FA /* AudioPlayerMode.swift in Sources */,
 				F57005E227D64DF2002A9F66 /* HeroModifier+HeroStringConvertible.swift in Sources */,
 				F5BE751327A1BB8400AC49FA /* String.swift in Sources */,
-				F55E765327ABDCC000A3DE4D /* ContextMenu+ContainerStyle.swift in Sources */,
 				F55A598527E243A40043CA20 /* AbstractColorControl.swift in Sources */,
-				F55E765227ABDCC000A3DE4D /* CGRect+Area.swift in Sources */,
 				F57005DA27D64DF2002A9F66 /* HeroTransition+Complete.swift in Sources */,
 				F5BE75AF27A1BC6500AC49FA /* AudioPlayer+NetworkEvent.swift in Sources */,
 				F57005DF27D64DF2002A9F66 /* HeroTransition+UIViewControllerTransitioningDelegate.swift in Sources */,
@@ -3054,9 +2974,7 @@
 				F55A598427E243A40043CA20 /* ColorPaletteControl.swift in Sources */,
 				F5BE75A327A1BC6500AC49FA /* SeekEventProducer.swift in Sources */,
 				F57005CE27D64DF2002A9F66 /* MatchPreprocessor.swift in Sources */,
-				F55E764927ABDCC000A3DE4D /* UIViewController+Extensions.swift in Sources */,
 				F57005ED27D64DF2002A9F66 /* Array+HeroModifier.swift in Sources */,
-				F55E764627ABDCC000A3DE4D /* ContextMenu+ContextMenuPresentationControllerDelegate.swift in Sources */,
 				F5BE74FF27A1BB8400AC49FA /* Atomic.swift in Sources */,
 				F57005F227D64DF2002A9F66 /* UIKit+Hero.swift in Sources */,
 				F5BE75F427A1BC6500AC49FA /* Dependencies.swift in Sources */,
@@ -3068,9 +2986,7 @@
 				F5C0244227F8A94500D70C30 /* NLPPlaylistViewController.swift in Sources */,
 				F5348EB527CE7DB9000E85F7 /* UIViewController+PanModalPresenter.swift in Sources */,
 				F5BE760227A1BC6500AC49FA /* Localization.swift in Sources */,
-				F55E764827ABDCC000A3DE4D /* ContextMenu+UIViewControllerTransitioningDelegate.swift in Sources */,
 				F55A599627E243A40043CA20 /* UIViewExtension.swift in Sources */,
-				F55E765827ABDCC000A3DE4D /* CGRect+DominantCorner.swift in Sources */,
 				F5B8FA0D27F43F8D00AF2DCD /* CameraCollectionViewCell.swift in Sources */,
 				F5BE75B627A1BC6500AC49FA /* Reachability.swift in Sources */,
 				F55A599D27E243A40043CA20 /* ColorControlContentView.swift in Sources */,

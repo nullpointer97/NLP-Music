@@ -18,11 +18,11 @@ protocol NLPPlaylistViewInterface: ViewInterface {
 protocol NLPPlaylistPresenterInterface: PresenterInterface {
     var audioItems: [AudioPlayerItem] { get set }
     var vkTabBarController: NLPTabController? { get }
-    func onGetPlaylists(isPaginate: Bool, playlistId: Int) throws
+    func onGetPlaylists(isPaginate: Bool, ownerId: Int, playlistId: Int) throws
     func onAddAudio(audio: AudioPlayerItem) throws
 }
 
 protocol NLPPlaylistInteractorInterface: InteractorInterface {
-    func getPlaylists(isPaginate: Bool, playlistId: Int) throws
+    func getPlaylists(isPaginate: Bool, ownerId: Int, playlistId: Int) throws
     func addAudio(audio: AudioPlayerItem) throws
 }

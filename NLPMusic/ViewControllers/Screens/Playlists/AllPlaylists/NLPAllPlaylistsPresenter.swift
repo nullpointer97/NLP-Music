@@ -32,11 +32,11 @@ final class NLPAllPlaylistsPresenter {
 // MARK: - Extensions -
 
 extension NLPAllPlaylistsPresenter: NLPAllPlaylistsPresenterInterface {
-    func onGetPlaylists(isPaginate: Bool = false) throws {
+    func onGetPlaylists(isOnlyAlbums: Bool, isPaginate: Bool = false) throws {
         DispatchQueue.main.async {
             self.view.startRefreshing()
         }
-        try interactor.getPlaylists(isPaginate: isPaginate)
+        try interactor.getPlaylists(isOnlyAlbums: isOnlyAlbums, isPaginate: isPaginate)
     }
     
     func onOpenPlaylist(_ playlist: Playlist) {

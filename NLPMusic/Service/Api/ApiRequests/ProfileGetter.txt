@@ -12,4 +12,8 @@ var releasesFeat = API.catalog.getBlockItems({"block_id": section.section.blocks
 
 var groups = API.catalog.getBlockItems({"block_id": section.section.blocks[11].id}).links;
 
-return {"items": [{"name": section.section.blocks[1].layout.title, "type": "popular", "items": popular}, {"name": section.section.blocks[4].layout.title, "type": "releases", "items": releases}, {"name": section.section.blocks[7].layout.title, "type": "releaseFeat", "items": releasesFeat}, {"name": section.section.blocks[10].layout.title, "type": "groups", "items": groups}]};
+if (releases.lenght != 0) {
+    return {"artist_info": section.artists[0], "items": [{"name": section.section.blocks[1].layout.title, "type": "popular", "items": popular}, {"name": "NLPTranslate.Artist.LastRelease", "type": "lastRelease", "items": [releases[0]]}, {"name": section.section.blocks[4].layout.title, "type": "releases", "items": releases}, {"name": section.section.blocks[7].layout.title, "type": "releaseFeat", "items": releasesFeat}, {"name": section.section.blocks[10].layout.title, "type": "groups", "items": groups}]};
+} else {
+    return {"artist_info": section.artists[0], "items": [{"name": section.section.blocks[1].layout.title, "type": "popular", "items": popular}, {"name": section.section.blocks[4].layout.title, "type": "releases", "items": releases}, {"name": section.section.blocks[7].layout.title, "type": "releaseFeat", "items": releasesFeat}, {"name": section.section.blocks[10].layout.title, "type": "groups", "items": groups}]};
+}

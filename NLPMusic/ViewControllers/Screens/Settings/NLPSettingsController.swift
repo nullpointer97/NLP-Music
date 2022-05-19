@@ -31,6 +31,8 @@ class NLPSettingsController: NLPBaseTableViewController {
         return [nil, nil, "\(String.localized(.cacheFooter)) \(Settings.cacheSize)", String.localized(.updatesFooter), "NLP Music \(versionNumber)-\(buildNumber)"]
     }()
     
+    var currentUserUrl = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +68,8 @@ class NLPSettingsController: NLPBaseTableViewController {
                 
                 let user = NLPUser(users["response"].arrayValue.first ?? JSON())
                 self.settings[0][0].user = user
+                
+                self.currentUserUrl = "vk.com/id\(user.id)"
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
@@ -105,6 +109,7 @@ extension NLPSettingsController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: .listCell(.bigUser), for: indexPath) as? NLPSettingUserViewCell else { return UITableViewCell() }
             if let user = setting.user {
                 cell.configure(with: user)
+                cell.settingDelegate = self
             }
             return cell
         } else {
@@ -132,7 +137,18 @@ extension NLPSettingsController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension NLPSettingsController: SettingActionDelegate {
+extension NLPSettingsController: SettingActionDelegate, SettingUserActionDelegate {
+    func didOpenUser(_ cell: NLPSettingUserViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        guard indexPath.section == 0 && indexPath.row == 0 else { return }
+        let url = URL(string: "vk://\(currentUserUrl)")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!)
+        } else {
+            showEventMessage(.error, message: "Телеграм не установлен")
+        }
+    }
+    
     func didChangeSetting(_ cell: NLPSettingViewCell, forKey key: String, value: Bool) {
         switch cell.type {
         case .plain, .action(_), .additionalText, .anotherView:
@@ -249,44 +265,8 @@ extension NLPSettingsController: SettingActionDelegate {
                 enAction.tintColor = .label
                 enAction.titleColor = .label
                 enAction.isEnabled = true
-                
-                let uaAction = MDCActionSheetAction(title: "Украинский", image: nil) { [weak self] _ in
-                    guard let self = self else { return }
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "🤣🤣🤣", message: nil, preferredStyle: .alert)
-                        let imageView = UIImageView()
-                        imageView.image = .init(named: "hohol")
-                        imageView.contentMode = .scaleAspectFill
-                        alert.view.addSubview(imageView)
-                        imageView.autoPinEdge(.top, to: .top, of: alert.view, withOffset: 60)
-                        imageView.autoPinEdge(.bottom, to: .bottom, of: alert.view, withOffset: -44)
-                        imageView.autoAlignAxis(toSuperviewAxis: .vertical)
-                        
-                        let myImageWidth: CGFloat = 1280
-                        let myImageHeight: CGFloat = 720
-                        let myViewWidth = screenWidth - 120
-                        
-                        let ratio = myViewWidth / myImageWidth
-                        let scaledHeight = myImageHeight * ratio
-                        
-                        imageView.autoSetDimensions(to: .custom(myViewWidth, scaledHeight))
-                        
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                            alert.dismiss(animated: true)
-                        }))
-                        
-                        self.present(alert, animated: true)
-                    }
-                }
-                uaAction.tintColor = .label
-                uaAction.titleColor = .label
-                uaAction.isEnabled = true
-                
-                #if DEBUG
-                openMenu(actions: [ruAction, enAction, uaAction], title: cell.settingTitleLabel.text)
-                #else
+
                 openMenu(actions: [ruAction, enAction], title: cell.settingTitleLabel.text)
-                #endif
             default: break
             }
         case .anotherView:
@@ -299,14 +279,20 @@ extension NLPSettingsController: SettingActionDelegate {
         case .action(let action):
             switch action {
             case .tgChannel(_):
-                guard let url = URL(string: "https://t.me/+d_Vk18opzow0MTky") else { return }
-                let config = SFSafariViewController.Configuration()
+                let url = URL(string: "tg://join?invite=d_Vk18opzow0MTky")
+                if UIApplication.shared.canOpenURL(url!) {
+                    UIApplication.shared.open(url!)
+                } else {
+                    showEventMessage(.error, message: "Телеграм не установлен")
+                }
                 
-                config.barCollapsingEnabled = true
-                config.entersReaderIfAvailable = true
-                
-                let safariViewController = SFSafariViewController(url: url, configuration: config)
-                present(safariViewController, animated: true)
+//                let config = SFSafariViewController.Configuration()
+//
+//                config.barCollapsingEnabled = true
+//                config.entersReaderIfAvailable = true
+//
+//                let safariViewController = SFSafariViewController(url: url, configuration: config)
+//                present(safariViewController, animated: true)
             case .donate(_):
                 let donateScreen = DonateViewController()
                 present(donateScreen, animated: true)

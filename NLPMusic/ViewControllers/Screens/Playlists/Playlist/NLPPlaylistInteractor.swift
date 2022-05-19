@@ -17,9 +17,9 @@ final class NLPPlaylistInteractor {
 // MARK: - Extensions -
 
 extension NLPPlaylistInteractor: NLPPlaylistInteractorInterface {
-    func getPlaylists(isPaginate: Bool = false, playlistId: Int) throws {
+    func getPlaylists(isPaginate: Bool = false, ownerId: Int, playlistId: Int) throws {
         var parametersAudio: Parameters = [
-            "user_id" : currentUserId,
+            "user_id" : ownerId,
             "playlist_id" : playlistId,
             "count" : 300,
             "offset": isPaginate ? (presenter?.audioItems.count ?? 0) : 0

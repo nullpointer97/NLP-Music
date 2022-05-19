@@ -14,8 +14,8 @@ final class NLPAllPlaylistsWireframe: BaseWireframe<NLPAllPlaylistsViewControlle
 
     // MARK: - Module setup -
 
-    init() {
-        let moduleViewController = NLPAllPlaylistsViewController()
+    init(isOnlyAlbums: Bool) {
+        let moduleViewController = NLPAllPlaylistsViewController(isOnlyAlbums: isOnlyAlbums)
         super.init(viewController: moduleViewController)
 
         let interactor = NLPAllPlaylistsInteractor()

@@ -24,6 +24,7 @@ class NLPLargeImageViewCell: NLPBaseCollectionViewCell<Playlist> {
         secondSubtitleLabel.textColor = .secondaryLabel
         
         titleLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(0.25))
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didOpenPlaylist)))
     }
     
     override func configure(with item: Playlist) {
@@ -54,5 +55,9 @@ class NLPLargeImageViewCell: NLPBaseCollectionViewCell<Playlist> {
             subtitleLabel.textColor = .secondaryLabel
             secondSubtitleLabel.textColor = .secondaryLabel
         }
+    }
+    
+    @objc func didOpenPlaylist() {
+        delegate?.perform(from: self)
     }
 }

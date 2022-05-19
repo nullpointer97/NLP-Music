@@ -21,6 +21,9 @@
 "NLPMNavigationController.Freinds.Title" = "Музыка друзей";
 "NLPTabController.Settings.Title" = "Настройки";
 "NLPTabController.SavedMusic.Title" = "Сохраненная музыка";
+"NLPTabController.Recent.Title" = "Недавнее";
+"NLPTabController.Playlists.Title" = "Плейлисты";
+"NLPTabController.Albums.Title" = "Альбомы";
 "NLPTabController.Player.Prefix" = "Ожидает";
 "NLPTabController.Player.Suffix" = "воспроизведения";
 
@@ -84,6 +87,3 @@
 "NLPCommon.Warning" = "Внимание";
 "NLPCommon.Donate" = "Если Вы хотите поддержать разработчика финансово, можете перевести любую сумму на СберКарту: ";
 "NLPCommon.Trouble" = "Ваша проблема";
-
-// MARK: Funny (NOT PROD!)
-"NLPFunny.Hohol" = "Хохла спросить забыли";
