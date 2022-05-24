@@ -35,10 +35,10 @@ extension NLPAudioV2Interactor: NLPAudioV2InteractorInterface {
                     self.presenter?.audioItems = audioBlock["audios"].arrayValue.compactMap { AudioPlayerItem(fromJSON: $0) }.uniqued()
                     self.presenter?.dataSource = [
                         AudioSection(items: [
-                            AudioSectionItem(items: [], title: .localized(.recentTitle), image: "history_backward_outline_28", blockId: recentBlock["block_id"].stringValue),
-                            AudioSectionItem(items: [], title: .localized(.playlistsTitle), image: "playlist_outline_28", blockId: playlistsBlock["block_id"].stringValue),
-                            AudioSectionItem(items: [], title: .localized(.albumsTitle), image: "vinyl_outline_28", blockId: playlistsBlock["block_id"].stringValue),
-                            AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "")
+                            AudioSectionItem(items: [], title: .localized(.recentTitle), image: "history_backward_outline_28", blockId: recentBlock["block_id"].stringValue, viewControllerToPresent: NLPSectionViewController(sectionId: recentBlock["block_id"].stringValue)),
+                            AudioSectionItem(items: [], title: .localized(.playlistsTitle), image: "playlist_outline_28", blockId: playlistsBlock["block_id"].stringValue, viewControllerToPresent: NLPAllPlaylistsWireframe(isOnlyAlbums: false).viewController),
+                            AudioSectionItem(items: [], title: .localized(.albumsTitle), image: "vinyl_outline_28", blockId: playlistsBlock["block_id"].stringValue, viewControllerToPresent: NLPAllPlaylistsWireframe(isOnlyAlbums: true).viewController),
+                            AudioSectionItem(items: [], title: .localized(.savedMusicTitle), image: "download_outline_32", blockId: "", viewControllerToPresent: NLPSavedMusicViewController())
                         ], title: "", count: 0),
                         AudioSection(items: [
                             AudioSectionItem(items: [], title: .localized(.shuffle), image: "shuffle-2", blockId: "")

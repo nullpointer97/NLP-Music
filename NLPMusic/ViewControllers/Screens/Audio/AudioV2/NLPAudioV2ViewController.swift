@@ -39,25 +39,12 @@ final class NLPAudioV2ViewController: NLPBaseTableViewController {
     
     override func perform<AudioSectionItem>(from cell: NLPBaseViewCell<AudioSectionItem>) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        
         if indexPath.section == 0 {
-            var viewController: NLPBaseTableViewController!
-            
-            switch indexPath.row {
-            case 0:
-                guard let sectionId = presenter.dataSource?[0].items[indexPath.row].blockId else { return }
-                viewController = NLPSectionViewController(sectionId: sectionId)
-            case 1, 2:
-                viewController = NLPAllPlaylistsWireframe(isOnlyAlbums: indexPath.row == 2).viewController
-            case 3:
-                viewController = NLPSavedMusicViewController()
-            default:
-                break
-            }
+            guard let viewControllerToPresent = presenter.dataSource?[0].items[indexPath.row].viewControllerToPresent else { return }
 
-            viewController.title = presenter.dataSource?[0].items[indexPath.row].title
+            viewControllerToPresent.title = presenter.dataSource?[0].items[indexPath.row].title
 
-            asdk_navigationViewController?.pushViewController(viewController, animated: true)
+            asdk_navigationViewController?.pushViewController(viewControllerToPresent, animated: true)
         } else {
             shuffleAll()
         }

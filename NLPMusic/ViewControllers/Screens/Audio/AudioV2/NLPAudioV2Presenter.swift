@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct AudioSectionItem {
     var items: [AudioPlayerItem]
     var title: String
     var image: String?
     var blockId: String
+    var viewControllerToPresent: UIViewController? = nil
 }
 
 struct AudioSection {
