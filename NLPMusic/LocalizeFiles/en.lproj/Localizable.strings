@@ -1,0 +1,89 @@
+/* 
+  Localizable.strings
+  NLPMusic
+
+  Created by Iskander on 11.05.2022.
+  Copyright © 2022 NP-Team. All rights reserved.
+*/
+
+// MARK: Search
+"NLPSearchAudioViewController.Search.SearchPlaceholder" = "Search Music";
+"NLPSearchAudioViewController.Search.FooterKeyword" = "Enter a keyword to search";
+"NLPSearchAudioViewController.Search.EndList" = "End of list";
+"NLPSearchAudioViewController.Search.NothingFound" = "Nothing found";
+
+// MARK: Titles
+"NLPTabController.Music.Title" = "Music";
+"NLPTabController.Audios.Title" = "Audios";
+"NLPTabController.Recommendations.Title" = "Recommendations";
+"NLPTabController.Search.Title" = "Search";
+"NLPTabController.Freinds.Title" = "Freind's music";
+"NLPMNavigationController.Freinds.Title" = "Freind's music";
+"NLPTabController.Settings.Title" = "Settings";
+"NLPTabController.SavedMusic.Title" = "Saved music";
+"NLPTabController.Recent.Title" = "Recently";
+"NLPTabController.Playlists.Title" = "Playlists";
+"NLPTabController.Albums.Title" = "Albums";
+"NLPTabController.Player.Prefix" = "Awaiting";
+"NLPTabController.Player.Suffix" = "playback";
+
+// MARK: Actions
+"NLPBaseTableViewController.Actions.Save" = "Save";
+"NLPBaseTableViewController.Actions.AddToLibrary" = "Add";
+"NLPBaseTableViewController.Actions.Delete" = "Delete";
+"NLPBaseTableViewController.Actions.DeleteFromCache" = "Delete from cache";
+"NLPBaseTableViewController.Actions.InteractiveSwipe" = "Interactive";
+"NLPBaseTableViewController.Actions.ResistingSwipe" = "Snap";
+"NLPBaseTableViewController.Actions.Cancel" = "Cancel";
+"NLPBaseTableViewController.Actions.Logout" = "Logout";
+"NLPBaseViewController.Actions.Reload" = "Close app";
+"NLPBaseViewController.Actions.Shuffle" = "Shuffle everything";
+
+// MARK: Errors
+"NLPBaseViewController.Errors.DeleteError" = "An error has occurred while deleting";
+"NLPBaseViewController.Errors.IncorrectLoginData" = "Wrong login or password";
+"NLPBaseViewController.Errors.AudioURLError" = "Audio URL not available";
+"NLPBaseViewController.Errors.LoadingError" = "An error has occurred while loading";
+"NLPBaseViewController.Errors.AddError" = "An error has occurred while adding";
+"NLPBaseViewController.Errors.CommonError" = "An error has occurred";
+"NLPBaseViewController.Errors.NoAudios" = "You don't have audios";
+"NLPBaseViewController.Errors.UserNoAudiosPrefix" = "";
+"NLPBaseViewController.Errors.UserNoAudiosSuffix" = " has no audios";
+"NLPBaseViewController.Errors.NoPlaylist" = "You don't have playlists";
+
+// MARK: Alerts
+"NLPBaseViewController.Alerts.Logout" = "Sign out?";
+"NLPBaseViewController.Alerts.ClearCacheTitle" = "Clearing cache";
+"NLPBaseViewController.Alerts.ClearCache" = "Delete all saved music?";
+"NLPBaseViewController.Alerts.TemporarilyUnavailable" = "Temporarily unavailable";
+"NLPBaseViewController.Alerts.AlreadyDownloaded" = "Audio already downloaded";
+"NLPBaseViewController.Alerts.FileLoading" = "Audio is loading";
+"NLPBaseViewController.Alerts.ErrorDownload" = "Unable to download audio";
+"NLPBaseViewController.Alerts.NeedReload" = "Restart required";
+"NLPBaseViewController.Alerts.Added" = "Added";
+
+// MARK: Settings
+"NLPSettingsController.Settings.PlayerStyle" = "Player style";
+"NLPSettingsController.Settings.AccentColor" = "Accent color";
+"NLPSettingsController.Settings.PlayerSwipe" = "Minimize player";
+"NLPSettingsController.Settings.TabbarNames" = "Names in tabbar";
+"NLPSettingsController.Settings.Language" = "Language";
+"NLPSettingsController.Settings.AutoDownload" = "Automatic download";
+"NLPSettingsController.Settings.DownloadWifi" = "Download only via Wi-Fi";
+"NLPSettingsController.Settings.ClearCache" = "Clear cache";
+"NLPSettingsController.Settings.Updates" = "Updates";
+"NLPSettingsController.Settings.TelegramChannel" = "Developer's Telegram channel";
+"NLPSettingsController.Settings.Donate" = "Donate to developer";
+"NLPSettingsController.Settings.Report" = "Report a problem";
+"NLPSettingsController.Settings.Logout" = "Logout";
+
+// MARK: Footers
+"NLPSettingsController.Footer.Updates" = "Updates not available";
+"NLPSettingsController.Footer.CacheSize" = "Cache size:";
+
+// MARK: Common
+"NLPCommon.Error" = "Error";
+"NLPCommon.Success" = "Success";
+"NLPCommon.Warning" = "Warning";
+"NLPCommon.Donate" = "If you want to support the developer financially, you can transfer any amount to SberCard: ";
+"NLPCommon.Trouble" = "You're trouble";

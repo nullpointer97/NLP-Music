@@ -1,0 +1,22 @@
+    var sections = API.catalog.getAudio().catalog.sections;
+
+    var my_music_section;
+
+    var isSuccess = false;
+    var index = 0;
+
+    while(!isSuccess) {
+        if (sections[index].url == "https://vk.com/audiosINSERT_USER_ID?section=all") {
+            isSuccess = true;
+            my_music_section = sections[index];
+        } else {
+            index = index + 1;
+            isSuccess = false;
+        }
+    }
+
+    var audio_section = API.catalog.getSection({"section_id": my_music_section.id}).section.blocks;
+
+    var audios = API.catalog.getBlockItems({"block_id": audio_section[7].id});
+
+    return {"blocks": [{"recents": {"block_name": audio_section[0].layout.title, "block_id": audio_section[1].id, "audios_ids": audio_section[1].audios_ids, "next_from": audio_section[1].next_from}, "playlists": {"block_name": audio_section[3].layout.title, "block_id": audio_section[4].id, "playlists_ids": audio_section[4].playlists_ids, "next_from": audio_section[4].next_from}, "audios": {"block_name": audio_section[6].layout.title, "block_id": audio_section[7].id, "audios": audios.audios, "next_from": audios.block.next_from}}]};

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLPPlayerV2ViewController" customModule="NLPMusic" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="MSc-mK-CDB" id="IPG-6M-BV8"/>
+                <outlet property="artworkImageView" destination="SME-5U-4H6" id="wll-SX-nFT"/>
+                <outlet property="downloadButton" destination="ja8-Eg-UzD" id="EYb-OM-XgH"/>
+                <outlet property="firstDurationLabel" destination="buZ-S1-m6r" id="G0y-pv-j07"/>
+                <outlet property="listButton" destination="3w6-Aa-KoH" id="tJ2-c5-cCl"/>
+                <outlet property="nextButton" destination="2Ak-2S-X3g" id="7m8-hi-CAa"/>
+                <outlet property="playButton" destination="2Lc-WX-OYt" id="QIl-1E-rb2"/>
+                <outlet property="prevButton" destination="d0C-Yu-laY" id="roc-Jc-FJf"/>
+                <outlet property="progressSlider" destination="Bm7-9K-kiF" id="ziV-WI-quS"/>
+                <outlet property="repeatButton" destination="SaS-kp-28f" id="NyB-XQ-Xun"/>
+                <outlet property="repostButton" destination="MAH-Ea-xxp" id="29x-dg-87n"/>
+                <outlet property="secondDurationLabel" destination="2wt-wZ-qvA" id="vzy-ns-y59"/>
+                <outlet property="shuffleButton" destination="nds-BO-KLw" id="M59-BN-58g"/>
+                <outlet property="subtitleLabel" destination="3SH-ZC-F65" id="q23-sn-I44"/>
+                <outlet property="titleLabel" destination="Kcf-bS-uZ6" id="Gkv-9S-yiu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SME-5U-4H6" customClass="ShadowImageView" customModule="NLPMusic" customModuleProvider="target">
+                    <rect key="frame" x="24" y="92" width="380" height="380"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="SME-5U-4H6" secondAttribute="height" multiplier="1:1" id="oPo-GO-jdg"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="blurRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="imageCornerRaidus">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowAlpha">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="playlist_outline_56"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Gte-39-LkB">
+                    <rect key="frame" x="24" y="507.99999999999994" width="380" height="39.333333333333314"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcf-bS-uZ6" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                            <rect key="frame" x="0.0" y="0.0" width="380" height="19.333333333333332"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="holdScrolling" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                    <real key="value" value="64"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="marqueeType">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="forceScrolling" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="labelize" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                    <integer key="value" value="350"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" verticalCompressionResistancePriority="749" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SH-ZC-F65" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                            <rect key="frame" x="0.0" y="21.333333333333371" width="380" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="marqueeType">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="holdScrolling" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                    <real key="value" value="64"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="forceScrolling" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="labelize" value="NO"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                    <integer key="value" value="350"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-6" translatesAutoresizingMaskIntoConstraints="NO" id="Tmb-mB-aRz">
+                    <rect key="frame" x="29" y="583.33333333333337" width="370" height="40.333333333333371"/>
+                    <subviews>
+                        <view opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bm7-9K-kiF" customClass="PlayerSlider" customModule="NLPMusic" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="370" height="32"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="VaI-Re-lNt"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                    <integer key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OFt-X5-9jO">
+                            <rect key="frame" x="0.0" y="25.999999999999996" width="370" height="14.333333333333332"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="--:--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buZ-S1-m6r">
+                                    <rect key="frame" x="0.0" y="0.0" width="185" height="14.333333333333334"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-wZ-qvA">
+                                    <rect key="frame" x="185" y="0.0" width="185" height="14.333333333333334"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="FBL-Mh-S8t">
+                    <rect key="frame" x="32" y="655.66666666666663" width="364" height="142.33333333333337"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSc-mK-CDB">
+                            <rect key="frame" x="0.0" y="59.333333333333371" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="MSc-mK-CDB" secondAttribute="height" multiplier="1:1" id="W0f-1k-glN"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="sIE-g4-h0j"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="add_outline_24">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didAddTrack:" destination="-1" eventType="touchUpInside" id="BqV-hQ-FEe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0C-Yu-laY">
+                            <rect key="frame" x="82.666666666666671" y="57.333333333333371" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="d0C-Yu-laY" secondAttribute="height" multiplier="1:1" id="Klu-fk-EVt"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="48" id="e25-o0-zUU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="backward.fill">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didPrevTrack:" destination="-1" eventType="touchUpInside" id="mKE-rH-P14"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lc-WX-OYt" customClass="PlayButton" customModule="NLPMusic" customModuleProvider="target">
+                            <rect key="frame" x="149" y="39.333333333333371" width="64" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="64" id="Gsj-Qa-Hsf"/>
+                                <constraint firstAttribute="width" secondItem="2Lc-WX-OYt" secondAttribute="height" multiplier="1:1" id="Shc-Wa-d38"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <connections>
+                                <action selector="didTogglePlayButton:" destination="-1" eventType="touchUpInside" id="Yel-hG-GG5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ak-2S-X3g">
+                            <rect key="frame" x="251.66666666666669" y="57.333333333333371" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="48" id="QjS-pl-snI"/>
+                                <constraint firstAttribute="width" secondItem="2Ak-2S-X3g" secondAttribute="height" multiplier="1:1" id="TUz-fz-lwi"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="forward.fill">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didNextTrack:" destination="-1" eventType="touchUpInside" id="XQu-87-pW0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ja8-Eg-UzD">
+                            <rect key="frame" x="336" y="57.333333333333371" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="FSH-qx-Kw5"/>
+                                <constraint firstAttribute="width" secondItem="ja8-Eg-UzD" secondAttribute="height" multiplier="1:1" id="tFs-pY-xcU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="download_outline_28">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didStartDownload:" destination="-1" eventType="touchUpInside" id="RqD-wL-o8k"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <variation key="heightClass=regular-widthClass=compact" spacing="26"/>
+                    <variation key="heightClass=regular-widthClass=regular" spacing="28"/>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Wnw-HK-Mps">
+                    <rect key="frame" x="24" y="834" width="380" height="42"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaS-kp-28f">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="SaS-kp-28f" secondAttribute="height" multiplier="1:1" id="ig9-Sf-ajz"/>
+                                <constraint firstAttribute="height" constant="42" id="neb-WP-EnL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="repeat_24">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didChangeRepeatMode:" destination="-1" eventType="touchUpInside" id="Keb-I6-NJ7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAH-Ea-xxp">
+                            <rect key="frame" x="112.66666666666666" y="0.0" width="42" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="MQp-rG-gDF"/>
+                                <constraint firstAttribute="width" secondItem="MAH-Ea-xxp" secondAttribute="height" multiplier="1:1" id="rf4-RF-2cd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="repost_24">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didShare:" destination="-1" eventType="touchUpInside" id="43y-Lc-hRi"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w6-Aa-KoH">
+                            <rect key="frame" x="225.33333333333334" y="0.0" width="42.000000000000028" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="FSS-hG-DZZ"/>
+                                <constraint firstAttribute="width" secondItem="3w6-Aa-KoH" secondAttribute="height" multiplier="1:1" id="GTk-Yq-F7Y"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="playlist_24">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didOpenList:" destination="-1" eventType="touchUpInside" id="nGg-JU-Zfy"/>
+                            </connections>
+                        </button>
+                        <button contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nds-BO-KLw">
+                            <rect key="frame" x="338" y="0.0" width="42" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="L46-W4-njW"/>
+                                <constraint firstAttribute="width" secondItem="nds-BO-KLw" secondAttribute="height" multiplier="1:1" id="gvD-SD-nAi"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="1"/>
+                            <state key="normal" image="shuffle-2">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                </preferredSymbolConfiguration>
+                            </state>
+                            <connections>
+                                <action selector="didChangeShuffleMode:" destination="-1" eventType="touchUpInside" id="tVr-ms-H2t"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SME-5U-4H6" secondAttribute="trailing" constant="24" id="DkV-lN-fhI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wnw-HK-Mps" secondAttribute="bottom" constant="16" id="EVR-4z-ATK"/>
+                <constraint firstItem="SME-5U-4H6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Hlz-kD-WAG"/>
+                <constraint firstItem="Tmb-mB-aRz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="29" id="LJS-mx-lCd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gte-39-LkB" secondAttribute="trailing" constant="24" id="OTU-xS-x8P"/>
+                <constraint firstItem="SME-5U-4H6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="48" id="Ogf-D2-csP"/>
+                <constraint firstItem="FBL-Mh-S8t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="TOy-8o-FfL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Tmb-mB-aRz" secondAttribute="trailing" constant="29" id="Uem-vh-zoB"/>
+                <constraint firstItem="Wnw-HK-Mps" firstAttribute="top" secondItem="FBL-Mh-S8t" secondAttribute="bottom" constant="36" id="XC7-Iu-4Ax"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FBL-Mh-S8t" secondAttribute="trailing" constant="32" id="cdP-RD-TAn"/>
+                <constraint firstItem="SME-5U-4H6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="dGe-u1-Ny3"/>
+                <constraint firstItem="Gte-39-LkB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="eec-qO-BLR"/>
+                <constraint firstItem="Gte-39-LkB" firstAttribute="top" secondItem="SME-5U-4H6" secondAttribute="bottom" constant="36" id="g4S-W1-OlZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wnw-HK-Mps" secondAttribute="trailing" constant="24" id="iYU-0L-ZqZ"/>
+                <constraint firstItem="FBL-Mh-S8t" firstAttribute="top" secondItem="Tmb-mB-aRz" secondAttribute="bottom" constant="32" id="sGq-b1-QVF"/>
+                <constraint firstItem="Tmb-mB-aRz" firstAttribute="top" secondItem="Gte-39-LkB" secondAttribute="bottom" constant="36" id="ufr-fS-Ix6"/>
+                <constraint firstItem="Wnw-HK-Mps" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="wns-8q-MWK"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="108.48214285714285"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="2Lc-WX-OYt">
+            <size key="intrinsicContentSize" width="30" height="14"/>
+        </designable>
+        <designable name="3SH-ZC-F65">
+            <size key="intrinsicContentSize" width="7" height="18"/>
+        </designable>
+        <designable name="Kcf-bS-uZ6">
+            <size key="intrinsicContentSize" width="7.666666666666667" height="19.333333333333332"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="add_outline_24" width="24" height="24"/>
+        <image name="backward.fill" width="28" height="28"/>
+        <image name="download_outline_28" width="28" height="28"/>
+        <image name="forward.fill" width="28" height="28"/>
+        <image name="playlist_24" width="24" height="24"/>
+        <image name="playlist_outline_56" width="128" height="128"/>
+        <image name="repeat_24" width="24" height="24"/>
+        <image name="repost_24" width="24" height="24"/>
+        <image name="shuffle-2" width="24" height="24"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

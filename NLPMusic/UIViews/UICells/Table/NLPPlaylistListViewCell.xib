@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NLPPlaylistListViewCell" rowHeight="84" id="KGk-i7-Jjw" customClass="NLPPlaylistListViewCell" customModule="NLPMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="370" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_outline_56" translatesAutoresizingMaskIntoConstraints="NO" id="gsZ-xk-xvX">
+                        <rect key="frame" x="16" y="6" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="Aa0-YE-7H9"/>
+                            <constraint firstAttribute="height" constant="72" id="NI9-FR-QUa"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jn4-86-Wla">
+                        <rect key="frame" x="100" y="13" width="212" height="58"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-4Z-H8C">
+                                <rect key="frame" x="0.0" y="0.0" width="212" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijv-bM-f9h">
+                                <rect key="frame" x="0.0" y="23.5" width="212" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fv-7t-SkW">
+                                <rect key="frame" x="0.0" y="43.5" width="212" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scd-aI-3Zz">
+                        <rect key="frame" x="318" y="18" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="d72-AW-9JF"/>
+                            <constraint firstAttribute="width" constant="48" id="doG-hb-GIa"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="-4" minY="-4" maxX="-4" maxY="-4"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="more-horizontal"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="scd-aI-3Zz" secondAttribute="trailing" constant="4" id="5S0-Ck-Pb8"/>
+                    <constraint firstAttribute="bottom" secondItem="gsZ-xk-xvX" secondAttribute="bottom" constant="6" id="BWt-DL-tAa"/>
+                    <constraint firstItem="jn4-86-Wla" firstAttribute="leading" secondItem="gsZ-xk-xvX" secondAttribute="trailing" constant="12" id="U52-OW-y2L"/>
+                    <constraint firstItem="gsZ-xk-xvX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VpZ-FI-7wd"/>
+                    <constraint firstItem="jn4-86-Wla" firstAttribute="centerY" secondItem="gsZ-xk-xvX" secondAttribute="centerY" id="kfV-4Z-jIh"/>
+                    <constraint firstItem="scd-aI-3Zz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="koz-Z2-wJg"/>
+                    <constraint firstItem="gsZ-xk-xvX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="pR7-ND-ToC"/>
+                    <constraint firstItem="scd-aI-3Zz" firstAttribute="leading" secondItem="jn4-86-Wla" secondAttribute="trailing" constant="6" id="qdc-Vx-cyD"/>
+                    <constraint firstAttribute="trailing" secondItem="jn4-86-Wla" secondAttribute="trailing" constant="16" id="tAi-3U-f3V"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="tAi-3U-f3V"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="additionalLabel" destination="2fv-7t-SkW" id="hYj-60-bgP"/>
+                <outlet property="artistLabel" destination="Ijv-bM-f9h" id="fQx-8H-CcV"/>
+                <outlet property="moreButton" destination="scd-aI-3Zz" id="dbw-3u-xRL"/>
+                <outlet property="playlistArtworkImageView" destination="gsZ-xk-xvX" id="OdR-4Y-hPf"/>
+                <outlet property="titleLabel" destination="R2O-4Z-H8C" id="LsJ-RG-gyK"/>
+            </connections>
+            <point key="canvasLocation" x="162.31884057971016" y="97.767857142857139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="more-horizontal" width="16" height="16"/>
+        <image name="playlist_outline_56" width="128" height="128"/>
+    </resources>
+</document>

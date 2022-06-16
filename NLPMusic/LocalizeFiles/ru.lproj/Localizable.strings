@@ -1,0 +1,89 @@
+/* 
+  Localizable.strings
+  NLPMusic
+
+  Created by Iskander on 11.05.2022.
+  Copyright © 2022 NP-Team. All rights reserved.
+*/
+
+// MARK: Search
+"NLPSearchAudioViewController.Search.SearchPlaceholder" = "Поиск музыки";
+"NLPSearchAudioViewController.Search.FooterKeyword" = "Введите ключевое слово для поиска";
+"NLPSearchAudioViewController.Search.EndList" = "Конец списка";
+"NLPSearchAudioViewController.Search.NothingFound" = "Ничего не найдено";
+
+// MARK: Titles
+"NLPTabController.Music.Title" = "Музыка";
+"NLPTabController.Audios.Title" = "Аудиозаписи";
+"NLPTabController.Recommendations.Title" = "Рекомендации";
+"NLPTabController.Search.Title" = "Поиск";
+"NLPTabController.Freinds.Title" = "Друзья";
+"NLPMNavigationController.Freinds.Title" = "Музыка друзей";
+"NLPTabController.Settings.Title" = "Настройки";
+"NLPTabController.SavedMusic.Title" = "Сохраненная музыка";
+"NLPTabController.Recent.Title" = "Недавнее";
+"NLPTabController.Playlists.Title" = "Плейлисты";
+"NLPTabController.Albums.Title" = "Альбомы";
+"NLPTabController.Player.Prefix" = "Ожидает";
+"NLPTabController.Player.Suffix" = "воспроизведения";
+
+// MARK: Actions
+"NLPBaseTableViewController.Actions.Save" = "Сохранить";
+"NLPBaseTableViewController.Actions.AddToLibrary" = "Добавить";
+"NLPBaseTableViewController.Actions.Delete" = "Удалить";
+"NLPBaseTableViewController.Actions.DeleteFromCache" = "Удалить из кэша";
+"NLPBaseTableViewController.Actions.InteractiveSwipe" = "Интерактивный";
+"NLPBaseTableViewController.Actions.ResistingSwipe" = "Сопротивляющийся";
+"NLPBaseTableViewController.Actions.Cancel" = "Отмена";
+"NLPBaseTableViewController.Actions.Logout" = "Выход";
+"NLPBaseViewController.Actions.Reload" = "Закрыть приложение";
+"NLPBaseViewController.Actions.Shuffle" = "Перемешать все";
+
+// MARK: Errors
+"NLPBaseViewController.Errors.DeleteError" = "При удалении произошла ошибка";
+"NLPBaseViewController.Errors.IncorrectLoginData" = "Неверная логин или пароль";
+"NLPBaseViewController.Errors.AudioURLError" = "Неверная ссылка на аудио";
+"NLPBaseViewController.Errors.LoadingError" = "При загрузке произошла ошибка";
+"NLPBaseViewController.Errors.AddError" = "При добавлении произошла ошибка";
+"NLPBaseViewController.Errors.CommonError" = "Произошла ошибка";
+"NLPBaseViewController.Errors.NoAudios" = "У Вас нет аудиозаписей";
+"NLPBaseViewController.Errors.UserNoAudiosPrefix" = "У ";
+"NLPBaseViewController.Errors.UserNoAudiosSuffix" = " нет аудиозаписей";
+"NLPBaseViewController.Errors.NoPlaylist" = "У Вас нет плейлистов";
+
+// MARK: Alerts
+"NLPBaseViewController.Alerts.Logout" = "Выйти из аккаунта?";
+"NLPBaseViewController.Alerts.ClearCacheTitle" = "Очистка кэша";
+"NLPBaseViewController.Alerts.ClearCache" = "Удалить всю сохраненную музыку?";
+"NLPBaseViewController.Alerts.TemporarilyUnavailable" = "Временно недоступно";
+"NLPBaseViewController.Alerts.AlreadyDownloaded" = "Аудио уже загружено";
+"NLPBaseViewController.Alerts.FileLoading" = "Аудио загружается";
+"NLPBaseViewController.Alerts.ErrorDownload" = "Невозможно загрузить аудио";
+"NLPBaseViewController.Alerts.NeedReload" = "Необходима перезагрузка";
+"NLPBaseViewController.Alerts.Added" = "Добавлено";
+
+// MARK: Settings
+"NLPSettingsController.Settings.PlayerStyle" = "Стиль плеера";
+"NLPSettingsController.Settings.AccentColor" = "Цвет акцента";
+"NLPSettingsController.Settings.PlayerSwipe" = "Сворачивание плеера";
+"NLPSettingsController.Settings.TabbarNames" = "Подписи в таббаре";
+"NLPSettingsController.Settings.Language" = "Язык";
+"NLPSettingsController.Settings.AutoDownload" = "Автоскачивание";
+"NLPSettingsController.Settings.DownloadWifi" = "Скачивать только через Wi-Fi";
+"NLPSettingsController.Settings.ClearCache" = "Очистить кэш";
+"NLPSettingsController.Settings.Updates" = "Обновления";
+"NLPSettingsController.Settings.TelegramChannel" = "Телеграм канал разработчика";
+"NLPSettingsController.Settings.Donate" = "Поддержать разработчика";
+"NLPSettingsController.Settings.Report" = "Сообщить о проблеме";
+"NLPSettingsController.Settings.Logout" = "Выход из аккаунта";
+
+// MARK: Footers
+"NLPSettingsController.Footer.Updates" = "Обновления недоступны";
+"NLPSettingsController.Footer.CacheSize" = "Размер кэша:";
+
+// MARK: Common
+"NLPCommon.Error" = "Ошибка";
+"NLPCommon.Success" = "Успешно";
+"NLPCommon.Warning" = "Внимание";
+"NLPCommon.Donate" = "Если Вы хотите поддержать разработчика финансово, можете перевести любую сумму на СберКарту: ";
+"NLPCommon.Trouble" = "Ваша проблема";
